@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 type PageMeta = { title: string; description: string; index?: boolean };
 
 const DEFAULT_DESCRIPTION = "AXY connects retailers, brands, sales teams, products and customers—turning everyday retail interactions into structured intelligence.";
+const SOCIAL_IMAGE = "/images/surface-sales-app.jpg";
 
 const PAGE_META: Record<string, PageMeta> = {
   "/": { title: "Turn Every Store Interaction into Sales Intelligence", description: "AXY connects the retail ecosystem so in-store interactions become useful context for sales teams, customers, retailers and brands." },
@@ -37,9 +38,17 @@ export function metadataForPath(path: string): Metadata {
     description: page.description,
     alternates: { canonical },
     robots: page.index === false ? { index: false, follow: false } : undefined,
-    openGraph: { type: "website", siteName: "AXY", title: page.title, description: page.description, url: canonical },
-    twitter: { card: "summary_large_image", title: page.title, description: page.description },
+    openGraph: {
+      type: "website",
+      siteName: "AXY",
+      title: page.title,
+      description: page.description,
+      url: canonical,
+      images: [{ url: SOCIAL_IMAGE, width: 1600, height: 900, alt: "AXY connected retail platform" }],
+    },
+    twitter: { card: "summary_large_image", title: page.title, description: page.description, images: [SOCIAL_IMAGE] },
   };
 }
 
+export const staticPagePaths = Object.keys(PAGE_META);
 export const sitemapPaths = Object.entries(PAGE_META).filter(([, value]) => value.index !== false).map(([path]) => path);

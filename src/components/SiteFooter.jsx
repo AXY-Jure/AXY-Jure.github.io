@@ -81,7 +81,7 @@ export default function SiteFooter(v) {
               <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                 <a href="/about" style={{ fontSize: "12px", color: "#C9D2E4" }}>About
                 </a>
-                <a href="/about" style={{ fontSize: "12px", color: "#C9D2E4" }}>Contact
+                <a href="mailto:info@axy.net" style={{ fontSize: "12px", color: "#C9D2E4" }}>Contact
                 </a>
                 <a href="/book-a-walkthrough" style={{ fontSize: "12px", color: "#C9D2E4" }}>Book a Walkthrough
                 </a>

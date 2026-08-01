@@ -69,12 +69,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { route: routeForPath(props.initialPath), menu: false, dd: '', persp: 'retail', forms: {}, heroClip: 0, ccu: 0, ccuPaused: false, surf: 0, retail: 0, retailPaused: false, brand: 0, brandPaused: false,
-      pricingUsers: 1, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingOrgModal: false, pricingFormOpen: false, howStage: 0 };
+      pricingUsers: 1, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false, howStage: 0 };
   }
 
   // Local pricing configuration (single source of truth).
-  // TODO Phase 2: map these to Stripe Price IDs when Stripe Checkout is connected.
-  PRICING = { organization: 99, additionalUser: 15, additionalBusinessUnit: 49, announcementsPerBusinessUnit: 20, messaging: 19 };
+  PRICING = { additionalUser: 15, additionalBusinessUnit: 49, announcementsPerBusinessUnit: 20, messaging: 19 };
 
   ROUTES = ROUTES;
 
@@ -116,10 +115,9 @@ class App extends React.Component {
     return { users, businessUnits, additionalUsers, additionalUserCost, additionalBusinessUnits, additionalBusinessUnitCost, announcementUnits, announcementsCost, messagingCost, customMonthlyTotal };
   }
   _pricingRecommendation(c) {
-    const s = this.state, P = this.PRICING;
+    const s = this.state;
     const ann = s.pricingAnnouncementsEnabled, msg = s.pricingMessagingEnabled, ai = s.pricingAiImageInterested;
-    if (c.users === 1 && c.businessUnits === 1 && !ann && !msg && !ai) return 'AXY Starter is the right starting point for this setup.';
-    if (c.users <= 5 && c.businessUnits <= 2 && ann && msg && P.organization <= c.customMonthlyTotal) return 'AXY Organization gives you more value for this setup.';
+    if (c.users === 1 && c.businessUnits === 1 && !ann && !msg && !ai) return 'AXY Free is the right starting point for this setup.';
     return 'This is a custom AXY setup.';
   }
   _pricingPayload() {
@@ -220,9 +218,6 @@ class App extends React.Component {
     vals.pMsgToggle = () => this.setState(p => ({ pricingMessagingEnabled: !p.pricingMessagingEnabled }));
     vals.pAiToggle = () => this.setState(p => ({ pricingAiImageInterested: !p.pricingAiImageInterested }));
     vals.pScrollBuild = () => this._scrollTo('axy-pricing-builder');
-    vals.pOrgCheckout = () => this.setState({ pricingOrgModal: true });
-    vals.pOrgClose = () => this.setState({ pricingOrgModal: false });
-    vals.pOrgModalOpen = s.pricingOrgModal;
     vals.pFormOpen = () => this.setState({ pricingFormOpen: true }, () => this._scrollTo('axy-pricing-builder'));
     vals.pFormShown = s.pricingFormOpen;
     vals.pSubmitted = !!s.forms.pricingPlan;

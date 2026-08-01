@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '../lib/css.js';
 
 export default function Pricing(v) {
-  const { pAddBU, pAddBUCost, pAddUserCost, pAddUsers, pAiAria, pAiOn, pAiToggle, pAiToggleLabel, pAiToggleStyle, pAnnAria, pAnnCost, pAnnDec, pAnnInc, pAnnOn, pAnnToggle, pAnnToggleLabel, pAnnToggleStyle, pAnnUnits, pBU, pBUDec, pBUInc, pFormEditable, pFormOpen, pFormShown, pFree0Style, pFree1Style, pFree2Style, pFree3Style, pFree4Style, pFree5Style, pFree6Style, pFree7Style, pFree8Style, pFreeAria0, pFreeAria1, pFreeAria2, pFreeAria3, pFreeAria4, pFreeAria5, pFreeAria6, pFreeAria7, pFreeAria8, pFreeGo0, pFreeGo1, pFreeGo2, pFreeGo3, pFreeGo4, pFreeGo5, pFreeGo6, pFreeGo7, pFreeGo8, pFt0Label, pFt0PillStyle, pFt0Style, pFt1Label, pFt1PillStyle, pFt1Style, pFt2Label, pFt2PillStyle, pFt2Style, pFt3Label, pFt3PillStyle, pFt3Style, pFt4Label, pFt4PillStyle, pFt4Style, pFtAria0, pFtAria1, pFtAria2, pFtAria3, pFtAria4, pFtToggle0, pFtToggle1, pFtToggle2, pFtToggle3, pFtToggle4, pHasAddBU, pHasAddUsers, pMsgAria, pMsgCost, pMsgOn, pMsgToggle, pMsgToggleLabel, pMsgToggleStyle, pOrgCheckout, pOrgClose, pOrgModalOpen, pRec, pScrollBuild, pSubmit, pSubmitted, pTotalLabel, pUsers, pUsersDec, pUsersInc, pf_0, pf_1, pf_2, pf_3, pf_4, pf_5, pf_6, pf_7, pf_8 } = v;
+  const { pAddBU, pAddBUCost, pAddUserCost, pAddUsers, pAiAria, pAiOn, pAiToggle, pAiToggleLabel, pAiToggleStyle, pAnnAria, pAnnCost, pAnnDec, pAnnInc, pAnnOn, pAnnToggle, pAnnToggleLabel, pAnnToggleStyle, pAnnUnits, pBU, pBUDec, pBUInc, pFormEditable, pFormOpen, pFormShown, pFree0Style, pFree1Style, pFree2Style, pFree3Style, pFree4Style, pFree5Style, pFree6Style, pFree7Style, pFree8Style, pFreeAria0, pFreeAria1, pFreeAria2, pFreeAria3, pFreeAria4, pFreeAria5, pFreeAria6, pFreeAria7, pFreeAria8, pFreeGo0, pFreeGo1, pFreeGo2, pFreeGo3, pFreeGo4, pFreeGo5, pFreeGo6, pFreeGo7, pFreeGo8, pFt0Label, pFt0PillStyle, pFt0Style, pFt1Label, pFt1PillStyle, pFt1Style, pFt2Label, pFt2PillStyle, pFt2Style, pFt3Label, pFt3PillStyle, pFt3Style, pFt4Label, pFt4PillStyle, pFt4Style, pFtAria0, pFtAria1, pFtAria2, pFtAria3, pFtAria4, pFtToggle0, pFtToggle1, pFtToggle2, pFtToggle3, pFtToggle4, pHasAddBU, pHasAddUsers, pMsgAria, pMsgCost, pMsgOn, pMsgToggle, pMsgToggleLabel, pMsgToggleStyle, pRec, pScrollBuild, pSubmit, pSubmitted, pTotalLabel, pUsers, pUsersDec, pUsersInc, pf_0, pf_1, pf_2, pf_3, pf_4, pf_5, pf_6, pf_7, pf_8 } = v;
   return (
     <>
       <div data-screen-label="Pricing">
@@ -27,9 +27,9 @@ export default function Pricing(v) {
         </div>
         <div style={{ background: "#fff", padding: "64px 24px" }}>
           <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-            <div className="pr-cards" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px", alignItems: "stretch" }}>
+            <div className="pr-cards" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: "16px", alignItems: "stretch" }}>
               <div style={{ display: "flex", flexDirection: "column", background: "#F9FAFB", border: "1px solid #E4E8EF", borderRadius: "16px", padding: "24px" }}>
-                <div style={{ fontSize: "12px", fontFamily: "'Roboto Mono',monospace", letterSpacing: ".1em", color: "#667085", textTransform: "uppercase" }}>AXY Starter
+                <div style={{ fontSize: "12px", fontFamily: "'Roboto Mono',monospace", letterSpacing: ".1em", color: "#667085", textTransform: "uppercase" }}>AXY Free
                 </div>
                 <div style={{ fontSize: "30px", fontWeight: "800", color: "#1F2B4D", marginTop: "10px" }}>Free
                 </div>
@@ -81,74 +81,6 @@ export default function Pricing(v) {
                 </div>
                 <a className="hv124" href="/create-account" style={{ display: "inline-flex", justifyContent: "center", marginTop: "20px", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
                 </a>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", background: "#fff", border: "2px solid #2C8C99", borderRadius: "16px", padding: "24px", boxShadow: "0 20px 44px rgba(44,140,153,.16)", position: "relative" }}>
-                <span style={{ position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)", fontFamily: "'Roboto Mono',monospace", fontSize: "9.5px", fontWeight: "700", letterSpacing: ".1em", color: "#fff", background: "#2C8C99", borderRadius: "20px", padding: "5px 14px" }}>RECOMMENDED
-                </span>
-                <div style={{ fontSize: "12px", fontFamily: "'Roboto Mono',monospace", letterSpacing: ".1em", color: "#1C6470", textTransform: "uppercase" }}>AXY Organization
-                </div>
-                <div style={{ display: "flex", alignItems: "baseline", gap: "4px", marginTop: "10px" }}>
-                  <div style={{ fontSize: "30px", fontWeight: "800", color: "#1F2B4D" }}>€99
-                  </div>
-                  <div style={{ fontSize: "14px", color: "#667085" }}>/month
-                  </div>
-                </div>
-                <p style={{ fontSize: "13px", color: "#667085", lineHeight: "1.55", margin: "8px 0 16px", minHeight: "56px" }}>For teams using AXY as an active part of their daily business.
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: "1" }}>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>
-                      <strong>Everything in AXY Starter
-                      </strong>
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>5 users included
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>2 business units or stores included
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>Announcements module included
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>Messaging module included
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>Expanded operational capacity
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", color: "#3a4358", lineHeight: "1.45" }}>
-                    <span style={{ color: "#2C8C99", fontWeight: "800" }}>✓
-                    </span>
-                    <span>Team access, collaboration and store-level workflows
-                    </span>
-                  </div>
-                </div>
-                <div style={{ display: "flex", gap: "8px", alignItems: "flex-start", marginTop: "14px", background: "#FBF6EE", border: "1px solid #EFE1CC", borderRadius: "9px", padding: "9px 11px", fontSize: "11.5px", color: "#8a6d3b", lineHeight: "1.45" }}>
-                  <span>ⓘ
-                  </span>
-                  <span>WhatsApp and external message usage are billed separately.
-                  </span>
-                </div>
-                <button className="hv125" type="button" onClick={pOrgCheckout} style={{ display: "inline-flex", justifyContent: "center", marginTop: "16px", padding: "12px", background: "#2C8C99", color: "#fff", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "700", cursor: "pointer" }}>Start Organization
-                </button>
               </div>
               <div style={{ display: "flex", flexDirection: "column", background: "#F9FAFB", border: "1px solid #E4E8EF", borderRadius: "16px", padding: "24px" }}>
                 <div style={{ fontSize: "12px", fontFamily: "'Roboto Mono',monospace", letterSpacing: ".1em", color: "#667085", textTransform: "uppercase" }}>Build Your Plan
@@ -883,7 +815,7 @@ export default function Pricing(v) {
                     </div>
                     <button className="hv133" type="button" onClick={pSubmit} style={{ display: "inline-flex", justifyContent: "center", padding: "13px", background: "#32415C", color: "#fff", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "700", cursor: "pointer" }}>Send plan request
                     </button>
-                    <div style={{ fontSize: "11px", color: "#9aa3b2", textAlign: "center" }}>This opens a prepared email. Direct CRM submission will be connected before launch.
+                    <div style={{ fontSize: "11px", color: "#9aa3b2", textAlign: "center" }}>This opens a prepared email so our team can review your configuration.
                     </div>
                   </div>
                 </>) : null}
@@ -1038,28 +970,6 @@ export default function Pricing(v) {
             </div>
           </div>
         </div>
-        {pOrgModalOpen ? (<>
-          <div onClick={pOrgClose} style={{ position: "fixed", inset: "0", zIndex: "200", background: "rgba(15,22,43,.55)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-            <div style={{ background: "#fff", borderRadius: "16px", padding: "28px", maxWidth: "420px", width: "100%", boxShadow: "0 30px 70px rgba(0,0,0,.35)" }}>
-              <div style={{ width: "46px", height: "46px", borderRadius: "12px", background: "#EFF7F8", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg viewBox="0 0 20 20" width="22" height="22" fill="none" stroke="#2C8C99" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="6" width="14" height="10" rx="2"></rect>
-                  <path d="M3 9h14M7 13h3"></path>
-                </svg>
-              </div>
-              <div style={{ fontSize: "18px", fontWeight: "800", color: "#1F2B4D", marginTop: "14px" }}>Secure checkout is coming soon
-              </div>
-              <p style={{ fontSize: "13.5px", color: "#667085", lineHeight: "1.6", margin: "10px 0 0" }}>Online checkout for AXY Organization will be connected in the next implementation phase. In the meantime, book a short walkthrough and we will activate your plan with you.
-              </p>
-              <div style={{ display: "flex", gap: "10px", marginTop: "20px", flexWrap: "wrap" }}>
-                <a className="hv136" href="/book-a-walkthrough" style={{ flex: "1", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "13.5px", fontWeight: "700" }}>Book a walkthrough
-                </a>
-                <button className="hv137" type="button" onClick={pOrgClose} style={{ padding: "12px 16px", background: "#fff", color: "#667085", border: "1px solid #E4E8EF", borderRadius: "10px", fontSize: "13.5px", fontWeight: "600", cursor: "pointer" }}>Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </>) : null}
       </div>
     </>
   );

@@ -74,7 +74,7 @@ export default function Help(v) {
                 </a>
               </div>
               <div style={{ display: "flex", gap: "12px", marginTop: "22px", flexWrap: "wrap" }}>
-                <a className="hv172" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Contact support
+                <a className="hv172" href="mailto:support@axy.net" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Contact support
                 </a>
                 <a className="hv173" href="/login" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Log in to AXY
                 </a>
