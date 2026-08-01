@@ -104,6 +104,12 @@ export default function SiteFooter(v) {
               </a>{' '}
               <a href="/legal" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Cookie Policy
               </a>{' '}
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('axy:open-cookie-settings'))}
+                style={{ appearance: "none", background: "transparent", border: 0, padding: 0, fontSize: "11.5px", color: "#8fa0c2", cursor: "pointer" }}
+              >Cookie settings
+              </button>{' '}
               <span style={{ fontSize: "11.5px", color: "#6b76a0" }}>© AXY · XY Sales d.o.o.
               </span>
             </div>
