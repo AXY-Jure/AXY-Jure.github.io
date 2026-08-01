@@ -1,0 +1,8 @@
+@import "../src/styles/global.css";
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button, [role="button"] { touch-action: manipulation; }
+:focus-visible { outline: 3px solid rgba(44, 140, 153, 0.4); outline-offset: 3px; }
