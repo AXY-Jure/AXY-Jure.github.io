@@ -5,9 +5,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 const MEASUREMENT_ID = 'G-WTT8L3MJTV';
 const CONSENT_STORAGE_KEY = 'axy-analytics-consent-v1';
 
-function gtag(...args) {
+function gtag() {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
+  window.dataLayer.push(arguments);
 }
 
 function clearAnalyticsCookies() {
