@@ -46,14 +46,14 @@ export default function Walkthrough() {
           </div>
         </div>
       </section>
-      <section id="schedule" style={{ padding: '76px 24px 88px', background: '#F8FAFC', scrollMarginTop: '76px' }}>
+      <section style={{ padding: '76px 24px 88px', background: '#F8FAFC' }}>
         <div style={{ maxWidth: '1040px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 34px' }}>
             <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '9px', letterSpacing: '.1em', color: '#2C8C99', fontWeight: '700' }}>SELECT A TIME</div>
             <h2 style={{ margin: '12px 0', fontSize: 'clamp(30px,4vw,44px)', lineHeight: '1.12', letterSpacing: '-.035em', color: '#1F2B4D' }}>Book your tailored AXY walkthrough.</h2>
             <p style={{ margin: 0, color: '#667085', fontSize: '16px', lineHeight: '1.7' }}>Choose the time that works best for you. Your confirmation will include the Microsoft Teams meeting link and options to reschedule or cancel.</p>
           </div>
-          <div style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(12px,3vw,28px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)', overflow: 'hidden' }}>
+          <div id="schedule" style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(12px,3vw,28px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)', overflow: 'hidden', scrollMarginTop: '76px' }}>
             <HubSpotMeetingsEmbed />
             <noscript>
               <p style={{ margin: '20px', color: '#667085', lineHeight: '1.6' }}>

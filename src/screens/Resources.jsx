@@ -19,7 +19,7 @@ export default function Resources(v) {
               <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
                 <button className="hv138" type="button" onClick={resExplore} style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "700", cursor: "pointer" }}>Explore the guides
                 </button>{' '}
-                <a className="hv139" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
+                <a className="hv139" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
                 </a>
               </div>
               <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginTop: "18px" }}>
@@ -441,7 +441,7 @@ export default function Resources(v) {
             <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap", marginTop: "20px", background: "#F1F8F8", border: "1px solid #CFE7E6", borderRadius: "12px", padding: "15px 18px" }}>
               <span style={{ fontSize: "13px", color: "#1F2B4D", fontWeight: "600", flex: "1", minWidth: "240px" }}>Our team walks through the frameworks with you during guided setup.
               </span>
-              <a href="/book-a-walkthrough" style={{ fontSize: "13px", fontWeight: "700", color: "#2C8C99", whiteSpace: "nowrap" }}>Get guided setup &rarr;
+              <a href="/book-a-walkthrough#schedule" style={{ fontSize: "13px", fontWeight: "700", color: "#2C8C99", whiteSpace: "nowrap" }}>Get guided setup &rarr;
               </a>
             </div>
           </div>
@@ -627,7 +627,7 @@ export default function Resources(v) {
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
               <a className="hv147" href="/product" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Explore the platform
               </a>
-              <a className="hv148" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Get guided setup
+              <a className="hv148" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Get guided setup
               </a>
             </div>
             <div style={{ display: "flex", gap: "18px", justifyContent: "center", flexWrap: "wrap", marginTop: "18px" }}>

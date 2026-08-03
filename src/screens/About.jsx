@@ -14,7 +14,7 @@ export default function About(v) {
             <p style={{ fontSize: "15px", color: "#C9D2E4", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "600px" }}>AXY is a retail sales and collaboration platform that captures what happens in-store and turns it into better follow-up, product demand intelligence and connected partner workflows.
             </p>
             <div style={{ marginTop: "22px" }}>
-              <a className="hv152" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+              <a className="hv152" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
               </a>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function About(v) {
               </div>
             </div>
             <div style={{ textAlign: "center", marginTop: "30px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a className="hv153" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+              <a className="hv153" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv154" href="/how-it-works" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>See how AXY works
               </a>

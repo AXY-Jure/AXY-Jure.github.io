@@ -16,7 +16,7 @@ export default function CustomerExperience(v) {
               <p style={{ fontSize: "14.5px", color: "#7a6152", lineHeight: "1.6", margin: "13px 0 0", maxWidth: "560px" }}>Give customers one app for their products, invoices, warranties, wishlists, store visits and favourite retailers — while keeping every relationship connected to the stores they choose.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "26px", flexWrap: "wrap" }}>
-                <a className="hv95" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+                <a className="hv95" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
                 </a>
                 <a className="hv96" href="/for-retailers" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #C98B63", color: "#9a5a34", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Explore AXY for retailers
                 </a>
@@ -936,7 +936,7 @@ export default function CustomerExperience(v) {
             <h2 style={{ fontSize: "29px", fontWeight: "800", color: "#fff", lineHeight: "1.14" }}>Give customers one place to continue every retail relationship.
             </h2>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv97" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
+              <a className="hv97" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv98" href="/for-retailers" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Explore AXY for retailers
               </a>

@@ -20,7 +20,7 @@ export default function NotFound(v) {
               </a>
               <a href="/help" style={{ fontSize: "13.5px", fontWeight: "700", color: "#2C8C99" }}>Help Centre →
               </a>
-              <a href="/book-a-walkthrough" style={{ fontSize: "13.5px", fontWeight: "700", color: "#2C8C99" }}>Book a walkthrough →
+              <a href="/book-a-walkthrough#schedule" style={{ fontSize: "13.5px", fontWeight: "700", color: "#2C8C99" }}>Book a walkthrough →
               </a>
             </div>
           </div>

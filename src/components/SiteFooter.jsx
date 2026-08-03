@@ -83,7 +83,7 @@ export default function SiteFooter(v) {
                 </a>
                 <a href="/contact" style={{ fontSize: "12px", color: "#C9D2E4" }}>Contact
                 </a>
-                <a href="/book-a-walkthrough" style={{ fontSize: "12px", color: "#C9D2E4" }}>Book a Walkthrough
+                <a href="/book-a-walkthrough#schedule" style={{ fontSize: "12px", color: "#C9D2E4" }}>Book a Walkthrough
                 </a>
                 <a href="/login" style={{ fontSize: "12px", color: "#C9D2E4" }}>Log in
                 </a>
@@ -95,7 +95,7 @@ export default function SiteFooter(v) {
             </span>{' '}
             <a className="hv209" href="/create-account" style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>Create free account
             </a>{' '}
-            <a className="hv210" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "10px 17px", border: "1.5px solid rgba(255,255,255,.4)", color: "#fff", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
+            <a className="hv210" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "10px 17px", border: "1.5px solid rgba(255,255,255,.4)", color: "#fff", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
             </a>
             <div style={{ marginLeft: "auto", display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
               <a href="/legal" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Privacy Policy

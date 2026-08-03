@@ -23,7 +23,7 @@ export default function CreateAccount() {
             <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '9px', letterSpacing: '.1em', color: '#C17F59', fontWeight: '700' }}>LARGER OR SHARED SETUP</div>
             <h2 style={{ fontSize: '25px', color: '#1F2B4D', margin: '13px 0 8px' }}>Plan the right activation</h2>
             <p style={{ color: '#5B657C', fontSize: '14px', lineHeight: '1.65', margin: 0 }}>For multiple stores, brands, integrations or custom modules, a guided walkthrough will give you a clearer starting point.</p>
-            <a href="/book-a-walkthrough" style={{ display: 'inline-flex', marginTop: '28px', padding: '13px 20px', border: '1.5px solid #32415C', color: '#32415C', borderRadius: '10px', fontSize: '14px', fontWeight: '700' }}>Get guided setup</a>
+            <a href="/book-a-walkthrough#schedule" style={{ display: 'inline-flex', marginTop: '28px', padding: '13px 20px', border: '1.5px solid #32415C', color: '#32415C', borderRadius: '10px', fontSize: '14px', fontWeight: '700' }}>Get guided setup</a>
           </article>
         </div>
       </section>

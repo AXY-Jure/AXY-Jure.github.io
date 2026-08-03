@@ -18,7 +18,7 @@ export default function Home(v) {
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "30px", flexWrap: "wrap" }}>
               <a className="hv1" href="/create-account" style={{ display: "inline-flex", padding: "14px 26px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "15px", fontWeight: "700", boxShadow: "0 12px 28px rgba(50,65,92,.24)" }}>Create free account
               </a>{' '}
-              <a className="hv2" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 26px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "15px", fontWeight: "600" }}>Get guided setup
+              <a className="hv2" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 26px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "15px", fontWeight: "600" }}>Get guided setup
               </a>
             </div>
             <div style={{ fontSize: "13px", color: "#667085", marginTop: "16px" }}>Already have an account?{' '}
@@ -1605,7 +1605,7 @@ export default function Home(v) {
                 </div>
                 <p style={{ fontSize: "13px", color: "#B9C2D8", lineHeight: "1.55", margin: "8px 0 0", flex: "1" }}>Multi-store structure, roles, product data and workflows — planned with our team around your business.
                 </p>
-                <a className="hv14" href="/book-a-walkthrough" style={{ display: "inline-flex", marginTop: "14px", padding: "10px 16px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700", alignSelf: "flex-start" }}>Get guided setup
+                <a className="hv14" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", marginTop: "14px", padding: "10px 16px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700", alignSelf: "flex-start" }}>Get guided setup
                 </a>
               </div>
               <div style={{ background: "#fff", border: "1px solid #E4E8EF", borderRadius: "16px", padding: "22px", display: "flex", flexDirection: "column" }}>
@@ -1615,7 +1615,7 @@ export default function Home(v) {
                 </div>
                 <p style={{ fontSize: "13px", color: "#667085", lineHeight: "1.55", margin: "8px 0 0", flex: "1" }}>See how brands reach retailers, share product data and read demand signals — walked through with our team.
                 </p>
-                <a className="hv15" href="/book-a-walkthrough" style={{ display: "inline-flex", marginTop: "14px", padding: "10px 16px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "8px", fontSize: "13px", fontWeight: "700", alignSelf: "flex-start" }}>Book a walkthrough
+                <a className="hv15" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", marginTop: "14px", padding: "10px 16px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "8px", fontSize: "13px", fontWeight: "700", alignSelf: "flex-start" }}>Book a walkthrough
                 </a>
               </div>
             </div>
@@ -1634,7 +1634,7 @@ export default function Home(v) {
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "26px", flexWrap: "wrap" }}>
               <a className="hv16" href="/create-account" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "15px", fontWeight: "700" }}>Create free account
               </a>{' '}
-              <a className="hv17" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.45)", color: "#fff", borderRadius: "10px", fontSize: "15px", fontWeight: "600" }}>Get guided setup
+              <a className="hv17" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.45)", color: "#fff", borderRadius: "10px", fontSize: "15px", fontWeight: "600" }}>Get guided setup
               </a>{' '}
               <a className="hv18" href="/product" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.45)", color: "#fff", borderRadius: "10px", fontSize: "15px", fontWeight: "600" }}>Explore the product
               </a>

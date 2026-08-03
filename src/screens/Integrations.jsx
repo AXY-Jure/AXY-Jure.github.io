@@ -16,9 +16,9 @@ export default function Integrations(v) {
               <p style={{ fontSize: "14.5px", color: "#667085", lineHeight: "1.6", margin: "13px 0 0", maxWidth: "600px" }}>AXY connects POS, ERP, CRM, inventory, product, messaging and analytics systems with your retail network. Each business unit controls what stays private, what is shared and what may be used as aggregated or anonymised insight.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
-                <a className="hv116" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Book an integration call
+                <a className="hv116" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Book an integration call
                 </a>{' '}
-                <a className="hv117" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Book an integration call
+                <a className="hv117" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Book an integration call
                 </a>
               </div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "18px", background: "#fff", border: "1px solid #D9E0EC", borderRadius: "20px", padding: "7px 14px" }}>
@@ -453,7 +453,7 @@ export default function Integrations(v) {
                 </div>
                 <p style={{ fontSize: "12px", color: "#DCEFEF", lineHeight: "1.5", margin: "8px 0 14px" }}>Book a call and we will walk through your systems, permissions and intended data flows before an integration is activated.
                 </p>
-                <a className="hv118" href="/book-a-walkthrough" style={{ display: "inline-flex", alignSelf: "flex-start", padding: "11px 18px", background: "#fff", color: "#1C6470", borderRadius: "9px", fontSize: "13px", fontWeight: "700" }}>Review your data setup →
+                <a className="hv118" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", alignSelf: "flex-start", padding: "11px 18px", background: "#fff", color: "#1C6470", borderRadius: "9px", fontSize: "13px", fontWeight: "700" }}>Review your data setup →
                 </a>
               </div>
             </div>
@@ -636,7 +636,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Real-time / scheduled
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -654,7 +654,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Scheduled
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -672,7 +672,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Real-time / scheduled
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -690,7 +690,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Import / scheduled
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -708,7 +708,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Real-time / scheduled
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -726,7 +726,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Real-time
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -744,7 +744,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Scheduled / export
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -762,7 +762,7 @@ export default function Integrations(v) {
                 <div style={{ fontSize: "11px", color: "#8a94a6" }}>Custom
                 </div>
                 <div>
-                  <a href="/book-a-walkthrough" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
+                  <a href="/book-a-walkthrough#schedule" style={{ fontSize: "11.5px", fontWeight: "700", color: "#2C8C99" }}>Ask →
                   </a>
                 </div>
               </div>
@@ -873,7 +873,7 @@ export default function Integrations(v) {
             <p style={{ fontSize: "14.5px", color: "#C9D2E4", lineHeight: "1.6", margin: "14px 0 0" }}>Book a call to review your systems, partner relationships, permissions and desired workflows. We will explain what can connect, what stays private and what implementation is required.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv119" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Book an integration call
+              <a className="hv119" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Book an integration call
               </a>
               <a className="hv120" href="/back-office" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Explore AXY Back Office
               </a>

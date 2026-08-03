@@ -64,7 +64,7 @@ export default function SiteHeader(v) {
             </a>{' '}
             <a className="hv207" href="/create-account" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 16px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13px", fontWeight: "700", transition: "background .15s" }}>Create free account
             </a>{' '}
-            <a className="hv208" href="/book-a-walkthrough" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 15px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
+            <a className="hv208" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 15px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
             </a>
           </div>
           <a id="nav-mobile-cta" href="/create-account" style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>Create free account
@@ -76,7 +76,7 @@ export default function SiteHeader(v) {
           <div style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
             <a href="/create-account" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>Create free account
             </a>{' '}
-            <a href="/book-a-walkthrough" style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Get guided setup
+            <a href="/book-a-walkthrough#schedule" style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Get guided setup
             </a>
             <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "9px", color: "#9aa3b2", letterSpacing: ".08em", margin: "6px 0 2px" }}>PRODUCT
             </div>
