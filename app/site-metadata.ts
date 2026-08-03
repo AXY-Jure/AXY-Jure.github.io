@@ -24,6 +24,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/article": { title: "What Is Retail Clienteling? CRM, Store Visits and Follow-Up Explained", description: "A practical guide to retail clienteling, including CRM context, in-store activity, follow-up and the measurements that matter." },
   "/about": { title: "About AXY", description: "Learn why AXY was created and how it connects retailers, brands, products, sales teams and customers." },
   "/book-a-walkthrough": { title: "Book an AXY Walkthrough", description: "Request a guided AXY walkthrough focused on your stores, brands, workflows, integrations and first activation step." },
+  "/contact": { title: "Contact AXY", description: "Contact AXY about product questions, pricing, partnerships, integrations or the next step for your retail business." },
   "/help": { title: "AXY Help Centre", description: "Find guidance for setting up and using the AXY platform." },
   "/create-account": { title: "Create an AXY Account", description: "Start setting up AXY for your retail business." },
   "/login": { title: "Log In to AXY", description: "Access your AXY environment.", index: false },

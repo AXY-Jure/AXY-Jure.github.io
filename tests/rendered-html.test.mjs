@@ -7,9 +7,21 @@ const readOutput = (path) => readFile(new URL(`../out/${path}`, import.meta.url)
 test("exports direct clean routes with page-specific metadata", async () => {
   const pricing = await readOutput("pricing/index.html");
   const walkthrough = await readOutput("book-a-walkthrough/index.html");
+  const contact = await readOutput("contact/index.html");
 
   assert.match(pricing, /AXY Pricing/);
   assert.match(walkthrough, /Book an AXY Walkthrough/);
+  assert.match(contact, /Contact AXY/);
+});
+
+test("embeds the HubSpot contact form and meeting scheduler with fallbacks", async () => {
+  const contact = await readOutput("contact/index.html");
+  const walkthrough = await readOutput("book-a-walkthrough/index.html");
+
+  assert.match(contact, /30aa0bca-d54a-4174-9901-ba6ee7119191/);
+  assert.match(contact, /2MKoLytVKQXSZAbpu5xGRkQ/);
+  assert.match(walkthrough, /axy-tailored-walkthrough-30-minutes\?embed=true/);
+  assert.match(walkthrough, /meetings-eu1\.hubspot\.com\/jure-malalan\/axy-tailored-walkthrough-30-minutes/);
 });
 
 test("contains only the approved pricing paths", async () => {

@@ -1,4 +1,7 @@
 import React from 'react';
+import HubSpotMeetingsEmbed from '../components/HubSpotMeetingsEmbed.jsx';
+
+const MEETING_LINK = 'https://meetings-eu1.hubspot.com/jure-malalan/axy-tailored-walkthrough-30-minutes';
 
 export default function Walkthrough() {
   const sessionItems = [
@@ -16,7 +19,7 @@ export default function Walkthrough() {
           <h1 style={{ margin: '16px auto 18px', maxWidth: '760px', fontSize: 'clamp(38px,6vw,66px)', lineHeight: '1.04', letterSpacing: '-.045em' }}>See how AXY fits your retail ecosystem.</h1>
           <p style={{ maxWidth: '690px', margin: '0 auto', fontSize: '18px', lineHeight: '1.7', color: '#DCE4F1' }}>We’ll focus the session on your stores, brands, workflows and data—so you can see the most relevant AXY experience without a generic product tour.</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '30px' }}>
-            <a className="hv17" href="mailto:info@axy.net?subject=AXY%20guided%20walkthrough" style={{ display: 'inline-flex', padding: '14px 24px', borderRadius: '10px', background: '#fff', color: '#1F2B4D', fontSize: '14px', fontWeight: '800' }}>Request a walkthrough</a>
+            <a className="hv17" href="#schedule" style={{ display: 'inline-flex', padding: '14px 24px', borderRadius: '10px', background: '#fff', color: '#1F2B4D', fontSize: '14px', fontWeight: '800' }}>Choose a meeting time</a>
             <a href="/product" style={{ display: 'inline-flex', padding: '14px 24px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,.45)', color: '#fff', fontSize: '14px', fontWeight: '700' }}>Explore the platform first</a>
           </div>
         </div>
@@ -41,6 +44,28 @@ export default function Walkthrough() {
           <div style={{ marginTop: '22px', border: '1px solid #E4E8EF', borderRadius: '16px', padding: '28px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '22px' }}>
             {sessionItems.map(([n, title, copy]) => <div key={n}><div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '10px', fontWeight: '700', color: '#2C8C99' }}>{n}</div><h3 style={{ margin: '9px 0 7px', fontSize: '15px', color: '#1F2B4D' }}>{title}</h3><p style={{ margin: 0, fontSize: '13px', lineHeight: '1.6', color: '#667085' }}>{copy}</p></div>)}
           </div>
+        </div>
+      </section>
+      <section id="schedule" style={{ padding: '76px 24px 88px', background: '#F8FAFC', scrollMarginTop: '76px' }}>
+        <div style={{ maxWidth: '1040px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 34px' }}>
+            <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '9px', letterSpacing: '.1em', color: '#2C8C99', fontWeight: '700' }}>SELECT A TIME</div>
+            <h2 style={{ margin: '12px 0', fontSize: 'clamp(30px,4vw,44px)', lineHeight: '1.12', letterSpacing: '-.035em', color: '#1F2B4D' }}>Book your tailored AXY walkthrough.</h2>
+            <p style={{ margin: 0, color: '#667085', fontSize: '16px', lineHeight: '1.7' }}>Choose the time that works best for you. Your confirmation will include the Microsoft Teams meeting link and options to reschedule or cancel.</p>
+          </div>
+          <div style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(12px,3vw,28px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)', overflow: 'hidden' }}>
+            <HubSpotMeetingsEmbed />
+            <noscript>
+              <p style={{ margin: '20px', color: '#667085', lineHeight: '1.6' }}>
+                JavaScript is required to display the calendar.{' '}
+                <a href={MEETING_LINK} style={{ color: '#1F7A87', fontWeight: '700' }}>Open the AXY scheduling page</a>.
+              </p>
+            </noscript>
+          </div>
+          <p style={{ margin: '20px auto 0', textAlign: 'center', color: '#667085', fontSize: '13px', lineHeight: '1.6' }}>
+            If the calendar does not appear,{' '}
+            <a href={MEETING_LINK} target="_blank" rel="noreferrer" style={{ color: '#1F7A87', fontWeight: '700' }}>open the scheduling page in a new window</a>.
+          </p>
         </div>
       </section>
     </main>
