@@ -84,8 +84,17 @@ class App extends React.Component {
   componentDidMount() {
     this._onRouteChange = () => {
       const r = routeForPath(window.location.pathname);
-      this.setState({ route: r, menu: false, dd: '' });
-      try { window.scrollTo(0, 0); } catch (e) {}
+      this.setState({ route: r, menu: false, dd: '' }, () => {
+        try {
+          const targetId = decodeURIComponent(window.location.hash.slice(1));
+          const target = targetId ? document.getElementById(targetId) : null;
+          if (target) {
+            window.requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+          } else {
+            window.scrollTo(0, 0);
+          }
+        } catch (e) {}
+      });
       try { document.title = 'AXY — ' + (this.TITLES[r] || 'Page not found'); } catch (e) {}
     };
     window.addEventListener('popstate', this._onRouteChange);

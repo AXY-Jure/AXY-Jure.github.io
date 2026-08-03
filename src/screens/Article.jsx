@@ -946,7 +946,7 @@ export default function Article(v) {
                 <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "22px" }}>
                   <a className="hv191" href="/sales-app" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Explore the Sales App
                   </a>
-                  <a className="hv192" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
+                  <a className="hv192" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
                   </a>
                 </div>
               </div>

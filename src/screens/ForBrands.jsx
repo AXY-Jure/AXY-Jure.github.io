@@ -16,9 +16,9 @@ export default function ForBrands(v) {
               <p style={{ fontSize: "14.5px", color: "#C9D2E4", lineHeight: "1.6", margin: "13px 0 0", maxWidth: "620px" }}>AXY helps brands distribute product information, coordinate availability and orders, manage warranty workflows and understand approved market demand across connected retail partners.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
-                <a className="hv75" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Book a network assessment
+                <a className="hv75" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Book a network assessment
                 </a>{' '}
-                <a className="hv76" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
+                <a className="hv76" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
                 </a>
               </div>
               <div style={{ marginTop: "16px" }}>
@@ -1020,7 +1020,7 @@ export default function ForBrands(v) {
               </span>
             </div>
             <div style={{ marginTop: "14px" }}>
-              <a className="hv79" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "11px 20px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13.5px", fontWeight: "700" }}>Review your data setup with us
+              <a className="hv79" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "11px 20px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13.5px", fontWeight: "700" }}>Review your data setup with us
               </a>
               <p style={{ fontSize: "12px", color: "#8a94a6", lineHeight: "1.5", margin: "10px 0 0", maxWidth: "520px" }}>Book a call to review what information is connected, what remains private and which insights may be aggregated or anonymised.
               </p>
@@ -1291,9 +1291,9 @@ export default function ForBrands(v) {
             <p style={{ fontSize: "14.5px", color: "#C9D2E4", lineHeight: "1.6", margin: "14px 0 0" }}>Book a call to review your retailer network, product data, current systems and the market information you want to understand. We will explain what can connect, what remains private and how to begin with a controlled rollout.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv80" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Book a network assessment
+              <a className="hv80" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Book a network assessment
               </a>
-              <a className="hv81" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Get guided setup
+              <a className="hv81" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Get guided setup
               </a>
             </div>
             <div style={{ display: "flex", gap: "18px", justifyContent: "center", flexWrap: "wrap", marginTop: "18px" }}>

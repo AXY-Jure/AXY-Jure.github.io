@@ -22,6 +22,23 @@ test("embeds the HubSpot contact form and meeting scheduler with fallbacks", asy
   assert.match(contact, /2MKoLytVKQXSZAbpu5xGRkQ/);
   assert.match(walkthrough, /axy-tailored-walkthrough-30-minutes\?embed=true/);
   assert.match(walkthrough, /meetings-eu1\.hubspot\.com\/jure-malalan\/axy-tailored-walkthrough-30-minutes/);
+  assert.match(walkthrough, /id="schedule"[^>]*>\s*<iframe/);
+});
+
+test("meeting CTAs open directly on the scheduling calendar", async () => {
+  const routes = [
+    "index.html",
+    "for-retailers/index.html",
+    "for-brands/index.html",
+    "integrations/index.html",
+    "pricing/index.html",
+  ];
+
+  for (const route of routes) {
+    const page = await readOutput(route);
+    assert.doesNotMatch(page, /href="\/book-a-walkthrough"/);
+    assert.match(page, /href="\/book-a-walkthrough#schedule"/);
+  }
 });
 
 test("contains only the approved pricing paths", async () => {

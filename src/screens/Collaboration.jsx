@@ -15,7 +15,7 @@ export default function Collaboration(v) {
               <p style={{ fontSize: "15px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "540px" }}>Catalogues, orders, announcements, training, warranty and approved insight — running between brand and retail partners in one structured channel, with both sides in control.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "22px", flexWrap: "wrap" }}>
-                <a className="hv113" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+                <a className="hv113" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
                 </a>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function Collaboration(v) {
               </details>
             </div>
             <div style={{ textAlign: "center", marginTop: "30px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a className="hv114" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+              <a className="hv114" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv115" href="/for-brands" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>AXY for brands
               </a>

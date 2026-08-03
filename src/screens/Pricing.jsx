@@ -732,7 +732,7 @@ export default function Pricing(v) {
                   </div>
                   <button className="hv131" type="button" onClick={pFormOpen} style={{ display: "inline-flex", justifyContent: "center", width: "100%", marginTop: "16px", padding: "13px", background: "#33D6A4", color: "#0F2E28", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "800", cursor: "pointer" }}>Request this plan
                   </button>{' '}
-                  <a className="hv132" href="/book-a-walkthrough" style={{ display: "inline-flex", justifyContent: "center", width: "100%", marginTop: "9px", padding: "11px", border: "1px solid rgba(255,255,255,.3)", color: "#fff", borderRadius: "10px", fontSize: "13px", fontWeight: "600" }}>Book a walkthrough
+                  <a className="hv132" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", justifyContent: "center", width: "100%", marginTop: "9px", padding: "11px", border: "1px solid rgba(255,255,255,.3)", color: "#fff", borderRadius: "10px", fontSize: "13px", fontWeight: "600" }}>Book a walkthrough
                   </a>
                 </div>
               </div>
@@ -965,7 +965,7 @@ export default function Pricing(v) {
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
               <a className="hv134" href="/create-account" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
               </a>
-              <a className="hv135" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Book a walkthrough
+              <a className="hv135" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Book a walkthrough
               </a>
             </div>
           </div>

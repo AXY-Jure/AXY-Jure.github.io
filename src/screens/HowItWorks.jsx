@@ -17,7 +17,7 @@ export default function HowItWorks(v) {
               <p style={{ fontSize: "15px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "620px" }}>AXY connects what happens in stores, customer journeys, Back Office workflows, partner relationships and existing systems&mdash;then gives each authorised participant the context needed to continue.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
-                <a className="hv53" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+                <a className="hv53" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
                 </a>{' '}
                 <a className="hv54" href="/product" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Explore the platform
                 </a>
@@ -781,7 +781,7 @@ export default function HowItWorks(v) {
             <p style={{ fontSize: "13px", color: "#667085", lineHeight: "1.6", margin: "18px 0 0", maxWidth: "720px" }}>Deeper POS, ERP, CRM, inventory or product-system connections can be added according to the business need.
             </p>
             <div style={{ display: "flex", gap: "12px", marginTop: "20px", flexWrap: "wrap" }}>
-              <a className="hv55" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+              <a className="hv55" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv56" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Create free account
               </a>
@@ -850,7 +850,7 @@ export default function HowItWorks(v) {
             <p style={{ fontSize: "14.5px", color: "#C9D2E4", lineHeight: "1.6", margin: "14px 0 0" }}>Review your store activity, customer journey, product data, partner relationships and existing systems with our team. We will identify the first workflow worth connecting and explain what each participant will see.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv57" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
+              <a className="hv57" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv58" href="/product" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Explore the full platform
               </a>

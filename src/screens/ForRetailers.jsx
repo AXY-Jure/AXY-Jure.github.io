@@ -16,7 +16,7 @@ export default function ForRetailers(v) {
               <p style={{ fontSize: "14.5px", color: "#667085", lineHeight: "1.6", margin: "13px 0 0", maxWidth: "600px" }}>AXY connects your sales team, customers, products, stock and management — so opportunities move forward, customers receive better service, and every location works with the same context.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
-                <a className="hv62" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
+                <a className="hv62" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Get guided setup
                 </a>{' '}
                 <a className="hv63" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Create free account
                 </a>
@@ -818,7 +818,7 @@ export default function ForRetailers(v) {
             <p style={{ fontSize: "14.5px", color: "#C9D2E4", lineHeight: "1.6", margin: "14px 0 0" }}>Review your sales workflow, product data, locations and current systems with our team. We will show where AXY can reduce missed opportunities and repeated work.
             </p>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv72" href="/book-a-walkthrough" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
+              <a className="hv72" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Get guided setup
               </a>
               <a className="hv73" href="/create-account" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Create free account
               </a>
