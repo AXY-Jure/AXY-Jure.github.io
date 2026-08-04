@@ -85,7 +85,7 @@ export default function SiteFooter(v) {
                 </a>
                 <a href="/book-a-walkthrough#schedule" style={{ fontSize: "12px", color: "#C9D2E4" }}>Book a Walkthrough
                 </a>
-                <a href="/login" style={{ fontSize: "12px", color: "#C9D2E4" }}>Log in
+                <a href="https://app.axy.net/authentication" style={{ fontSize: "12px", color: "#C9D2E4" }}>Log in
                 </a>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function SiteFooter(v) {
           <div style={{ borderTop: "1px solid #34406A", marginTop: "30px", paddingTop: "22px", display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
             <span style={{ fontSize: "14px", color: "#fff", fontWeight: "700" }}>See how AXY fits your business.
             </span>{' '}
-            <a className="hv209" href="/create-account" style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>Create free account
+            <a className="hv209" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>Create free account
             </a>{' '}
             <a className="hv210" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "10px 17px", border: "1.5px solid rgba(255,255,255,.4)", color: "#fff", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
             </a>

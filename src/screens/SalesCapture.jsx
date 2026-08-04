@@ -15,7 +15,7 @@ export default function SalesCapture(v) {
               <p style={{ fontSize: "15px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "540px" }}>POS and ERP record what sold. AXY records what happened — who came in, what was shown, what almost sold and what should happen next.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "22px", flexWrap: "wrap" }}>
-                <a className="hv107" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+                <a className="hv107" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
                 </a>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function SalesCapture(v) {
               </details>
             </div>
             <div style={{ textAlign: "center", marginTop: "30px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a className="hv108" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+              <a className="hv108" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
               </a>
               <a className="hv109" href="/use-cases/product-demand-intelligence" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Demand intelligence
               </a>

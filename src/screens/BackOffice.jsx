@@ -16,7 +16,7 @@ export default function BackOffice(v) {
               <p style={{ fontSize: "15.5px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "520px" }}>Replace disconnected spreadsheets, price lists and update emails with one structured workspace for products, partners, stock, orders, customers and performance.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "26px", flexWrap: "wrap" }}>
-                <a className="hv100" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+                <a className="hv100" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
                 </a>
                 <a className="hv101" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Get guided setup
                 </a>
@@ -805,7 +805,7 @@ export default function BackOffice(v) {
             <h2 style={{ fontSize: "29px", fontWeight: "800", color: "#fff", lineHeight: "1.14" }}>Replace fragmented retail administration with one connected workspace.
             </h2>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv102" href="/create-account" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
+              <a className="hv102" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
               </a>
               <a className="hv103" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>Get guided setup
               </a>

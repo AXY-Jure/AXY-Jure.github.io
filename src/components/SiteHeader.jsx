@@ -60,21 +60,21 @@ export default function SiteHeader(v) {
             </div>
           </div>
           <div id="nav-actions-desktop" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <a href="/login" style={{ fontSize: "13px", fontWeight: "600", color: "#667085", whiteSpace: "nowrap" }}>Log in
+            <a href="https://app.axy.net/authentication" style={{ fontSize: "13px", fontWeight: "600", color: "#667085", whiteSpace: "nowrap" }}>Log in
             </a>{' '}
-            <a className="hv207" href="/create-account" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 16px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13px", fontWeight: "700", transition: "background .15s" }}>Create free account
+            <a className="hv207" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 16px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13px", fontWeight: "700", transition: "background .15s" }}>Create free account
             </a>{' '}
             <a className="hv208" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 15px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
             </a>
           </div>
-          <a id="nav-mobile-cta" href="/create-account" style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>Create free account
+          <a id="nav-mobile-cta" href="https://app.axy.net/onboarding" style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>Create free account
           </a>{' '}
           <span id="nav-mobile-btn" onClick={toggleMenu} style={{ marginLeft: "10px", alignItems: "center", gap: "8px", padding: "9px 14px", border: "1px solid #E4E8EF", borderRadius: "9px", fontSize: "13px", fontWeight: "700", color: "#1F2B4D", cursor: "pointer" }}>{menuLabel}
           </span>
         </div>
         {menuOpen ? (<>
           <div style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
-            <a href="/create-account" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>Create free account
+            <a href="https://app.axy.net/onboarding" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>Create free account
             </a>{' '}
             <a href="/book-a-walkthrough#schedule" style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Get guided setup
             </a>
@@ -102,7 +102,7 @@ export default function SiteHeader(v) {
             </a>{' '}
             <a href="/resources" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Resources
             </a>{' '}
-            <a href="/login" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600", color: "#667085" }}>Log in
+            <a href="https://app.axy.net/authentication" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600", color: "#667085" }}>Log in
             </a>
           </div>
         </>) : null}
