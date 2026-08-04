@@ -27,6 +27,7 @@ import Legal from './screens/Legal.jsx';
 import NotFound from './screens/NotFound.jsx';
 import Walkthrough from './screens/Walkthrough.jsx';
 import Contact from './screens/Contact.jsx';
+import { calculateMonthlyPricing } from './config/billing.js';
 
 const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
 
@@ -74,9 +75,6 @@ class App extends React.Component {
       pricingUsers: 1, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false, howStage: 0 };
   }
 
-  // Local pricing configuration (single source of truth).
-  PRICING = { additionalUser: 15, additionalBusinessUnit: 49, announcementsPerBusinessUnit: 20, messaging: 19 };
-
   ROUTES = ROUTES;
 
   TITLES = TITLES;
@@ -112,18 +110,8 @@ class App extends React.Component {
   _brandSet(n) { this.setState({ brand: n }); this._brandStart(); }
   // ---- Pricing calculator (pure) ----
   _pricingCalc() {
-    const s = this.state, P = this.PRICING;
-    const users = Math.max(1, s.pricingUsers | 0);
-    const businessUnits = Math.max(1, s.pricingBusinessUnits | 0);
-    const additionalUsers = Math.max(0, users - 1);
-    const additionalUserCost = additionalUsers * P.additionalUser;
-    const additionalBusinessUnits = Math.max(0, businessUnits - 1);
-    const additionalBusinessUnitCost = additionalBusinessUnits * P.additionalBusinessUnit;
-    const announcementUnits = Math.min(Math.max(1, s.pricingAnnouncementUnits | 0), businessUnits);
-    const announcementsCost = s.pricingAnnouncementsEnabled ? announcementUnits * P.announcementsPerBusinessUnit : 0;
-    const messagingCost = s.pricingMessagingEnabled ? P.messaging : 0;
-    const customMonthlyTotal = additionalUserCost + additionalBusinessUnitCost + announcementsCost + messagingCost;
-    return { users, businessUnits, additionalUsers, additionalUserCost, additionalBusinessUnits, additionalBusinessUnitCost, announcementUnits, announcementsCost, messagingCost, customMonthlyTotal };
+    const s = this.state;
+    return calculateMonthlyPricing({ totalUsers: s.pricingUsers, totalBusinessUnits: s.pricingBusinessUnits, announcements: s.pricingAnnouncementsEnabled, messaging: s.pricingMessagingEnabled });
   }
   _pricingRecommendation(c) {
     const s = this.state;
@@ -136,7 +124,7 @@ class App extends React.Component {
     const toolNames = ['AI Product Suggestions', 'Pricing & Offer Builder', 'Targets', 'Budgets', 'Dashboards'];
     return {
       users: c.users, businessUnits: c.businessUnits,
-      modules: { announcements: s.pricingAnnouncementsEnabled, announcementUnits: s.pricingAnnouncementsEnabled ? c.announcementUnits : 0, messaging: s.pricingMessagingEnabled, aiImageGeneration: s.pricingAiImageInterested },
+      modules: { announcements: s.pricingAnnouncementsEnabled, messaging: s.pricingMessagingEnabled },
       estimatedMonthlyTotal: c.customMonthlyTotal,
       futureToolsInterest: toolNames.filter((_, i) => s.pricingFuture[i]),
       recommendation: this._pricingRecommendation(c)
@@ -208,7 +196,7 @@ class App extends React.Component {
     vals.pUsers = pc.users; vals.pBU = pc.businessUnits;
     vals.pAddUsers = pc.additionalUsers; vals.pAddUserCost = pc.additionalUserCost;
     vals.pAddBU = pc.additionalBusinessUnits; vals.pAddBUCost = pc.additionalBusinessUnitCost;
-    vals.pAnnUnits = pc.announcementUnits; vals.pAnnCost = pc.announcementsCost; vals.pMsgCost = pc.messagingCost;
+    vals.pAnnCost = pc.announcementsCost; vals.pMsgCost = pc.messagingCost;
     vals.pTotal = pc.customMonthlyTotal; vals.pTotalLabel = '\u20AC' + pc.customMonthlyTotal + '/month';
     vals.pRec = this._pricingRecommendation(pc);
     vals.pHasAddUsers = pc.additionalUsers > 0; vals.pHasAddBU = pc.additionalBusinessUnits > 0;
@@ -223,9 +211,7 @@ class App extends React.Component {
     vals.pUsersDec = () => this._pStep('pricingUsers', -1, 1);
     vals.pBUInc = () => this._pStep('pricingBusinessUnits', 1, 1);
     vals.pBUDec = () => this._pStep('pricingBusinessUnits', -1, 1);
-    vals.pAnnToggle = () => this.setState(p => { const on = !p.pricingAnnouncementsEnabled; return { pricingAnnouncementsEnabled: on, pricingAnnouncementUnits: on ? Math.max(1, p.pricingBusinessUnits | 0) : p.pricingAnnouncementUnits }; });
-    vals.pAnnInc = () => this._pAnnStep(1);
-    vals.pAnnDec = () => this._pAnnStep(-1);
+    vals.pAnnToggle = () => this.setState(p => ({ pricingAnnouncementsEnabled: !p.pricingAnnouncementsEnabled }));
     vals.pMsgToggle = () => this.setState(p => ({ pricingMessagingEnabled: !p.pricingMessagingEnabled }));
     vals.pAiToggle = () => this.setState(p => ({ pricingAiImageInterested: !p.pricingAiImageInterested }));
     vals.pScrollBuild = () => this._scrollTo('axy-pricing-builder');

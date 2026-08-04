@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { calculateMonthlyPricing } from "../src/config/billing.js";
 
 const readOutput = (path) => readFile(new URL(`../out/${path}`, import.meta.url), "utf8");
 
@@ -41,12 +42,38 @@ test("meeting CTAs open directly on the scheduling calendar", async () => {
   }
 });
 
-test("contains only the approved pricing paths", async () => {
+test("publishes the approved free plan, calculator and AI image packages", async () => {
   const pricing = await readOutput("pricing/index.html");
 
   assert.match(pricing, /AXY Free/);
-  assert.match(pricing, /Build Your Plan/);
-  assert.doesNotMatch(pricing, /AXY Organization|Secure checkout is coming soon/);
+  assert.match(pricing, /Five one-time trial image generations/);
+  assert.match(pricing, /Announcements — €20\/month per organization/);
+  assert.match(pricing, /Messaging — €19\/month per organization/);
+  assert.match(pricing, /20 image credits/);
+  assert.match(pricing, /50 image credits/);
+  assert.match(pricing, /100 image credits/);
+  assert.match(pricing, /€20/);
+  assert.match(pricing, /€40/);
+  assert.match(pricing, /€70/);
+  assert.match(pricing, /VAT treatment is confirmed during secure Stripe Checkout/);
+  assert.doesNotMatch(pricing, /AXY Starter|Request this plan|Send plan request/);
+});
+
+test("calculates the approved €103 example and charges announcements once", () => {
+  const example = calculateMonthlyPricing({ totalUsers: 2, totalBusinessUnits: 2, announcements: true, messaging: true });
+  const manyUnits = calculateMonthlyPricing({ totalUsers: 1, totalBusinessUnits: 5, announcements: true });
+  assert.equal(example.customMonthlyTotal, 103);
+  assert.equal(example.announcementsCost, 20);
+  assert.equal(manyUnits.announcementsCost, 20);
+});
+
+test("uses the live AXY app for registration and login", async () => {
+  const pages = [await readOutput("index.html"), await readOutput("pricing/index.html")];
+  for (const page of pages) {
+    assert.match(page, /https:\/\/app\.axy\.net\/onboarding/);
+    assert.match(page, /https:\/\/app\.axy\.net\/authentication/);
+    assert.doesNotMatch(page, /href="\/(create-account|login)"/);
+  }
 });
 
 test("keeps analytics denied until consent", async () => {

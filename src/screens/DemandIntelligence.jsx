@@ -15,7 +15,7 @@ export default function DemandIntelligence(v) {
               <p style={{ fontSize: "15px", color: "#C9D2E4", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "540px" }}>Sales reports tell you what already happened. Interest signals — shown, wishlisted, requested, rejected — tell you what is about to. AXY structures both.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "22px", flexWrap: "wrap" }}>
-                <a className="hv110" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+                <a className="hv110" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
                 </a>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function DemandIntelligence(v) {
               </details>
             </div>
             <div style={{ textAlign: "center", marginTop: "30px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a className="hv111" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+              <a className="hv111" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
               </a>
               <a className="hv112" href="/integrations" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Permission model
               </a>

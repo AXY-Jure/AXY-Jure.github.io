@@ -17,7 +17,7 @@ export default function SalesApp(v) {
               <p style={{ fontSize: "15.5px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "520px" }}>See what needs attention, manage customer visits, explore products, request live availability and receive smart sales suggestions — all from one mobile workspace.
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "26px", flexWrap: "wrap" }}>
-                <a className="hv85" href="/create-account" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
+                <a className="hv85" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Create free account
                 </a>
                 <a className="hv86" href="/for-retailers" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Explore AXY for retailers
                 </a>
@@ -915,7 +915,7 @@ export default function SalesApp(v) {
             <h2 style={{ fontSize: "30px", fontWeight: "800", color: "#fff", lineHeight: "1.14" }}>Give your team a smarter way to sell.
             </h2>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
-              <a className="hv93" href="/create-account" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
+              <a className="hv93" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
               </a>
               <a className="hv94" href="/pricing" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>See pricing
               </a>

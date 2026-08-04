@@ -19,7 +19,7 @@ export default function Product(v) {
               <div style={{ display: "flex", gap: "12px", marginTop: "26px", flexWrap: "wrap" }}>
                 <a className="hv19" href="/how-it-works" style={{ display: "inline-flex", padding: "13px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>Explore the platform
                 </a>
-                <a className="hv20" href="/create-account" style={{ display: "inline-flex", padding: "13px 24px", border: "1.5px solid rgba(255,255,255,.45)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Create free account
+                <a className="hv20" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 24px", border: "1.5px solid rgba(255,255,255,.45)", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>Create free account
                 </a>
               </div>
             </div>
