@@ -10,6 +10,7 @@ const requiredFiles = [
   "pricing/index.html",
   "book-a-walkthrough/index.html",
   "meeting-booked/index.html",
+  "help/index.html",
   "login/index.html",
   "legal/index.html",
   "robots.txt",
@@ -23,6 +24,8 @@ for (const path of requiredFiles) await access(join(outputRoot, path));
 assert.equal((await readFile(join(outputRoot, "CNAME"), "utf8")).trim(), "axy.net");
 const home = await readFile(join(outputRoot, "index.html"), "utf8");
 const meetingBooked = await readFile(join(outputRoot, "meeting-booked/index.html"), "utf8");
+const help = await readFile(join(outputRoot, "help/index.html"), "utf8");
+const helpMain = help.match(/<main data-screen-label="Help Centre">[\s\S]*?<\/main>/)?.[0];
 assert.match(home, /G-WTT8L3MJTV/);
 for (const consentField of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   assert.match(home, new RegExp(`${consentField}[^,}]*denied`));
@@ -33,6 +36,14 @@ assert.match(home, /surface-sales-app\.jpg/);
 assert.match(home, /id="nav-mobile-btn"/);
 assert.match(meetingBooked, /rel="canonical" href="https:\/\/axy\.net\/meeting-booked\/"/);
 assert.match(meetingBooked, /name="robots" content="noindex, nofollow"/);
+assert.equal([...help.matchAll(/href="#product-support"/g)].length, 6);
+assert.match(help, /7108a1d1-9b04-49ed-84fc-b7c7123e0767/);
+assert.match(help, /data-portal-id="148359284"/);
+assert.match(help, /mailto:support@axy\.net/);
+assert.match(help, /rel="canonical" href="https:\/\/axy\.net\/help\/"/);
+assert.doesNotMatch(help, /name="robots" content="noindex/);
+assert.ok(helpMain);
+assert.doesNotMatch(helpMain, /href="\/article\/?(?:[?#][^"]*)?"/);
 
 const htmlFiles = [];
 async function collectHtml(directory) {

@@ -70,21 +70,24 @@ Updated HubSpot forms expose stable form and instance identifiers but do not exp
 
 Generated HubSpot CSS classes and field DOM selectors are not part of the tracking contract.
 
-## HubSpot form and lead-type mappings
+## HubSpot form and analytics mappings
 
-Only forms confirmed in the public-site source are mapped. Do not invent a form ID or infer a purpose from a label.
+Only forms confirmed in the public-site source are listed. Do not invent a form ID or infer a purpose from a label. Operational support intake is deliberately separate from commercial lead analytics.
 
 | Page | HubSpot form ID | `form_name` | `lead_type` | Status |
 | --- | --- | --- | --- | --- |
 | `/contact` | `30aa0bca-d54a-4174-9901-ba6ee7119191` | `general_contact` | `general_contact` | Confirmed public-site embed |
+| `/help` | `7108a1d1-9b04-49ed-84fc-b7c7123e0767` | Not applicable | Not applicable | Product Support embed; excluded from GA4 form lifecycle and `generate_lead` |
+
+The Product Support form is an operational support channel, not a marketing lead form. It uses a dedicated embed component that loads the verified HubSpot form but does not register HubSpot lifecycle listeners, inspect submission values, call `gtag`, or forward any form event or field to GA4. HubSpot remains the support-intake source of truth. Names, email addresses, company and VAT details, country, support category, affected application, subject, description, business impact, attachments, and all other submitted values remain outside the website analytics layer.
 
 The public `/create-account` route currently sends visitors to `https://app.axy.net/onboarding`; it does not embed a confirmed HubSpot Free Access form. Therefore no `free_access` form mapping is active on the marketing website. `free_access`, `walkthrough`, `partnership`, and `integration_inquiry` are reserved stable `lead_type` values and should be used only after a matching form and its exact ID and purpose have been verified.
 
 ### Adding a future form
 
 1. Confirm the production page, HubSpot portal, exact form ID, and business purpose.
-2. Add the verified ID to the shared HubSpot form integration with a stable snake-case `form_name` and one approved `lead_type`.
-3. Reuse the shared HubSpot event integration; do not add page-local raw `gtag` calls or generated-class selectors.
+2. For an approved commercial lead form, add the verified ID to the shared HubSpot form integration with a stable snake-case `form_name` and one approved `lead_type`. Operational forms such as Product Support require an explicit analytics decision and must not be assumed to be leads.
+3. Reuse the shared HubSpot event integration only for approved commercial lead forms; do not add page-local raw `gtag` calls or generated-class selectors.
 4. Verify view, engagement, step, failure, and confirmed-success behavior with mocks or HubSpot test capabilities. Do not create a real lead without approval.
 5. Inspect analytics payloads and confirm that only allowlisted parameters are present.
 6. Update this table and the relevant tests.
@@ -217,7 +220,7 @@ Validate these cases:
 2. **Consent rejected:** GA4 stays disabled, no custom event is sent, advertising consent remains denied, and accessible GA cookies are removed or disabled.
 3. **Consent accepted:** GA4 loads with measurement ID `G-WTT8L3MJTV`, approved events enter the data layer once, and every advertising consent field remains denied.
 4. **Consent withdrawn:** subsequent events stop and accessible GA cookies are cleared.
-5. **HubSpot form:** view, reliable engagement, supported step navigation, failure, and confirmed success signals map correctly. A failure never produces `generate_lead`, and no submitted value appears in the data layer, console, URL, or analytics request.
+5. **HubSpot forms:** the approved General Contact form maps supported lifecycle signals correctly, a failure never produces `generate_lead`, and no submitted value appears in the data layer, console, URL, or analytics request. The Product Support form renders and submits independently without any GA4 lifecycle or `generate_lead` integration.
 6. **Walkthrough:** the scheduler still renders, the host-page CTA creates a start signal, `/meeting-booked` renders with `noindex`, and confirmation respects consent, the pending marker, and refresh deduplication.
 7. **Commercial CTAs:** only intended onboarding and pricing actions emit events, with normalized non-personal destinations.
 8. **Regression:** verify the homepage, Product, Retailers, Brands, Pricing, Contact, Create Account, Book a Walkthrough, mobile navigation, images, static assets, canonicals, robots, sitemap, and browser console.

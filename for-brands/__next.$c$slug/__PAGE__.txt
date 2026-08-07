@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[86022,["/_next/static/chunks/0g~f-.xx.n2-v.js","/_next/static/chunks/0eog50~01kpo8.js","/_next/static/chunks/0ludu5r~~3z2j.js"],"default"]
+2:I[86022,["/_next/static/chunks/0g~f-.xx.n2-v.js","/_next/static/chunks/0eog50~01kpo8.js","/_next/static/chunks/0dtb2mhlxb-wi.js"],"default"]
 3:I[6391,["/_next/static/chunks/0g~f-.xx.n2-v.js","/_next/static/chunks/0eog50~01kpo8.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"initialPath":"/for-brands"}],[["$","script","script-0",{"src":"/_next/static/chunks/0ludu5r~~3z2j.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"EPeAnzq9sX7GvrGsPf8gB"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"initialPath":"/for-brands"}],[["$","script","script-0",{"src":"/_next/static/chunks/0dtb2mhlxb-wi.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"XNf491s8jbsKyaS-hUebq"}
 5:null

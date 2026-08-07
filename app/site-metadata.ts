@@ -26,7 +26,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/book-a-walkthrough": { title: "Book an AXY Walkthrough", description: "Request a guided AXY walkthrough focused on your stores, brands, workflows, integrations and first activation step." },
   "/meeting-booked": { title: "AXY Walkthrough Booked", description: "Your tailored AXY walkthrough has been scheduled successfully.", index: false },
   "/contact": { title: "Contact AXY", description: "Contact AXY about product questions, pricing, partnerships, integrations or the next step for your retail business." },
-  "/help": { title: "AXY Help Centre", description: "Find guidance for setting up and using the AXY platform." },
+  "/help": { title: "AXY Help Centre", description: "Choose an AXY Product Support topic, send a secure request, or contact the AXY Support Team by email." },
   "/create-account": { title: "Create an AXY Account", description: "Start setting up AXY for your retail business." },
   "/login": { title: "Log In to AXY", description: "Access your AXY environment.", index: false },
   "/legal": { title: "AXY Legal Information", description: "AXY legal information and policy documents.", index: false },

@@ -4,6 +4,7 @@ import test from "node:test";
 import { calculateMonthlyPricing } from "../src/config/billing.js";
 
 const readOutput = (path) => readFile(new URL(`../out/${path}`, import.meta.url), "utf8");
+const readSource = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("exports direct clean routes with page-specific metadata", async () => {
   const pricing = await readOutput("pricing/index.html");
@@ -40,6 +41,74 @@ test("embeds the HubSpot contact form and meeting scheduler with fallbacks", asy
   assert.match(walkthrough, /axy-tailored-walkthrough-30-minutes\?embed=true/);
   assert.match(walkthrough, /meetings-eu1\.hubspot\.com\/jure-malalan\/axy-tailored-walkthrough-30-minutes/);
   assert.match(walkthrough, /id="schedule"[^>]*>\s*<iframe/);
+});
+
+test("publishes a focused Product Support Help Centre without fake article links", async () => {
+  const help = await readOutput("help/index.html");
+  const helpMain = help.match(/<main data-screen-label="Help Centre">[\s\S]*?<\/main>/)?.[0];
+  const topicLinks = [...help.matchAll(/href="#product-support"/g)];
+
+  assert.ok(helpMain);
+  assert.equal(topicLinks.length, 6);
+  for (const topic of [
+    "Account &amp; Access",
+    "Products &amp; Catalog",
+    "Sales &amp; Customers",
+    "Orders, Transfers &amp; Warranty",
+    "Billing &amp; Subscription",
+    "Integrations &amp; Other",
+  ]) {
+    assert.match(help, new RegExp(topic));
+  }
+  assert.match(help, /id="product-support"/);
+  assert.match(help, /7108a1d1-9b04-49ed-84fc-b7c7123e0767/);
+  assert.match(help, /data-portal-id="148359284"/);
+  assert.match(help, /mailto:support@axy\.net/);
+  assert.match(help, /reply to that email thread instead of opening a duplicate request/);
+  assert.match(help, /Do not include passwords, access codes, payment-card details/);
+  assert.match(help, /rel="canonical" href="https:\/\/axy\.net\/help\/"/);
+  assert.doesNotMatch(help, /name="robots" content="noindex/);
+  assert.doesNotMatch(helpMain, /href="\/article\/?(?:[?#][^"]*)?"/);
+});
+
+test("keeps Product Support operational data outside the analytics lifecycle", async () => {
+  const supportEmbed = await readSource("src/components/HubSpotSupportFormEmbed.jsx");
+  const forbiddenAnalyticsHooks = [
+    "trackAnalyticsEvent",
+    "createHubSpotFormLifecycleTracker",
+    "legacyHubSpotFormEventName",
+    "CONSENT_CHANGED_EVENT",
+    "generate_lead",
+    "form_view",
+    "form_start",
+    "form_step",
+    "form_error",
+    "gtag",
+    "dataLayer",
+    "addEventListener",
+    "postMessage",
+  ];
+
+  for (const hook of forbiddenAnalyticsHooks) {
+    assert.doesNotMatch(supportEmbed, new RegExp(hook));
+  }
+  assert.doesNotMatch(
+    supportEmbed,
+    /firstname|lastname|email|company|vat|country|subject|description|business_impact|file_name/i,
+  );
+});
+
+test("exposes Help & Support through keyboard-accessible desktop and mobile navigation", async () => {
+  const header = await readSource("src/components/SiteHeader.jsx");
+
+  assert.match(header, /<button[^>]*className="hv203 axy-nav-dropdown-trigger"/);
+  assert.match(header, /aria-expanded=\{ddResources\}/);
+  assert.match(header, /aria-controls="resources-menu"/);
+  assert.match(header, /onClick=\{ddResources \? ddOff : ddResourcesOn\}/);
+  assert.match(header, /event\.key !== 'Escape'/);
+  assert.equal([...header.matchAll(/href="\/help"/g)].length, 2);
+  assert.equal([...header.matchAll(/Help &amp; Support/g)].length, 2);
+  assert.match(header, /id="nav-mobile-btn"[^>]*type="button"[^>]*aria-expanded=\{menuOpen\}/);
 });
 
 test("meeting CTAs open directly on the scheduling calendar", async () => {
