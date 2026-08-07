@@ -3,7 +3,7 @@ import { css } from '../lib/css.js';
 
 export default function SiteFooter(v) {
   return (
-      <div style={{ background: "#1F2B4D", padding: "56px 24px 34px" }}>
+      <div data-analytics-location="site_footer" style={{ background: "#1F2B4D", padding: "56px 24px 34px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: "22px" }}>
             <div>

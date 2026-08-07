@@ -1620,7 +1620,7 @@ export default function Home(v) {
               </div>
             </div>
             <div style={{ textAlign: "center", marginTop: "20px" }}>
-              <a href="/pricing" style={{ fontSize: "14px", fontWeight: "700", color: "#2C8C99" }}>See pricing and what’s included →
+              <a href="/pricing" data-analytics-event="pricing_cta_click" data-analytics-cta-name="view_pricing_home" style={{ fontSize: "14px", fontWeight: "700", color: "#2C8C99" }}>See pricing and what’s included →
               </a>
             </div>
           </div>

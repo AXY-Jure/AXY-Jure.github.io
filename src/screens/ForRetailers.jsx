@@ -803,7 +803,7 @@ export default function ForRetailers(v) {
                 <div style={{ fontSize: "14.5px", fontWeight: "800", color: "#1F2B4D" }}>What does it cost to start?
                 </div>
                 <p style={{ fontSize: "13px", color: "#667085", lineHeight: "1.6", margin: "8px 0 0" }}>See the Pricing page and book guided setup — we map the right starting point for your business before anything is finalised.{' '}
-                  <a href="/pricing" style={{ color: "#2C8C99", fontWeight: "700" }}>See pricing →
+                  <a href="/pricing" data-analytics-event="pricing_cta_click" data-analytics-cta-name="view_pricing_context" style={{ color: "#2C8C99", fontWeight: "700" }}>See pricing →
                   </a>
                 </p>
               </div>
@@ -824,7 +824,7 @@ export default function ForRetailers(v) {
               </a>
             </div>
             <div style={{ marginTop: "16px" }}>
-              <a className="hv74" href="/pricing" style={{ fontSize: "13px", color: "#9fe0d8", textDecoration: "underline" }}>See pricing →
+              <a className="hv74" href="/pricing" data-analytics-event="pricing_cta_click" data-analytics-cta-name="view_pricing_final" style={{ fontSize: "13px", color: "#9fe0d8", textDecoration: "underline" }}>See pricing →
               </a>
             </div>
           </div>

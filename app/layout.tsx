@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AnalyticsConsent from "@/src/components/AnalyticsConsent.jsx";
+import AnalyticsRuntime from "@/src/components/AnalyticsRuntime.jsx";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         {children}
+        <AnalyticsRuntime />
         <AnalyticsConsent />
       </body>
     </html>

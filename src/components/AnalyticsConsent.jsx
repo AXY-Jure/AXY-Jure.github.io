@@ -1,9 +1,14 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
-
-const MEASUREMENT_ID = 'G-WTT8L3MJTV';
-const CONSENT_STORAGE_KEY = 'axy-analytics-consent-v1';
+import {
+  CONSENT_STORAGE_KEY,
+  MEASUREMENT_ID,
+  analyticsCollectionAllowedOnHost,
+  googleAnalyticsConfigParameters,
+  googleConsentUpdateParameters,
+  setAnalyticsConsentState,
+} from '../lib/analytics.js';
 
 function gtag() {
   window.dataLayer = window.dataLayer || [];
@@ -23,15 +28,13 @@ function clearAnalyticsCookies() {
 }
 
 function loadGoogleAnalytics() {
+  if (!analyticsCollectionAllowedOnHost(window.location.hostname)) return;
   window[`ga-disable-${MEASUREMENT_ID}`] = false;
 
   if (document.querySelector(`script[data-axy-ga4="${MEASUREMENT_ID}"]`)) return;
 
   gtag('js', new Date());
-  gtag('config', MEASUREMENT_ID, {
-    anonymize_ip: true,
-    cookie_flags: 'SameSite=Lax;Secure',
-  });
+  gtag('config', MEASUREMENT_ID, googleAnalyticsConfigParameters());
 
   const script = document.createElement('script');
   script.async = true;
@@ -44,18 +47,15 @@ function updateConsent(accepted) {
   window.gtag = window.gtag || gtag;
   window[`ga-disable-${MEASUREMENT_ID}`] = !accepted;
 
-  window.gtag('consent', 'update', {
-    analytics_storage: accepted ? 'granted' : 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  });
+  window.gtag('consent', 'update', googleConsentUpdateParameters(accepted));
 
   if (accepted) {
     loadGoogleAnalytics();
   } else {
     clearAnalyticsCookies();
   }
+
+  setAnalyticsConsentState(accepted);
 }
 
 export default function AnalyticsConsent() {

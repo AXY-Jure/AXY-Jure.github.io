@@ -9,6 +9,7 @@ const requiredFiles = [
   "index.html",
   "pricing/index.html",
   "book-a-walkthrough/index.html",
+  "meeting-booked/index.html",
   "login/index.html",
   "legal/index.html",
   "robots.txt",
@@ -21,11 +22,17 @@ for (const path of requiredFiles) await access(join(outputRoot, path));
 
 assert.equal((await readFile(join(outputRoot, "CNAME"), "utf8")).trim(), "axy.net");
 const home = await readFile(join(outputRoot, "index.html"), "utf8");
+const meetingBooked = await readFile(join(outputRoot, "meeting-booked/index.html"), "utf8");
 assert.match(home, /G-WTT8L3MJTV/);
-assert.match(home, /analytics_storage[^]*denied/);
+for (const consentField of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
+  assert.match(home, new RegExp(`${consentField}[^,}]*denied`));
+}
+assert.match(home, /ads_data_redaction['"]?\s*,\s*true/);
 assert.match(home, /og:image/);
 assert.match(home, /surface-sales-app\.jpg/);
 assert.match(home, /id="nav-mobile-btn"/);
+assert.match(meetingBooked, /rel="canonical" href="https:\/\/axy\.net\/meeting-booked\/"/);
+assert.match(meetingBooked, /name="robots" content="noindex, nofollow"/);
 
 const htmlFiles = [];
 async function collectHtml(directory) {
@@ -71,7 +78,28 @@ const scripts = (
 ).join("\n");
 assert.match(scripts, /Reject optional/);
 assert.match(scripts, /Accept analytics/);
+assert.match(scripts, /☰ Menu/);
+assert.match(scripts, /✕ Close/);
 assert.match(scripts, /axy-analytics-consent-v1/);
 assert.match(scripts, /googletagmanager\.com\/gtag\/js/);
+assert.match(scripts, /allow_google_signals/);
+assert.match(scripts, /allow_ad_personalization_signals/);
+assert.doesNotMatch(
+  `${home}\n${scripts}`,
+  /connect\.facebook\.net|fbevents|\bfbq\b|snap\.licdn\.com|linkedin insight|googleadservices|doubleclick\.net|googlesyndication|GTM-[A-Z0-9]+|AW-[0-9]+/i,
+);
+for (const eventName of [
+  "form_view",
+  "form_start",
+  "form_step",
+  "generate_lead",
+  "form_error",
+  "create_account_click",
+  "pricing_cta_click",
+  "walkthrough_started",
+  "walkthrough_booked",
+]) {
+  assert.match(scripts, new RegExp(eventName));
+}
 
 console.log(`Validated ${htmlFiles.length} HTML files and ${references.size} internal static references.`);
