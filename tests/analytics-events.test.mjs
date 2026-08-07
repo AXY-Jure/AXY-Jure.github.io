@@ -35,10 +35,11 @@ function createStorage(initialEntries = []) {
 function createWindow({ gtag, sessionStorage = createStorage() } = {}) {
   return {
     location: {
-      href: 'https://axy.net/pricing?utm_source=test',
+      href: 'https://axy.net/pricing',
       origin: 'https://axy.net',
       pathname: '/pricing',
     },
+    document: { referrer: '' },
     sessionStorage,
     gtag,
     CustomEvent: class CustomEvent {
@@ -136,22 +137,75 @@ test('the event allowlist drops PII and unknown fields and strips URL query stri
   ]]);
 });
 
-test('automatic GA page context strips queries, fragments, referrers, and unknown paths', () => {
+test('automatic GA page context preserves only validated allowlisted campaign parameters', () => {
   const target = createWindow();
-  target.location.href = 'https://axy.net/pricing/?email=jane%40example.com#invite-secret';
+  target.location.href = 'https://axy.net/pricing/?utm_source=linkedin&utm_medium=social&utm_campaign=vicenza_2026&email=jure%40example.com#secret';
   target.location.pathname = '/pricing/';
-  target.document = { referrer: 'https://example.com/profile/jane?email=jane%40example.com' };
 
   assert.deepEqual(sanitizedAnalyticsPageContext(target), {
-    page_location: 'https://axy.net/pricing',
+    page_location: 'https://axy.net/pricing?utm_source=linkedin&utm_medium=social&utm_campaign=vicenza_2026',
     page_referrer: '',
   });
 
+  target.location.href = 'https://axy.net/pricing/?customer_id=12345';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_location, 'https://axy.net/pricing');
+
+  target.location.href = 'https://axy.net/pricing/?utm_email=jure%40example.com';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_location, 'https://axy.net/pricing');
+
   target.location.pathname = '/private/jane@example.com';
+  target.location.href = 'https://axy.net/private/jane@example.com?customer_id=12345#secret';
   assert.deepEqual(sanitizedAnalyticsPageContext(target), {
     page_location: 'https://axy.net/not-found',
     page_referrer: '',
   });
+});
+
+test('campaign attribution accepts all six exact keys in a fixed order and rejects unsafe values', () => {
+  const target = createWindow();
+  target.location.href = 'https://www.axy.net/pricing/?utm_term=clienteling&utm_content=hero-banner_1&utm_id=launch.42&utm_campaign=vicenza_2026&utm_medium=social&utm_source=linkedin&utm_email=jure%40example.com';
+
+  assert.equal(
+    sanitizedAnalyticsPageContext(target).page_location,
+    'https://axy.net/pricing?utm_source=linkedin&utm_medium=social&utm_campaign=vicenza_2026&utm_id=launch.42&utm_content=hero-banner_1&utm_term=clienteling',
+  );
+
+  target.location.href = `https://axy.net/pricing/?utm_source=linkedin&utm_source=google&utm_medium=social+media&utm_campaign=jure%40example.com&utm_content=${'a'.repeat(65)}&utm_id=campaign-42`;
+  assert.equal(
+    sanitizedAnalyticsPageContext(target).page_location,
+    'https://axy.net/pricing?utm_id=campaign-42',
+  );
+});
+
+test('automatic GA page context retains only external referral origins', () => {
+  const target = createWindow();
+
+  target.document.referrer = 'https://www.google.com/search?q=axy';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, 'https://www.google.com/');
+
+  target.document.referrer = 'https://www.linkedin.com/feed/update/123?tracking=abc#activity';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, 'https://www.linkedin.com/');
+
+  for (const internalReferrer of [
+    'https://axy.net/pricing/?anything=value',
+    'https://www.axy.net/contact/#form',
+    'https://app.axy.net/onboarding?invite=secret',
+    'https://api.axy.net/private/customer/123',
+  ]) {
+    target.document.referrer = internalReferrer;
+    assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, '');
+  }
+
+  target.document.referrer = 'https://synthetic:fixture@external.example:8443/path/customer/123?email=jure%40example.com#secret';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, 'https://external.example/');
+
+  target.document.referrer = 'http://news.example.com/article/123?visitor=456';
+  assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, 'http://news.example.com/');
+
+  for (const invalidReferrer of ['mailto:jure@example.com', 'javascript:alert(1)', '/relative/path', 'not a url']) {
+    target.document.referrer = invalidReferrer;
+    assert.equal(sanitizedAnalyticsPageContext(target).page_referrer, '');
+  }
 });
 
 test('GA config keeps advertising features disabled and uses only sanitized page context', () => {

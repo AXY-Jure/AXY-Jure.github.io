@@ -65,6 +65,17 @@ const STEP_DIRECTIONS = new Set(['next', 'previous']);
 const ERROR_TYPES = new Set(['submission_failed', 'validation_failed']);
 const SAFE_DESTINATION_HASHES = new Set(['#schedule', '#axy-pricing-builder']);
 const ANALYTICS_HOSTS = new Set(['axy.net', 'www.axy.net']);
+const CANONICAL_ANALYTICS_ORIGIN = 'https://axy.net';
+const ATTRIBUTION_PARAMETERS = Object.freeze([
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_id',
+  'utm_content',
+  'utm_term',
+]);
+const ATTRIBUTION_VALUE_MAX_LENGTH = 64;
+const ATTRIBUTION_VALUE_PATTERN = /^[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*$/;
 const recentEvents = new WeakMap();
 const memorySessionEvents = new WeakMap();
 
@@ -168,22 +179,57 @@ export function currentPagePath(target) {
   return normalizePath(currentWindow?.location?.pathname || '/', currentWindow);
 }
 
+function isAxyOwnedHostname(hostname) {
+  const normalized = String(hostname || '').toLowerCase().replace(/\.+$/, '');
+  return normalized === 'axy.net' || normalized.endsWith('.axy.net');
+}
+
+function sanitizedAttributionQuery(target) {
+  try {
+    const currentUrl = new URL(target?.location?.href || CANONICAL_ANALYTICS_ORIGIN, CANONICAL_ANALYTICS_ORIGIN);
+    if (!['http:', 'https:'].includes(currentUrl.protocol) || !isAxyOwnedHostname(currentUrl.hostname)) return '';
+
+    const safeParameters = new URLSearchParams();
+    for (const name of ATTRIBUTION_PARAMETERS) {
+      const values = currentUrl.searchParams.getAll(name);
+      if (
+        values.length === 1
+        && values[0].length <= ATTRIBUTION_VALUE_MAX_LENGTH
+        && ATTRIBUTION_VALUE_PATTERN.test(values[0])
+      ) {
+        safeParameters.set(name, values[0]);
+      }
+    }
+
+    const query = safeParameters.toString();
+    return query ? `?${query}` : '';
+  } catch {
+    return '';
+  }
+}
+
+function sanitizedExternalReferrer(target) {
+  try {
+    const rawReferrer = target?.document?.referrer;
+    if (typeof rawReferrer !== 'string' || !rawReferrer) return '';
+
+    const referrer = new URL(rawReferrer);
+    if (referrer.protocol !== 'http:' && referrer.protocol !== 'https:') return '';
+
+    const hostname = referrer.hostname.toLowerCase().replace(/\.+$/, '');
+    if (!hostname || isAxyOwnedHostname(hostname)) return '';
+    return `${referrer.protocol}//${hostname}/`;
+  } catch {
+    return '';
+  }
+}
+
 export function sanitizedAnalyticsPageContext(target) {
   const currentWindow = browserWindow(target);
-  let origin = 'https://axy.net';
-
-  try {
-    const candidate = new URL(currentWindow?.location?.origin || origin);
-    if (candidate.protocol === 'https:' || candidate.protocol === 'http:') origin = candidate.origin;
-  } catch {
-    // Fall back to the public canonical origin when the browser location is unavailable.
-  }
 
   return {
-    page_location: `${origin}${currentPagePath(currentWindow)}`,
-    // A referrer URL can contain query strings, identifiers, or personal paths.
-    // Referral reporting is intentionally sacrificed to keep automatic GA context non-personal.
-    page_referrer: '',
+    page_location: `${CANONICAL_ANALYTICS_ORIGIN}${currentPagePath(currentWindow)}${sanitizedAttributionQuery(currentWindow)}`,
+    page_referrer: sanitizedExternalReferrer(currentWindow),
   };
 }
 
