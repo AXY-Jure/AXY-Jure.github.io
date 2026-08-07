@@ -38,18 +38,40 @@ export default function SiteHeader(v) {
             </a>{' '}
             <a className="hv202" href="/pricing" style={{ whiteSpace: "nowrap", padding: "9px 12px", borderRadius: "8px", fontSize: "13.5px", fontWeight: "600", color: "#1F2B4D" }}>Pricing
             </a>
-            <div onMouseEnter={ddResourcesOn} onMouseLeave={ddOff} style={{ position: "relative" }}>
-              <span className="hv203" style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "9px 12px", borderRadius: "8px", fontSize: "13.5px", fontWeight: "600", color: "#1F2B4D", cursor: "pointer", whiteSpace: "nowrap" }}>Resources{' '}
+            <div
+              onMouseEnter={ddResourcesOn}
+              onMouseLeave={(event) => {
+                if (!event.currentTarget.contains(document.activeElement)) ddOff();
+              }}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) ddOff();
+              }}
+              onKeyDown={(event) => {
+                if (event.key !== 'Escape') return;
+                event.preventDefault();
+                event.currentTarget.querySelector('button')?.focus();
+                ddOff();
+              }}
+              style={{ position: "relative" }}
+            >
+              <button
+                type="button"
+                className="hv203 axy-nav-dropdown-trigger"
+                aria-expanded={ddResources}
+                aria-controls="resources-menu"
+                onClick={ddResources ? ddOff : ddResourcesOn}
+                style={{ appearance: "none", display: "inline-flex", alignItems: "center", gap: "5px", padding: "9px 12px", border: "0", borderRadius: "8px", background: "transparent", fontFamily: "inherit", fontSize: "13.5px", fontWeight: "600", color: "#1F2B4D", cursor: "pointer", whiteSpace: "nowrap" }}
+              >Resources{' '}
                 <span style={{ fontSize: "9px", color: "#8a93a6" }}>▾
                 </span>
-              </span>{' '}
+              </button>{' '}
               {ddResources ? (<>
-                <div style={{ position: "absolute", top: "100%", left: "0", width: "250px", background: "#fff", border: "1px solid #E4E8EF", borderRadius: "12px", boxShadow: "0 18px 44px rgba(31,43,77,.14)", padding: "8px", display: "flex", flexDirection: "column" }}>
+                <div id="resources-menu" style={{ position: "absolute", top: "100%", left: "0", width: "250px", background: "#fff", border: "1px solid #E4E8EF", borderRadius: "12px", boxShadow: "0 18px 44px rgba(31,43,77,.14)", padding: "8px", display: "flex", flexDirection: "column" }}>
                   <a className="hv204" href="/resources" style={{ padding: "9px 11px", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Resources Overview
                   </a>{' '}
                   <a className="hv205" href="/article" style={{ padding: "9px 11px", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Insights &amp; Guides
                   </a>{' '}
-                  <a className="hv206" href="/help" style={{ padding: "9px 11px", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Help Centre
+                  <a className="hv206" href="/help" style={{ padding: "9px 11px", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Help &amp; Support
                   </a>{' '}
                   <span style={{ padding: "9px 11px", fontSize: "13px", fontWeight: "600", color: "#9aa3b2", display: "flex", alignItems: "center", gap: "7px" }}>Product Updates{' '}
                     <span style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "8px", fontWeight: "700", color: "#8a5a12", background: "#F5E6C8", borderRadius: "7px", padding: "2px 7px" }}>PLANNED
@@ -69,11 +91,11 @@ export default function SiteHeader(v) {
           </div>
           <a id="nav-mobile-cta" href="https://app.axy.net/onboarding" style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>Create free account
           </a>{' '}
-          <span id="nav-mobile-btn" onClick={toggleMenu} style={{ marginLeft: "10px", alignItems: "center", gap: "8px", padding: "9px 14px", border: "1px solid #E4E8EF", borderRadius: "9px", fontSize: "13px", fontWeight: "700", color: "#1F2B4D", cursor: "pointer" }}>{menuLabel}
-          </span>
+          <button id="nav-mobile-btn" type="button" aria-expanded={menuOpen} aria-controls="nav-mobile-menu" onClick={toggleMenu} style={{ appearance: "none", marginLeft: "10px", alignItems: "center", gap: "8px", padding: "9px 14px", background: "#fff", border: "1px solid #E4E8EF", borderRadius: "9px", fontFamily: "inherit", fontSize: "13px", fontWeight: "700", color: "#1F2B4D", cursor: "pointer" }}>{menuLabel}
+          </button>
         </div>
         {menuOpen ? (<>
-          <div style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
+          <div id="nav-mobile-menu" style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
             <a href="https://app.axy.net/onboarding" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>Create free account
             </a>{' '}
             <a href="/book-a-walkthrough#schedule" style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Get guided setup
@@ -101,6 +123,9 @@ export default function SiteHeader(v) {
             <a href="/pricing" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Pricing
             </a>{' '}
             <a href="/resources" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Resources
+            </a>{' '}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- This static export uses full-document navigation between public routes. */}
+            <a href="/help" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Help &amp; Support
             </a>{' '}
             <a href="https://app.axy.net/authentication" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600", color: "#667085" }}>Log in
             </a>
