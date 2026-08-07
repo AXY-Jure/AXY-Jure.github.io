@@ -27,11 +27,12 @@ import Legal from './screens/Legal.jsx';
 import NotFound from './screens/NotFound.jsx';
 import Walkthrough from './screens/Walkthrough.jsx';
 import Contact from './screens/Contact.jsx';
+import MeetingBooked from './screens/MeetingBooked.jsx';
 import { calculateMonthlyPricing } from './config/billing.js';
 
-const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
+const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/meeting-booked': 'meetingbooked', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
 
-const TITLES = { home: 'Turn every store interaction into sales intelligence', product: 'Product Overview', salesapp: 'Sales App', backoffice: 'Back Office', custexp: 'Customer Experience', integrations: 'Integrations', how: 'How AXY Works', retailers: 'AXY for Retailers', brands: 'AXY for Manufacturers & Brands', clienteling: 'Retail Clienteling', capture: 'In-Store Sales Capture', demand: 'Product Demand Intelligence', collab: 'Retailer–Brand Collaboration', pricing: 'Pricing', resources: 'Resources', about: 'About AXY', walkthrough: 'Book a Walkthrough', contact: 'Contact AXY', help: 'Help Centre', account: 'Create Free Account', login: 'Log In', article: 'Insights & Guides', legal: 'Legal', p404: 'Page not found' };
+const TITLES = { home: 'Turn every store interaction into sales intelligence', product: 'Product Overview', salesapp: 'Sales App', backoffice: 'Back Office', custexp: 'Customer Experience', integrations: 'Integrations', how: 'How AXY Works', retailers: 'AXY for Retailers', brands: 'AXY for Manufacturers & Brands', clienteling: 'Retail Clienteling', capture: 'In-Store Sales Capture', demand: 'Product Demand Intelligence', collab: 'Retailer–Brand Collaboration', pricing: 'Pricing', resources: 'Resources', about: 'About AXY', walkthrough: 'Book a Walkthrough', meetingbooked: 'Walkthrough Booked', contact: 'Contact AXY', help: 'Help Centre', account: 'Create Free Account', login: 'Log In', article: 'Insights & Guides', legal: 'Legal', p404: 'Page not found' };
 
 function routeForPath(pathname = '/') {
   const withoutQuery = pathname.split('?')[0].split('#')[0];
@@ -64,6 +65,7 @@ const PAGES = {
   article: Article,
   legal: Legal,
   walkthrough: Walkthrough,
+  meetingbooked: MeetingBooked,
   contact: Contact,
   p404: NotFound,
 };
@@ -154,7 +156,7 @@ class App extends React.Component {
 
   renderVals() {
     const s = this.state;
-    const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','contact','help','account','login','article','legal','p404'];
+    const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','meetingbooked','contact','help','account','login','article','legal','p404'];
     const vals = {};
     keys.forEach(k => { vals['is_' + k] = s.route === k; });
     const tab = (a) => a

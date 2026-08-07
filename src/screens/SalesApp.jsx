@@ -917,7 +917,7 @@ export default function SalesApp(v) {
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "24px" }}>
               <a className="hv93" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "14px 24px", background: "#fff", color: "#1F2B4D", borderRadius: "10px", fontSize: "14.5px", fontWeight: "700" }}>Create free account
               </a>
-              <a className="hv94" href="/pricing" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>See pricing
+              <a className="hv94" href="/pricing" data-analytics-event="pricing_cta_click" data-analytics-cta-name="view_pricing_sales_app" style={{ display: "inline-flex", padding: "14px 24px", border: "1.5px solid rgba(255,255,255,.5)", color: "#fff", borderRadius: "10px", fontSize: "14.5px", fontWeight: "600" }}>See pricing
               </a>
             </div>
             <div style={{ marginTop: "16px" }}>

@@ -9,10 +9,26 @@ test("exports direct clean routes with page-specific metadata", async () => {
   const pricing = await readOutput("pricing/index.html");
   const walkthrough = await readOutput("book-a-walkthrough/index.html");
   const contact = await readOutput("contact/index.html");
+  const meetingBooked = await readOutput("meeting-booked/index.html");
 
   assert.match(pricing, /AXY Pricing/);
   assert.match(walkthrough, /Book an AXY Walkthrough/);
   assert.match(contact, /Contact AXY/);
+  assert.match(meetingBooked, /AXY Walkthrough Booked/);
+  assert.match(meetingBooked, /Your AXY walkthrough is booked/);
+  assert.match(meetingBooked, /rel="canonical" href="https:\/\/axy\.net\/meeting-booked\/"/);
+  assert.match(meetingBooked, /name="robots" content="noindex, nofollow"/);
+});
+
+test("publishes canonical sitemap URLs that match trailing-slash routing", async () => {
+  const sitemap = await readOutput("sitemap.xml");
+  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+
+  assert.equal(urls.length, 21);
+  assert.ok(urls.includes("https://axy.net/"));
+  assert.ok(!urls.includes("https://axy.net"));
+  assert.ok(urls.every((url) => url.endsWith("/")));
+  assert.ok(!urls.some((url) => url.includes("meeting-booked")));
 });
 
 test("embeds the HubSpot contact form and meeting scheduler with fallbacks", async () => {

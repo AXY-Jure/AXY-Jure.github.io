@@ -24,6 +24,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/article": { title: "What Is Retail Clienteling? CRM, Store Visits and Follow-Up Explained", description: "A practical guide to retail clienteling, including CRM context, in-store activity, follow-up and the measurements that matter." },
   "/about": { title: "About AXY", description: "Learn why AXY was created and how it connects retailers, brands, products, sales teams and customers." },
   "/book-a-walkthrough": { title: "Book an AXY Walkthrough", description: "Request a guided AXY walkthrough focused on your stores, brands, workflows, integrations and first activation step." },
+  "/meeting-booked": { title: "AXY Walkthrough Booked", description: "Your tailored AXY walkthrough has been scheduled successfully.", index: false },
   "/contact": { title: "Contact AXY", description: "Contact AXY about product questions, pricing, partnerships, integrations or the next step for your retail business." },
   "/help": { title: "AXY Help Centre", description: "Find guidance for setting up and using the AXY platform." },
   "/create-account": { title: "Create an AXY Account", description: "Start setting up AXY for your retail business." },
@@ -33,7 +34,7 @@ const PAGE_META: Record<string, PageMeta> = {
 
 export function metadataForPath(path: string): Metadata {
   const page = PAGE_META[path] ?? { title: "Page Not Found", description: DEFAULT_DESCRIPTION, index: false };
-  const canonical = `https://axy.net${path === "/" ? "" : path}`;
+  const canonical = canonicalUrlForPath(path);
   return {
     title: page.title,
     description: page.description,
@@ -49,6 +50,10 @@ export function metadataForPath(path: string): Metadata {
     },
     twitter: { card: "summary_large_image", title: page.title, description: page.description, images: [SOCIAL_IMAGE] },
   };
+}
+
+export function canonicalUrlForPath(path: string) {
+  return path === "/" ? "https://axy.net/" : `https://axy.net${path.replace(/\/+$/, "")}/`;
 }
 
 export const staticPagePaths = Object.keys(PAGE_META);

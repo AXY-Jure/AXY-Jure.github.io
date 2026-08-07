@@ -4,7 +4,7 @@ import { css } from '../lib/css.js';
 export default function SiteHeader(v) {
   const { ddOff, ddProduct, ddProductOn, ddResources, ddResourcesOn, menuLabel, menuOpen, toggleMenu } = v;
   return (
-      <div style={{ position: "sticky", top: "0", zIndex: "60", background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E4E8EF" }}>
+      <div data-analytics-location="site_header" style={{ position: "sticky", top: "0", zIndex: "60", background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E4E8EF" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", gap: "26px" }}>
           <a href="/" style={{ display: "inline-flex", alignItems: "center" }}>
             <img src="/images/axy-logo.png" alt="AXY" style={{ height: "30px", width: "auto" }} />
