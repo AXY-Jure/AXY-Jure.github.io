@@ -1,25 +1,161 @@
 import React from 'react';
+import privacy1 from './legal-content/privacy-1.js';
+import privacy2 from './legal-content/privacy-2.js';
+import privacy3 from './legal-content/privacy-3.js';
+import privacy4 from './legal-content/privacy-4.js';
+import terms1 from './legal-content/terms-1.js';
+import terms2 from './legal-content/terms-2.js';
+import terms3 from './legal-content/terms-3.js';
+
+const privacyPolicyHtml = [privacy1, privacy2, privacy3, privacy4].join('');
+const termsAndConditionsHtml = [terms1, terms2, terms3].join('');
 
 export default function Legal() {
   return (
-    <main style={{ background: '#fff', padding: '72px 24px', minHeight: '52vh' }}>
-      <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-        <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '10px', letterSpacing: '.1em', color: '#2C8C99', fontWeight: '700' }}>LEGAL INFORMATION</div>
-        <h1 style={{ fontSize: '38px', fontWeight: '800', color: '#1F2B4D', margin: '14px 0 0', letterSpacing: '-.035em' }}>AXY legal documents</h1>
-        <p style={{ fontSize: '16px', color: '#667085', lineHeight: '1.75', margin: '18px 0 0' }}>The Privacy Policy, Terms of Service, Cookie Policy and Data Processing information are under final legal review.</p>
-        <section id="cookies" style={{ scrollMarginTop: '96px', marginTop: '26px', padding: '20px', background: '#F9FAFB', border: '1px solid #E4E8EF', borderRadius: '14px' }}>
-          <h2 style={{ margin: 0, fontSize: '17px', color: '#1F2B4D' }}>Cookie choices on this website</h2>
-          <p style={{ margin: '9px 0 0', fontSize: '13.5px', color: '#667085', lineHeight: '1.65' }}>AXY uses browser storage to remember your cookie choice. Google Analytics is optional and remains disabled unless you select “Accept analytics.” We do not enable advertising storage, advertising user data or advertising personalisation through this consent choice.</p>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new Event('axy:open-cookie-settings'))}
-            style={{ appearance: 'none', marginTop: '14px', padding: '9px 14px', background: '#fff', color: '#1F2B4D', border: '1px solid #C9D2E4', borderRadius: '8px', fontSize: '12.5px', fontWeight: '700', cursor: 'pointer' }}
-          >Review cookie settings</button>
-        </section>
-        <div style={{ marginTop: '26px', padding: '20px', background: '#F9FAFB', border: '1px solid #E4E8EF', borderRadius: '14px' }}>
-          <h2 style={{ margin: 0, fontSize: '17px', color: '#1F2B4D' }}>Questions about AXY and data protection?</h2>
-          <p style={{ margin: '9px 0 0', fontSize: '13.5px', color: '#667085', lineHeight: '1.65' }}>Contact <a href="mailto:info@axy.net" style={{ color: '#2C8C99', fontWeight: '700' }}>info@axy.net</a>.</p>
-        </div>
+    <main id="top" className="axy-legal-page">
+      <style>{`
+.axy-legal-page {
+  --ink: #1f2b4d;
+  --muted: #667085;
+  --teal: #2c8c99;
+  --line: #e4e8ef;
+  --soft: #f7f9fc;
+  color: var(--ink);
+  background: linear-gradient(180deg, #f8fafc 0, #fff 420px);
+  padding: 72px 24px 96px;
+}
+.axy-legal-shell { max-width: 1080px; margin: 0 auto; }
+.axy-legal-eyebrow {
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; letter-spacing: .12em; color: var(--teal); font-weight: 800;
+}
+.axy-legal-page h1 {
+  margin: 14px 0 0; max-width: 760px; font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.04; letter-spacing: -.045em; color: var(--ink);
+}
+.axy-legal-lead {
+  max-width: 760px; margin: 20px 0 0; font-size: 17px; line-height: 1.75; color: var(--muted);
+}
+.axy-legal-jump {
+  position: sticky; top: 76px; z-index: 8; display: flex; flex-wrap: wrap; gap: 10px;
+  margin: 32px 0 0; padding: 12px; border: 1px solid rgba(228,232,239,.9);
+  border-radius: 14px; background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(31,43,77,.06);
+}
+.axy-legal-jump a, .axy-legal-jump button {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border: 1px solid #d8dee8; border-radius: 9px;
+  background: #fff; color: #32415c; font: inherit; font-size: 13px; font-weight: 750;
+  cursor: pointer; text-decoration: none;
+}
+.axy-legal-jump a:hover, .axy-legal-jump a:focus-visible,
+.axy-legal-jump button:hover, .axy-legal-jump button:focus-visible {
+  border-color: var(--teal); color: #1f7a87; outline: none;
+}
+.axy-legal-doc {
+  scroll-margin-top: 148px; margin-top: 42px; padding: clamp(26px, 5vw, 54px);
+  background: #fff; border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(31,43,77,.08);
+}
+.axy-legal-doc + .axy-legal-doc { margin-top: 34px; }
+.axy-legal-doc-header {
+  padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 30px;
+}
+.axy-legal-doc-kicker {
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; letter-spacing: .1em; color: var(--teal); font-weight: 800;
+}
+.axy-legal-doc h2 {
+  margin: 10px 0 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.12;
+  letter-spacing: -.035em; color: var(--ink);
+}
+.axy-legal-body { font-size: 15px; line-height: 1.78; color: #3f4d6b; }
+.axy-legal-body h3 {
+  scroll-margin-top: 150px; margin: 42px 0 14px; padding-top: 4px;
+  font-size: 20px; line-height: 1.35; letter-spacing: -.015em; color: var(--ink);
+}
+.axy-legal-body h3:first-child { margin-top: 0; }
+.axy-legal-body p { margin: 0 0 16px; }
+.axy-legal-body strong { color: #263553; font-weight: 750; }
+.axy-legal-body a { color: #1f7a87; font-weight: 750; overflow-wrap: anywhere; }
+.legal-definition {
+  margin-left: 0 !important; padding: 12px 14px; border-left: 3px solid #b9dfe3;
+  background: #f7fbfc; border-radius: 0 10px 10px 0;
+}
+.legal-list { margin: 2px 0 20px; padding-left: 23px; }
+.legal-list li { margin: 8px 0; padding-left: 4px; }
+.legal-list li::marker { color: var(--teal); }
+.legal-table-scroll {
+  margin: 22px 0 28px; overflow-x: auto; border: 1px solid var(--line);
+  border-radius: 14px; background: #fff; -webkit-overflow-scrolling: touch;
+}
+.legal-table-scroll:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.legal-table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 13.5px; line-height: 1.6; }
+.legal-table th {
+  padding: 14px 16px; text-align: left; vertical-align: top; background: #eef6f7;
+  color: var(--ink); font-size: 12px; letter-spacing: .02em; border-bottom: 1px solid #d7e6e8;
+}
+.legal-table td {
+  padding: 15px 16px; vertical-align: top; color: #465472;
+  border-bottom: 1px solid #edf0f4; border-right: 1px solid #edf0f4;
+}
+.legal-table tr:last-child td { border-bottom: 0; }
+.legal-table td:last-child, .legal-table th:last-child { border-right: 0; }
+.axy-legal-back {
+  display: inline-flex; margin-top: 28px; color: #1f7a87; font-size: 13px; font-weight: 750;
+}
+@media (max-width: 720px) {
+  .axy-legal-page { padding: 48px 14px 72px; }
+  .axy-legal-jump { top: 70px; margin-top: 24px; padding: 9px; }
+  .axy-legal-jump a, .axy-legal-jump button { flex: 1 1 135px; font-size: 12px; }
+  .axy-legal-doc { margin-top: 28px; padding: 24px 18px; border-radius: 16px; }
+  .axy-legal-doc-header { padding-bottom: 21px; margin-bottom: 24px; }
+  .axy-legal-body { font-size: 14px; line-height: 1.74; }
+  .axy-legal-body h3 { margin-top: 34px; font-size: 18px; }
+  .legal-definition { padding: 10px 12px; }
+}
+@media print {
+  .axy-legal-page { background: #fff; padding: 0; }
+  .axy-legal-jump, .axy-legal-back { display: none !important; }
+  .axy-legal-doc { border: 0; box-shadow: none; padding: 0; margin: 0 0 48px; }
+  .axy-legal-doc + .axy-legal-doc { page-break-before: always; }
+  .legal-table-scroll { overflow: visible; }
+  .legal-table { min-width: 0; }
+}
+`}</style>
+      <div className="axy-legal-shell">
+        <div className="axy-legal-eyebrow">LEGAL INFORMATION</div>
+        <h1>AXY legal documents</h1>
+        <p className="axy-legal-lead">
+          Review the Privacy Policy and Terms &amp; Conditions governing the AXY platform,
+          including the AXY Back Office, AXY Sales App and AXY Customer App.
+        </p>
+
+        <nav className="axy-legal-jump" aria-label="Legal document navigation">
+          <a href="#privacy-policy">Privacy Policy</a>
+          <a href="#terms-and-conditions">Terms &amp; Conditions</a>
+          <button type="button" onClick={() => window.dispatchEvent(new Event('axy:open-cookie-settings'))}>
+            Cookie settings
+          </button>
+        </nav>
+
+        <article id="privacy-policy" className="axy-legal-doc" aria-labelledby="privacy-policy-title">
+          <header className="axy-legal-doc-header">
+            <div className="axy-legal-doc-kicker">AXY</div>
+            <h2 id="privacy-policy-title">Privacy Policy</h2>
+          </header>
+          <div className="axy-legal-body" dangerouslySetInnerHTML={{ __html: privacyPolicyHtml }} />
+          <a className="axy-legal-back" href="#top">Back to top</a>
+        </article>
+
+        <article id="terms-and-conditions" className="axy-legal-doc" aria-labelledby="terms-title">
+          <header className="axy-legal-doc-header">
+            <div className="axy-legal-doc-kicker">AXY</div>
+            <h2 id="terms-title">Terms &amp; Conditions</h2>
+          </header>
+          <div className="axy-legal-body" dangerouslySetInnerHTML={{ __html: termsAndConditionsHtml }} />
+          <a className="axy-legal-back" href="#top">Back to top</a>
+        </article>
       </div>
     </main>
   );
