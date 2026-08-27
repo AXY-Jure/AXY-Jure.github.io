@@ -11,16 +11,16 @@ const PAGE_META: Record<string, PageMeta> = {
   "/sales-app": { title: "Sales App for Connected Retail", description: "Capture products shown, customer interest, next actions and follow-up in one connected sales workflow." },
   "/back-office": { title: "Retail Back Office", description: "Manage products, customers, operations, permissions and insights across the AXY retail ecosystem." },
   "/customer-experience": { title: "Connected Customer Experience", description: "Continue the customer journey after a store visit with products, wishlists, offers, warranty and service context." },
-  "/integrations": { title: "AXY Integrations", description: "Understand how AXY can work independently or connect retail, product, messaging and business systems." },
+  "/integrations": { title: "Retail Systems Integration Layer", description: "Connect ERP, CRM, POS, PIM, commerce and partner systems through AXY’s standardised API and shared retail data model." },
   "/how-it-works": { title: "How AXY Works", description: "See how AXY captures retail activity, connects context, supports action and turns approved signals into useful intelligence." },
   "/for-retailers": { title: "AXY for Retailers", description: "Help sales teams capture every visit, continue customer conversations and understand demand across stores." },
-  "/for-brands": { title: "AXY for Brands and Manufacturers", description: "Collaborate with retail partners through shared catalogues, orders, announcements, warranty workflows and permissioned insight." },
+  "/for-brands": { title: "AXY for Brands and Manufacturers", description: "Connect approved in-store activity with product, stock and sell-through data to support retailers and make clearer availability decisions." },
   "/use-cases/retail-clienteling": { title: "Retail Clienteling", description: "Turn remembered customer context into a consistent clienteling workflow before, during and after each store visit." },
   "/use-cases/in-store-sales-capture": { title: "In-Store Sales Capture", description: "Capture product presentations and customer intent before the transaction so valuable retail signals do not disappear." },
   "/use-cases/product-demand-intelligence": { title: "Product Demand Intelligence", description: "Use permissioned product interest signals to understand demand ahead of sales and support better stock decisions." },
   "/use-cases/retailer-brand-collaboration": { title: "Retailer and Brand Collaboration", description: "Connect shared catalogue, ordering, announcement, training, warranty and retail collaboration workflows." },
   "/pricing": { title: "AXY Pricing", description: "Start with AXY Free or configure a plan around your users, business units and optional modules." },
-  "/resources": { title: "Connected Retail Resources", description: "Practical guidance for retail clienteling, sales capture, product demand, operations and brand collaboration." },
+  "/resources": { title: "Retail Clienteling Resources", description: "Read AXY's practical clienteling guide and explore sales capture, product demand, collaboration and connected-system workflows." },
   "/article": { title: "What Is Retail Clienteling? CRM, Store Visits and Follow-Up Explained", description: "A practical guide to retail clienteling, including CRM context, in-store activity, follow-up and the measurements that matter." },
   "/about": { title: "About AXY", description: "Learn why AXY was created and how it connects retailers, brands, products, sales teams and customers." },
   "/book-a-walkthrough": { title: "Book an AXY Walkthrough", description: "Request a guided AXY walkthrough focused on your stores, brands, workflows, integrations and first activation step." },
@@ -29,7 +29,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/help": { title: "AXY Help Centre", description: "Choose an AXY Product Support topic, send a secure request, or contact the AXY Support Team by email." },
   "/create-account": { title: "Create an AXY Account", description: "Start setting up AXY for your retail business." },
   "/login": { title: "Log In to AXY", description: "Access your AXY environment.", index: false },
-  "/legal": { title: "AXY Legal Information", description: "AXY legal information and policy documents.", index: false },
+  "/legal": { title: "AXY Privacy Policy and Terms & Conditions", description: "AXY Privacy Policy and Terms & Conditions for the AXY platform and applications.", index: false },
 };
 
 export function metadataForPath(path: string): Metadata {

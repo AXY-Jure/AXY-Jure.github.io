@@ -11,6 +11,27 @@ const privacyPolicyHtml = [privacy1, privacy2, privacy3, privacy4].join('');
 const termsAndConditionsHtml = [terms1, terms2, terms3].join('');
 
 export default function Legal() {
+  React.useEffect(() => {
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    if (!targetId) return undefined;
+
+    let active = true;
+    const scrollToTarget = () => {
+      if (active) document.getElementById(targetId)?.scrollIntoView({ block: 'start' });
+    };
+    const animationFrame = window.requestAnimationFrame(scrollToTarget);
+    const timers = [250, 1000].map((delay) => window.setTimeout(scrollToTarget, delay));
+    window.addEventListener('load', scrollToTarget, { once: true });
+    document.fonts?.ready.then(scrollToTarget);
+
+    return () => {
+      active = false;
+      window.cancelAnimationFrame(animationFrame);
+      timers.forEach((timer) => window.clearTimeout(timer));
+      window.removeEventListener('load', scrollToTarget);
+    };
+  }, []);
+
   return (
     <main id="top" className="axy-legal-page">
       <style>{`
@@ -44,7 +65,7 @@ export default function Legal() {
 }
 .axy-legal-jump a, .axy-legal-jump button {
   appearance: none; display: inline-flex; align-items: center; justify-content: center;
-  min-height: 40px; padding: 9px 14px; border: 1px solid #d8dee8; border-radius: 9px;
+  min-height: 44px; padding: 9px 14px; border: 1px solid #d8dee8; border-radius: 9px;
   background: #fff; color: #32415c; font: inherit; font-size: 13px; font-weight: 750;
   cursor: pointer; text-decoration: none;
 }
@@ -110,9 +131,16 @@ export default function Legal() {
   .axy-legal-jump a, .axy-legal-jump button { flex: 1 1 135px; font-size: 12px; }
   .axy-legal-doc { margin-top: 28px; padding: 24px 18px; border-radius: 16px; }
   .axy-legal-doc-header { padding-bottom: 21px; margin-bottom: 24px; }
-  .axy-legal-body { font-size: 14px; line-height: 1.74; }
+  .axy-legal-body { font-size: 15px; line-height: 1.74; }
   .axy-legal-body h3 { margin-top: 34px; font-size: 18px; }
   .legal-definition { padding: 10px 12px; }
+}
+@media (max-width: 360px) {
+  .axy-legal-page { padding-right: 10px; padding-left: 10px; }
+  .axy-legal-jump { position: static; top: auto; }
+  .axy-legal-doc,
+  .axy-legal-body h3 { scroll-margin-top: 76px; }
+  .axy-legal-doc { padding: 22px 14px; }
 }
 @media print {
   .axy-legal-page { background: #fff; padding: 0; }

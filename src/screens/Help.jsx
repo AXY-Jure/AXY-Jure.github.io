@@ -91,7 +91,7 @@ export default function Help() {
             <span><strong>Please protect sensitive information.</strong> Do not include passwords, access codes, payment-card details, or other sensitive credentials in your request.</span>
           </aside>
 
-          <div style={{ marginTop: '24px', padding: 'clamp(22px,5vw,46px)', border: '1px solid #E4E8EF', borderRadius: '20px', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)' }}>
+          <div className="axy-embed-card" style={{ marginTop: '24px', padding: 'clamp(22px,5vw,46px)', border: '1px solid #E4E8EF', borderRadius: '20px', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)' }}>
             <HubSpotSupportFormEmbed />
             <noscript>
               <p style={{ margin: '20px 0 0', color: '#667085', lineHeight: '1.6' }}>

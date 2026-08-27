@@ -9,16 +9,17 @@ export const AXY_APP_ROUTES = Object.freeze({
 export const BILLING_READY = false;
 
 export const AXY_PRICING = Object.freeze({
+  includedUsers: 2,
   additionalUser: 15,
   additionalBusinessUnit: 49,
   announcements: 20,
   messaging: 19,
 });
 
-export function calculateMonthlyPricing({ totalUsers = 1, totalBusinessUnits = 1, announcements = false, messaging = false } = {}) {
-  const users = Math.max(1, Number.parseInt(totalUsers, 10) || 1);
+export function calculateMonthlyPricing({ totalUsers = AXY_PRICING.includedUsers, totalBusinessUnits = 1, announcements = false, messaging = false } = {}) {
+  const users = Math.max(AXY_PRICING.includedUsers, Number.parseInt(totalUsers, 10) || AXY_PRICING.includedUsers);
   const businessUnits = Math.max(1, Number.parseInt(totalBusinessUnits, 10) || 1);
-  const additionalUsers = Math.max(0, users - 1);
+  const additionalUsers = Math.max(0, users - AXY_PRICING.includedUsers);
   const additionalBusinessUnits = Math.max(0, businessUnits - 1);
   const additionalUserCost = additionalUsers * AXY_PRICING.additionalUser;
   const additionalBusinessUnitCost = additionalBusinessUnits * AXY_PRICING.additionalBusinessUnit;

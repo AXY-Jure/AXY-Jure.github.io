@@ -1,3 +1,9 @@
+@import "./for-retailers.css";
+@import "./for-brands.css";
+@import "./customer-experience.css";
+@import "./home-clean.css";
+@import "./product-clean.css";
+
 /* Global styles — ported verbatim from the AXY prototype. */
   * { box-sizing: border-box; }
   body { margin:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; background:#FFFFFF; color:#1F2B4D; -webkit-font-smoothing:antialiased; }

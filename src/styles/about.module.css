@@ -1,0 +1,582 @@
+.page {
+  --about-navy: #1f2b4d;
+  --about-navy-deep: #15213c;
+  --about-teal: #2c8c99;
+  --about-mint: #74d6cf;
+  --about-ink: #24304f;
+  --about-muted: #667085;
+  background: #ffffff;
+  color: var(--about-ink);
+  overflow: clip;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page p,
+.page figure,
+.page ol,
+.page dl,
+.page dd {
+  margin: 0;
+}
+
+.inner {
+  width: min(1180px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: var(--about-mint);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.eyebrowDark {
+  color: #1d707b;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(116, 214, 207, 0.16), transparent 30%),
+    linear-gradient(135deg, var(--about-navy-deep), var(--about-navy) 58%, #225f69);
+  color: #ffffff;
+  padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+}
+
+.heroGrid {
+  align-items: center;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  grid-template-columns: minmax(0, 0.83fr) minmax(0, 1.17fr);
+}
+
+.heroCopy h1 {
+  font-size: clamp(3rem, 5.3vw, 5.9rem);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  margin-top: 1.25rem;
+  max-width: 9.5ch;
+}
+
+.heroLead {
+  color: #dbe4ee;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.6;
+  margin-top: 1.75rem !important;
+  max-width: 31rem;
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  align-items: center;
+  border-radius: 0.7rem;
+  display: inline-flex;
+  font-size: 0.94rem;
+  font-weight: 750;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.8rem 1.25rem;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  background: #ffffff;
+  color: var(--about-navy-deep);
+}
+
+.primaryButton:hover {
+  background: #eaf7f6;
+  color: var(--about-navy-deep);
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.textLinkLight {
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.textLinkLight:hover {
+  color: var(--about-mint);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.textLinkLight:focus-visible {
+  outline: 3px solid var(--about-mint);
+  outline-offset: 4px;
+}
+
+.heroMosaic {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.72fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  min-height: 35rem;
+}
+
+.heroFigure {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.heroFigureMain {
+  grid-row: 1 / 3;
+}
+
+.heroFigure img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.heroFigureMain img {
+  object-position: 53% center;
+}
+
+.heroFigure figcaption {
+  background: linear-gradient(transparent, rgba(15, 24, 44, 0.82));
+  bottom: 0;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0.02em;
+  padding: 2.2rem 1rem 0.9rem;
+  position: absolute;
+  right: 0;
+}
+
+.journeySection {
+  background: #ffffff;
+  padding: clamp(5rem, 9vw, 8.5rem) 0;
+}
+
+.sectionHeading {
+  align-items: end;
+  display: grid;
+  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.6fr);
+}
+
+.sectionHeading h2,
+.founderCopy h2 {
+  color: var(--about-navy);
+  font-size: clamp(2.35rem, 4.4vw, 4.8rem);
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  margin-top: 1rem;
+}
+
+.sectionHeading > p {
+  color: var(--about-muted);
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+
+.journeyGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.journeyFigure {
+  min-width: 0;
+}
+
+.journeyImage {
+  align-items: center;
+  aspect-ratio: 4 / 5;
+  background: #eef3f5;
+  border-radius: 1.1rem;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(1rem, 2.3vw, 1.6rem);
+}
+
+.iphoneMockup {
+  aspect-ratio: 744 / 1584;
+  background: #05070b;
+  border: 1px solid #5c6570;
+  border-radius: 2.55rem;
+  box-shadow:
+    0 1.5rem 2.6rem rgba(24, 36, 48, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  box-sizing: border-box;
+  height: 100%;
+  max-height: 28rem;
+  padding: 0.42rem;
+  position: relative;
+}
+
+.iphoneMockup::before,
+.iphoneMockup::after {
+  background: #303741;
+  content: "";
+  position: absolute;
+  width: 0.2rem;
+}
+
+.iphoneMockup::before {
+  border-radius: 0.2rem 0 0 0.2rem;
+  height: 3.4rem;
+  left: -0.24rem;
+  top: 5.2rem;
+}
+
+.iphoneMockup::after {
+  border-radius: 0 0.2rem 0.2rem 0;
+  height: 4.6rem;
+  right: -0.24rem;
+  top: 6.7rem;
+}
+
+.iphoneScreen {
+  border-radius: 2.08rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.iphoneScreen img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+}
+
+.journeyFigure figcaption {
+  display: grid;
+  gap: 0.2rem 0.75rem;
+  grid-template-columns: auto 1fr;
+  margin-top: 1rem;
+}
+
+.journeyFigure figcaption > span {
+  color: var(--about-teal);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.72rem;
+  grid-row: 1 / 3;
+  padding-top: 0.2rem;
+}
+
+.journeyFigure strong {
+  color: var(--about-navy);
+  font-size: 1.05rem;
+}
+
+.journeyFigure small {
+  color: var(--about-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.pullQuote {
+  color: var(--about-navy);
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.28;
+  margin-top: clamp(3.5rem, 7vw, 6rem) !important;
+  max-width: 31ch;
+}
+
+.principlesSection {
+  background: var(--about-navy-deep);
+  color: #ffffff;
+  padding: clamp(5rem, 8vw, 7.5rem) 0;
+}
+
+.principlesGrid {
+  display: grid;
+  gap: clamp(3rem, 8vw, 8rem);
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+}
+
+.principlesIntro h2 {
+  font-size: clamp(2.4rem, 4.3vw, 4.6rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-top: 1rem;
+  max-width: 8ch;
+}
+
+.principlesIntro > p:last-child {
+  color: #bfcadd;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-top: 1.5rem;
+  max-width: 24rem;
+}
+
+.principlesList {
+  list-style: none;
+  padding: 0;
+}
+
+.principlesList li {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: 2.2rem 1fr;
+  padding: 1.5rem 0;
+}
+
+.principlesList li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.principlesList > li > span {
+  color: var(--about-mint);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.76rem;
+  padding-top: 0.2rem;
+}
+
+.principlesList h3 {
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.principlesList p {
+  color: #bfcadd;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-top: 0.4rem !important;
+}
+
+.founderSection {
+  background: #eef3f5;
+  padding: clamp(5rem, 9vw, 8.5rem) 0;
+}
+
+.founderGrid {
+  align-items: center;
+  display: grid;
+  gap: clamp(3rem, 8vw, 7rem);
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1fr);
+}
+
+.founderPortrait {
+  min-width: 0;
+}
+
+.founderPortrait img {
+  aspect-ratio: 3 / 4;
+  border-radius: 1.3rem;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.founderPortrait figcaption {
+  align-items: start;
+  color: #4a566e;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.74rem;
+  gap: 0.35rem 1rem;
+  justify-content: space-between;
+  line-height: 1.5;
+  margin-top: 0.85rem;
+}
+
+.founderCopy > p:nth-of-type(2) {
+  color: var(--about-muted);
+  font-size: 1.04rem;
+  line-height: 1.75;
+  margin-top: 1.6rem !important;
+  max-width: 36rem;
+}
+
+.companyFacts {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2.5rem !important;
+}
+
+.companyFacts div {
+  border-top: 1px solid #cdd6de;
+  padding-top: 0.9rem;
+}
+
+.companyFacts dt {
+  color: #58647a;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.companyFacts dd {
+  color: var(--about-navy);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-top: 0.45rem;
+}
+
+.ctaSection {
+  background: linear-gradient(115deg, var(--about-navy), #246a73);
+  color: #ffffff;
+  padding: clamp(4rem, 7vw, 6rem) 0;
+}
+
+.ctaInner {
+  align-items: end;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.ctaInner h2 {
+  font-size: clamp(2.1rem, 3.7vw, 3.7rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin-top: 0.8rem;
+  max-width: 13ch;
+}
+
+.ctaInner .actions {
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .heroGrid,
+  .principlesGrid,
+  .founderGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy h1 {
+    max-width: 11ch;
+  }
+
+  .heroMosaic {
+    min-height: 32rem;
+  }
+
+  .sectionHeading {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading > p {
+    max-width: 38rem;
+  }
+
+  .journeyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .founderPortrait {
+    max-width: 30rem;
+  }
+
+  .companyFacts {
+    max-width: 42rem;
+  }
+
+  .ctaInner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .inner {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .hero {
+    padding: 3.5rem 0;
+  }
+
+  .journeySection,
+  .principlesSection,
+  .founderSection,
+  .ctaSection {
+    padding: 3.5rem 0;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(2.3rem, 11vw, 2.85rem);
+  }
+
+  .principlesIntro h2,
+  .founderCopy h2,
+  .ctaInner h2 {
+    font-size: clamp(1.9rem, 8.5vw, 2.35rem);
+  }
+
+  .heroMosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(19rem, 1.25fr) minmax(9rem, 0.75fr);
+    min-height: 0;
+  }
+
+  .heroFigureMain {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .heroMosaic > .heroFigure:not(.heroFigureMain) {
+    grid-row: 2;
+  }
+
+  .journeyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .companyFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaInner .actions,
+  .ctaInner .primaryButton,
+  .ctaInner .secondaryButton {
+    width: 100%;
+  }
+
+  .textLink {
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+}

@@ -7,7 +7,7 @@ export default function SalesCapture(v) {
       <div data-screen-label="In-Store Sales Capture">
         <div style={{ background: "#fff", padding: "66px 24px 58px" }}>
           <div style={{ maxWidth: "1080px", margin: "0 auto", display: "flex", gap: "44px", alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ flex: "1.1", minWidth: "300px" }}>
+            <div style={{ flex: "1.1", minWidth: "min(300px, 100%)" }}>
               <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "10.5px", letterSpacing: ".13em", color: "#2C8C99", textTransform: "uppercase" }}>Use case · In-store sales capture
               </div>
               <h1 style={{ fontSize: "36px", fontWeight: "800", color: "#1F2B4D", lineHeight: "1.13", margin: "14px 0 0" }}>The sale is the last 5%. Capture the other 95%.

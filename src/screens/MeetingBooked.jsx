@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function MeetingBooked() {
   return (
-    <main>
+    <main className="axy-utility-page axy-meeting-booked-page">
       <section style={{ background: 'linear-gradient(135deg,#F8FAFC 0%,#EFF7F8 56%,#FCF3EE 150%)', padding: '104px 24px 96px', minHeight: '62vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ width: '100%', maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ width: '64px', height: '64px', margin: '0 auto', borderRadius: '50%', background: '#2C8C99', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px', fontWeight: '800', boxShadow: '0 16px 34px rgba(44,140,153,.24)' }} aria-hidden="true">✓</div>

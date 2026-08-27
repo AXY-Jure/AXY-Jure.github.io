@@ -3,10 +3,10 @@ import { css } from '../lib/css.js';
 
 export default function SiteFooter(v) {
   return (
-      <div data-analytics-location="site_footer" style={{ background: "#1F2B4D", padding: "56px 24px 34px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: "22px" }}>
-            <div>
+      <div className="site-footer" data-analytics-location="site_footer" style={{ background: "#1F2B4D", padding: "56px 24px 34px" }}>
+        <div className="site-footer__inner" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div className="site-footer__grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: "22px" }}>
+            <div className="site-footer__brand">
               <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#fff", borderRadius: "8px", padding: "7px 10px" }}>
                 <img src="/images/axy-logo.png" alt="AXY" style={{ height: "26px", width: "auto" }} />
               </div>
@@ -90,19 +90,19 @@ export default function SiteFooter(v) {
               </div>
             </div>
           </div>
-          <div style={{ borderTop: "1px solid #34406A", marginTop: "30px", paddingTop: "22px", display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+          <div className="site-footer__bottom" style={{ borderTop: "1px solid #34406A", marginTop: "30px", paddingTop: "22px", display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
             <span style={{ fontSize: "14px", color: "#fff", fontWeight: "700" }}>See how AXY fits your business.
             </span>{' '}
             <a className="hv209" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>Create free account
             </a>{' '}
             <a className="hv210" href="/book-a-walkthrough#schedule" style={{ display: "inline-flex", padding: "10px 17px", border: "1.5px solid rgba(255,255,255,.4)", color: "#fff", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>Get guided setup
             </a>
-            <div style={{ marginLeft: "auto", display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
-              <a href="/legal" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Privacy Policy
+            <div className="site-footer__legal" style={{ marginLeft: "auto", display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
+              <a href="/legal#privacy-policy" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Privacy Policy
               </a>{' '}
-              <a href="/legal" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Terms
+              <a href="/legal#terms-and-conditions" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Terms
               </a>{' '}
-              <a href="/legal" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Cookie Policy
+              <a href="/legal#cookies-and-similar-technologies" style={{ fontSize: "11.5px", color: "#8fa0c2" }}>Cookie Policy
               </a>{' '}
               <button
                 type="button"

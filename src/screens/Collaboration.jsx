@@ -7,7 +7,7 @@ export default function Collaboration(v) {
       <div data-screen-label="Retailer–Brand Collaboration">
         <div style={{ background: "#fff", padding: "66px 24px 58px" }}>
           <div style={{ maxWidth: "1080px", margin: "0 auto", display: "flex", gap: "44px", alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ flex: "1.1", minWidth: "300px" }}>
+            <div style={{ flex: "1.1", minWidth: "min(300px, 100%)" }}>
               <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "10.5px", letterSpacing: ".13em", color: "#2C8C99", textTransform: "uppercase" }}>Use case · Retailer–brand collaboration
               </div>
               <h1 style={{ fontSize: "36px", fontWeight: "800", color: "#1F2B4D", lineHeight: "1.13", margin: "14px 0 0" }}>One shared workflow instead of fifty email threads.
@@ -98,8 +98,8 @@ export default function Collaboration(v) {
                 <div style={{ fontSize: "12.5px", color: "#3a4358", lineHeight: "1.55", marginTop: "9px" }}>Catalogue, order, delivery, sell-through, warranty activation and approved insight — drawn across brand and retailer lanes with a permission gate.
                 </div>
                 <div style={{ marginTop: "11px" }}>
-                  <div style={{ position: "relative", height: "150px", borderRadius: "12px", background: "linear-gradient(160deg,#EFF2F6,#E4E9F0)", display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", overflow: "hidden", padding: "14px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div className="collaboration-workflow" style={{ position: "relative", height: "150px", borderRadius: "12px", background: "linear-gradient(160deg,#EFF2F6,#E4E9F0)", display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", overflow: "hidden", padding: "14px" }}>
+                    <div className="collaboration-workflow__row" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                       <div style={{ textAlign: "center" }}>
                         <div style={{ width: "70px", height: "44px", background: "#fff", border: "1.5px solid #C9D4EC", borderRadius: "9px" }}></div>
                         <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "7px", color: "#4a5266", marginTop: "4px" }}>RETAILER DATA
@@ -114,7 +114,7 @@ export default function Collaboration(v) {
                         <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "7px", color: "#1C6470", marginTop: "4px" }}>APPROVED SIGNAL
                         </div>
                       </div>
-                      <div style={{ width: "26px", height: "2px", background: "#2C8C99" }}></div>
+                      <div className="collaboration-workflow__line" style={{ width: "26px", height: "2px", background: "#2C8C99" }}></div>
                       <div style={{ textAlign: "center" }}>
                         <div style={{ width: "70px", height: "44px", background: "#fff", border: "1.5px solid #C9D4EC", borderRadius: "9px" }}></div>
                         <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "7px", color: "#4a5266", marginTop: "4px" }}>BRAND VIEW

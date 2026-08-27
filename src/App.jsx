@@ -28,7 +28,7 @@ import NotFound from './screens/NotFound.jsx';
 import Walkthrough from './screens/Walkthrough.jsx';
 import Contact from './screens/Contact.jsx';
 import MeetingBooked from './screens/MeetingBooked.jsx';
-import { calculateMonthlyPricing } from './config/billing.js';
+import { AXY_PRICING, calculateMonthlyPricing } from './config/billing.js';
 
 const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/meeting-booked': 'meetingbooked', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
 
@@ -73,8 +73,8 @@ const PAGES = {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { route: routeForPath(props.initialPath), menu: false, dd: '', persp: 'retail', forms: {}, heroClip: 0, ccu: 0, ccuPaused: false, surf: 0, retail: 0, retailPaused: false, brand: 0, brandPaused: false,
-      pricingUsers: 1, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false, howStage: 0 };
+    this.state = { route: routeForPath(props.initialPath), menu: false, dd: '', forms: {},
+      pricingUsers: AXY_PRICING.includedUsers, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false };
   }
 
   ROUTES = ROUTES;
@@ -99,17 +99,8 @@ class App extends React.Component {
     };
     window.addEventListener('popstate', this._onRouteChange);
     this._onRouteChange();
-    this._ccuStart();
-    this._retailStart();
-    this._brandStart();
   }
-  componentWillUnmount() { window.removeEventListener('popstate', this._onRouteChange); clearInterval(this._ccuTimer); clearInterval(this._retailTimer); clearInterval(this._brandTimer); }
-  _ccuStart() { clearInterval(this._ccuTimer); if (this.state.ccuPaused) return; this._ccuTimer = setInterval(() => this.setState(p => ({ ccu: (p.ccu + 1) % 3 })), 5000); }
-  _ccuSet(n) { this.setState({ ccu: n }); this._ccuStart(); }
-  _retailStart() { clearInterval(this._retailTimer); if (this.state.retailPaused) return; this._retailTimer = setInterval(() => this.setState(p => ({ retail: (p.retail + 1) % 5 })), 5000); }
-  _retailSet(n) { this.setState({ retail: n }); this._retailStart(); }
-  _brandStart() { clearInterval(this._brandTimer); if (this.state.brandPaused) return; this._brandTimer = setInterval(() => this.setState(p => ({ brand: (p.brand + 1) % 5 })), 5000); }
-  _brandSet(n) { this.setState({ brand: n }); this._brandStart(); }
+  componentWillUnmount() { window.removeEventListener('popstate', this._onRouteChange); }
   // ---- Pricing calculator (pure) ----
   _pricingCalc() {
     const s = this.state;
@@ -118,7 +109,7 @@ class App extends React.Component {
   _pricingRecommendation(c) {
     const s = this.state;
     const ann = s.pricingAnnouncementsEnabled, msg = s.pricingMessagingEnabled, ai = s.pricingAiImageInterested;
-    if (c.users === 1 && c.businessUnits === 1 && !ann && !msg && !ai) return 'AXY Free is the right starting point for this setup.';
+    if (c.users === AXY_PRICING.includedUsers && c.businessUnits === 1 && !ann && !msg && !ai) return 'AXY Free is the right starting point for this setup.';
     return 'This is a custom AXY setup.';
   }
   _pricingPayload() {
@@ -133,7 +124,6 @@ class App extends React.Component {
     };
   }
   _scrollTo(id) { try { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' }); } catch (e) {} }
-  _howGo(n) { this.setState({ howStage: n }, () => this._scrollTo('axy-how-s' + n)); }
   _resExplore() { this._scrollTo('axy-res-start'); }
   _pStep(key, delta, min) { this.setState(p => { const v = Math.max(min, (p[key] | 0) + delta); const next = { [key]: v }; if (key === 'pricingBusinessUnits' && p.pricingAnnouncementUnits > v) next.pricingAnnouncementUnits = v; return next; }); }
   _pAnnStep(delta) { this.setState(p => ({ pricingAnnouncementUnits: Math.min(Math.max(1, (p.pricingAnnouncementUnits | 0) + delta), Math.max(1, p.pricingBusinessUnits | 0)) })); }
@@ -148,39 +138,11 @@ class App extends React.Component {
     } catch (e) {}
     this.setState(p => ({ forms: { ...p.forms, pricingPlan: true }, pricingLastPayload: payload }));
   }
-  _htStyle(active) {
-    return active
-      ? 'display:inline-flex; padding:11px 19px; border-radius:24px; font-size:13.5px; font-weight:700; cursor:pointer; background:#fff; color:#1F2B4D; border:1.5px solid #2C8C99; white-space:nowrap; box-shadow:0 6px 16px rgba(44,140,153,.18); transition:all .18s;'
-      : 'display:inline-flex; padding:11px 19px; border-radius:24px; font-size:13.5px; font-weight:600; cursor:pointer; background:transparent; color:#4a5878; border:1.5px solid transparent; white-space:nowrap; transition:all .18s;';
-  }
-
   renderVals() {
     const s = this.state;
     const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','meetingbooked','contact','help','account','login','article','legal','p404'];
     const vals = {};
     keys.forEach(k => { vals['is_' + k] = s.route === k; });
-    const tab = (a) => a
-      ? 'display:inline-flex; padding:10px 18px; border-radius:10px; font-size:13.5px; font-weight:700; cursor:pointer; background:#EFF7F8; color:#1F2B4D; border:1.5px solid #2C8C99;'
-      : 'display:inline-flex; padding:10px 18px; border-radius:10px; font-size:13.5px; font-weight:600; cursor:pointer; background:#fff; color:#667085; border:1px solid #E4E8EF;';
-    const ccuBub = (active, accent) => active
-      ? 'cursor:pointer; background:rgba(255,255,255,.12); border:1.5px solid ' + accent + '; border-radius:16px; padding:17px 20px; transition:all .2s; box-shadow:0 12px 32px rgba(0,0,0,.22);'
-      : 'cursor:pointer; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.13); border-radius:16px; padding:17px 20px; transition:all .2s;';
-    const ccuDot = (active) => active
-      ? 'width:26px; height:7px; border-radius:4px; background:#33D6A4; cursor:pointer; transition:all .25s;'
-      : 'width:7px; height:7px; border-radius:4px; background:rgba(255,255,255,.28); cursor:pointer; transition:all .25s;';
-    const retailCard = (active) => active
-      ? 'cursor:pointer; display:flex; gap:14px; align-items:flex-start; background:#fff; border:1.5px solid #2C8C99; border-radius:13px; padding:14px 16px; box-shadow:0 12px 30px rgba(44,140,153,.16); transition:all .2s;'
-      : 'cursor:pointer; display:flex; gap:14px; align-items:flex-start; background:#fff; border:1px solid #E7ECF2; border-radius:13px; padding:14px 16px; box-shadow:0 1px 2px rgba(31,43,77,.04); transition:all .2s;';
-    const retailBadge = (active) => 'flex:none; width:34px; height:34px; border-radius:9px; font-family:\'Roboto Mono\',monospace; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; transition:all .2s; ' + (active ? 'background:#2C8C99; color:#fff;' : 'background:#EAF6F7; color:#1F7A87;');
-    const retailDot = (active) => active
-      ? 'width:26px; height:7px; border-radius:4px; background:#2C8C99; cursor:pointer; transition:all .25s;'
-      : 'width:7px; height:7px; border-radius:4px; background:rgba(255,255,255,.28); cursor:pointer; transition:all .25s;';
-    const surfTab = (active) => active
-      ? 'display:inline-flex; align-items:center; gap:7px; padding:9px 15px; border-radius:22px; font-size:13px; font-weight:700; cursor:pointer; background:#32415C; color:#fff; border:1.5px solid #32415C; white-space:nowrap; box-shadow:0 8px 20px rgba(31,43,77,.18); transition:all .18s;'
-      : 'display:inline-flex; align-items:center; gap:7px; padding:9px 15px; border-radius:22px; font-size:13px; font-weight:600; cursor:pointer; background:#fff; color:#42506e; border:1.5px solid #E4E8EF; white-space:nowrap; transition:all .18s;';
-    const surfDot = (active) => active
-      ? 'width:22px; height:7px; border-radius:4px; background:#32415C; cursor:pointer; transition:all .25s;'
-      : 'width:7px; height:7px; border-radius:4px; background:#D4DBE6; cursor:pointer; transition:all .25s;';
     // ---- Pricing calculator wiring ----
     const freeBub = (active) => active
       ? 'cursor:pointer; text-align:left; background:#fff; color:#1F2B4D; border:1.5px solid #2C8C99; border-radius:11px; padding:11px 15px; font-size:13px; font-weight:700; box-shadow:0 6px 16px rgba(44,140,153,.14); transition:all .18s;'
@@ -209,8 +171,8 @@ class App extends React.Component {
     vals.pAnnToggleStyle = toggleBtn(s.pricingAnnouncementsEnabled); vals.pAnnToggleLabel = s.pricingAnnouncementsEnabled ? 'Enabled' : 'Add';
     vals.pMsgToggleStyle = toggleBtn(s.pricingMessagingEnabled); vals.pMsgToggleLabel = s.pricingMessagingEnabled ? 'Enabled' : 'Add';
     vals.pAiToggleStyle = toggleBtn(s.pricingAiImageInterested); vals.pAiToggleLabel = s.pricingAiImageInterested ? 'Interested \u2713' : "I'm interested";
-    vals.pUsersInc = () => this._pStep('pricingUsers', 1, 1);
-    vals.pUsersDec = () => this._pStep('pricingUsers', -1, 1);
+    vals.pUsersInc = () => this._pStep('pricingUsers', 1, AXY_PRICING.includedUsers);
+    vals.pUsersDec = () => this._pStep('pricingUsers', -1, AXY_PRICING.includedUsers);
     vals.pBUInc = () => this._pStep('pricingBusinessUnits', 1, 1);
     vals.pBUDec = () => this._pStep('pricingBusinessUnits', -1, 1);
     vals.pAnnToggle = () => this.setState(p => ({ pricingAnnouncementsEnabled: !p.pricingAnnouncementsEnabled }));
@@ -237,14 +199,6 @@ class App extends React.Component {
       vals['pFtAria' + i] = on ? 'true' : 'false';
       vals['pFtToggle' + i] = ((n) => () => this.setState(p => { const a = p.pricingFuture.slice(); a[n] = !a[n]; return { pricingFuture: a }; }))(i);
     }
-    // ---- How It Works stepper ----
-    const howStep = (active) => active
-      ? 'display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:24px; font-size:13px; font-weight:700; cursor:pointer; background:#32415C; color:#fff; border:1.5px solid #32415C; white-space:nowrap; box-shadow:0 8px 20px rgba(31,43,77,.18); transition:all .18s;'
-      : 'display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:24px; font-size:13px; font-weight:600; cursor:pointer; background:#fff; color:#42506e; border:1.5px solid #E4E8EF; white-space:nowrap; transition:all .18s;';
-    for (let i = 0; i < 5; i++) {
-      vals['howStep' + i + 'Style'] = howStep(s.howStage === i);
-      vals['howGo' + i] = ((n) => () => this._howGo(n))(i);
-    }
     vals.resExplore = () => this._resExplore();
     return Object.assign(vals, {
       ddProduct: s.dd === 'product', ddResources: s.dd === 'resources',
@@ -253,43 +207,6 @@ class App extends React.Component {
       ddOff: () => this.setState({ dd: '' }),
       menuOpen: s.menu, menuLabel: s.menu ? '✕ Close' : '☰ Menu',
       toggleMenu: () => this.setState(p => ({ menu: !p.menu })),
-      persp_retail: s.persp === 'retail', persp_brand: s.persp === 'brand', persp_customer: s.persp === 'customer',
-      perspRetail: () => this.setState({ persp: 'retail' }),
-      perspBrand: () => this.setState({ persp: 'brand' }),
-      perspCustomer: () => this.setState({ persp: 'customer' }),
-      perspRetailStyle: tab(s.persp === 'retail'), perspBrandStyle: tab(s.persp === 'brand'), perspCustomerStyle: tab(s.persp === 'customer'),
-      ht0: () => this.setState({ heroClip: 0 }), ht1: () => this.setState({ heroClip: 1 }), ht2: () => this.setState({ heroClip: 2 }), ht3: () => this.setState({ heroClip: 3 }), ht4: () => this.setState({ heroClip: 4 }),
-      ht0Style: this._htStyle(s.heroClip === 0), ht1Style: this._htStyle(s.heroClip === 1), ht2Style: this._htStyle(s.heroClip === 2), ht3Style: this._htStyle(s.heroClip === 3), ht4Style: this._htStyle(s.heroClip === 4),
-      hc_0: s.heroClip === 0, hc_1: s.heroClip === 1, hc_2: s.heroClip === 2, hc_3: s.heroClip === 3, hc_4: s.heroClip === 4,
-      ccu_0: s.ccu === 0, ccu_1: s.ccu === 1, ccu_2: s.ccu === 2,
-      ccuGo0: () => this._ccuSet(0), ccuGo1: () => this._ccuSet(1), ccuGo2: () => this._ccuSet(2),
-      ccuNext: () => this._ccuSet((s.ccu + 1) % 3),
-      ccuPaused: s.ccuPaused, ccuPlayLabel: s.ccuPaused ? '▶' : '❚❚',
-      ccuToggle: () => this.setState(p => ({ ccuPaused: !p.ccuPaused }), () => this._ccuStart()),
-      retail_0: s.retail === 0, retail_1: s.retail === 1, retail_2: s.retail === 2, retail_3: s.retail === 3, retail_4: s.retail === 4,
-      retailGo0: () => this._retailSet(0), retailGo1: () => this._retailSet(1), retailGo2: () => this._retailSet(2), retailGo3: () => this._retailSet(3), retailGo4: () => this._retailSet(4),
-      retailNext: () => this._retailSet((s.retail + 1) % 5),
-      retailPaused: s.retailPaused, retailPlayLabel: s.retailPaused ? '▶' : '❚❚',
-      retailToggle: () => this.setState(p => ({ retailPaused: !p.retailPaused }), () => this._retailStart()),
-      retailC0Style: retailCard(s.retail === 0), retailC1Style: retailCard(s.retail === 1), retailC2Style: retailCard(s.retail === 2), retailC3Style: retailCard(s.retail === 3), retailC4Style: retailCard(s.retail === 4),
-      retailB0Style: retailBadge(s.retail === 0), retailB1Style: retailBadge(s.retail === 1), retailB2Style: retailBadge(s.retail === 2), retailB3Style: retailBadge(s.retail === 3), retailB4Style: retailBadge(s.retail === 4),
-      retailD0Style: retailDot(s.retail === 0), retailD1Style: retailDot(s.retail === 1), retailD2Style: retailDot(s.retail === 2), retailD3Style: retailDot(s.retail === 3), retailD4Style: retailDot(s.retail === 4),
-      brand_0: s.brand === 0, brand_1: s.brand === 1, brand_2: s.brand === 2, brand_3: s.brand === 3, brand_4: s.brand === 4,
-      brandGo0: () => this._brandSet(0), brandGo1: () => this._brandSet(1), brandGo2: () => this._brandSet(2), brandGo3: () => this._brandSet(3), brandGo4: () => this._brandSet(4),
-      brandNext: () => this._brandSet((s.brand + 1) % 5),
-      brandPaused: s.brandPaused, brandPlayLabel: s.brandPaused ? '▶' : '❚❚',
-      brandToggle: () => this.setState(p => ({ brandPaused: !p.brandPaused }), () => this._brandStart()),
-      brandC0Style: retailCard(s.brand === 0), brandC1Style: retailCard(s.brand === 1), brandC2Style: retailCard(s.brand === 2), brandC3Style: retailCard(s.brand === 3), brandC4Style: retailCard(s.brand === 4),
-      brandB0Style: retailBadge(s.brand === 0), brandB1Style: retailBadge(s.brand === 1), brandB2Style: retailBadge(s.brand === 2), brandB3Style: retailBadge(s.brand === 3), brandB4Style: retailBadge(s.brand === 4),
-      brandD0Style: retailDot(s.brand === 0), brandD1Style: retailDot(s.brand === 1), brandD2Style: retailDot(s.brand === 2), brandD3Style: retailDot(s.brand === 3), brandD4Style: retailDot(s.brand === 4),
-      surf_0: s.surf === 0, surf_1: s.surf === 1, surf_2: s.surf === 2, surf_3: s.surf === 3, surf_4: s.surf === 4,
-      surfGo0: () => this.setState({ surf: 0 }), surfGo1: () => this.setState({ surf: 1 }), surfGo2: () => this.setState({ surf: 2 }), surfGo3: () => this.setState({ surf: 3 }), surfGo4: () => this.setState({ surf: 4 }),
-      surfNext: () => this.setState(p => ({ surf: (p.surf + 1) % 5 })),
-      surfPrev: () => this.setState(p => ({ surf: (p.surf + 4) % 5 })),
-      surfT0Style: surfTab(s.surf === 0), surfT1Style: surfTab(s.surf === 1), surfT2Style: surfTab(s.surf === 2), surfT3Style: surfTab(s.surf === 3), surfT4Style: surfTab(s.surf === 4),
-      surfD0Style: surfDot(s.surf === 0), surfD1Style: surfDot(s.surf === 1), surfD2Style: surfDot(s.surf === 2), surfD3Style: surfDot(s.surf === 3), surfD4Style: surfDot(s.surf === 4),
-      ccuB0Style: ccuBub(s.ccu === 0, '#7fd4de'), ccuB1Style: ccuBub(s.ccu === 1, '#F3D9C8'), ccuB2Style: ccuBub(s.ccu === 2, '#9FEBD3'),
-      ccuD0Style: ccuDot(s.ccu === 0), ccuD1Style: ccuDot(s.ccu === 1), ccuD2Style: ccuDot(s.ccu === 2),
       formWalk: !!s.forms.walk, formWalkOff: !s.forms.walk, formAccountOff: !s.forms.account, formLoginOff: !s.forms.login, formNewsOff: !s.forms.news, submitWalk: () => this.setState(p => ({ forms: { ...p.forms, walk: true } })),
       formAccount: !!s.forms.account, submitAccount: () => this.setState(p => ({ forms: { ...p.forms, account: true } })),
       formLogin: !!s.forms.login, submitLogin: () => this.setState(p => ({ forms: { ...p.forms, login: true } })),

@@ -7,7 +7,7 @@ export default function DemandIntelligence(v) {
       <div data-screen-label="Product Demand Intelligence">
         <div style={{ background: "linear-gradient(135deg,#1F2B4D,#32415C 62%,#2C6570)", padding: "66px 24px 58px" }}>
           <div style={{ maxWidth: "1080px", margin: "0 auto", display: "flex", gap: "44px", alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ flex: "1.1", minWidth: "300px" }}>
+            <div style={{ flex: "1.1", minWidth: "min(300px, 100%)" }}>
               <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "10.5px", letterSpacing: ".13em", color: "#33D6A4", textTransform: "uppercase" }}>Use case · Product demand intelligence
               </div>
               <h1 style={{ fontSize: "36px", fontWeight: "800", color: "#fff", lineHeight: "1.13", margin: "14px 0 0" }}>Demand shows up long before the receipt.
@@ -19,7 +19,7 @@ export default function DemandIntelligence(v) {
                 </a>
               </div>
             </div>
-            <div style={{ flex: "1", minWidth: "300px" }}>
+            <div style={{ flex: "1", minWidth: "min(300px, 100%)" }}>
               <div style={{ border: "1.5px dashed rgba(255,255,255,.35)", borderRadius: "14px", background: "rgba(255,255,255,.06)", padding: "16px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <span style={{ fontFamily: "'Roboto Mono',monospace", fontSize: "8.5px", fontWeight: "700", color: "#1F2B4D", background: "#7fd4de", borderRadius: "5px", padding: "3px 8px" }}>DASHBOARD
@@ -31,7 +31,7 @@ export default function DemandIntelligence(v) {
                 </div>
                 <div style={{ marginTop: "11px" }}>
                   <div style={{ position: "relative", height: "160px", borderRadius: "12px", background: "linear-gradient(160deg,#243250,#1C2740)", display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", overflow: "hidden", padding: "14px" }}>
-                    <div style={{ position: "relative", width: "320px", height: "140px", background: "#F7F8FA", border: "1px solid #D9DEE7", borderRadius: "10px", overflow: "hidden", boxShadow: "0 16px 32px rgba(31,43,77,.16)", display: "flex", flexDirection: "column" }}>
+                    <div style={{ position: "relative", width: "min(320px, 100%)", height: "140px", background: "#F7F8FA", border: "1px solid #D9DEE7", borderRadius: "10px", overflow: "hidden", boxShadow: "0 16px 32px rgba(31,43,77,.16)", display: "flex", flexDirection: "column" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px", padding: "6px 9px", background: "#1F2B4D" }}>
                         <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4E5D80" }}></span>
                         <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4E5D80" }}></span>

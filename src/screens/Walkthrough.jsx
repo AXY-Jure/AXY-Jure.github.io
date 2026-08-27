@@ -12,7 +12,7 @@ export default function Walkthrough() {
   ];
 
   return (
-    <main>
+    <main className="axy-utility-page axy-walkthrough-page">
       <section style={{ background: 'linear-gradient(135deg,#1F2B4D 0%,#32415C 62%,#2C8C99 150%)', padding: '92px 24px 82px', color: '#fff' }}>
         <div style={{ maxWidth: '1040px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '10px', letterSpacing: '.12em', color: '#9FEBD3', fontWeight: '700' }}>GUIDED AXY WALKTHROUGH</div>
@@ -31,7 +31,7 @@ export default function Walkthrough() {
             <h2 style={{ margin: '12px 0', fontSize: 'clamp(30px,4vw,44px)', lineHeight: '1.12', letterSpacing: '-.035em', color: '#1F2B4D' }}>Built around the decisions you need to make.</h2>
             <p style={{ margin: 0, color: '#667085', fontSize: '16px', lineHeight: '1.7' }}>Choose the perspective that is closest to your business. We’ll shape the walkthrough around it.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(280px,100%),1fr))', gap: '20px' }}>
             <article style={{ border: '1px solid #E4E8EF', borderRadius: '16px', padding: '28px', background: '#FCF3EE' }}>
               <h3 style={{ margin: '0 0 10px', color: '#1F2B4D', fontSize: '21px' }}>For retailers</h3>
               <p style={{ margin: 0, color: '#5B657C', lineHeight: '1.7', fontSize: '14px' }}>Follow one customer visit from product presentation and captured interest through follow-up, offer, sale and continued customer experience.</p>
@@ -53,7 +53,10 @@ export default function Walkthrough() {
             <h2 style={{ margin: '12px 0', fontSize: 'clamp(30px,4vw,44px)', lineHeight: '1.12', letterSpacing: '-.035em', color: '#1F2B4D' }}>Book your tailored AXY walkthrough.</h2>
             <p style={{ margin: 0, color: '#667085', fontSize: '16px', lineHeight: '1.7' }}>Choose the time that works best for you. Your confirmation will include the Microsoft Teams meeting link and options to reschedule or cancel.</p>
           </div>
-          <div id="schedule" style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(12px,3vw,28px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)', overflow: 'hidden', scrollMarginTop: '76px' }}>
+          <div id="schedule" className="axy-schedule-card" style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(12px,3vw,28px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)', overflow: 'hidden', scrollMarginTop: '76px' }}>
+            <a className="axy-schedule-mobile-link" href={MEETING_LINK} target="_blank" rel="noreferrer">
+              Open mobile scheduling
+            </a>
             <HubSpotMeetingsEmbed />
             <noscript>
               <p style={{ margin: '20px', color: '#667085', lineHeight: '1.6' }}>

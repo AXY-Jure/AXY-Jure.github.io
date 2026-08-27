@@ -1,12 +1,21 @@
 import React from 'react';
-import { css } from '../lib/css.js';
 
 export default function SiteHeader(v) {
   const { ddOff, ddProduct, ddProductOn, ddResources, ddResourcesOn, menuLabel, menuOpen, toggleMenu } = v;
+  React.useEffect(() => {
+    if (!menuOpen || !window.matchMedia('(max-width: 1100px)').matches) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [menuOpen]);
+
   return (
-      <div data-analytics-location="site_header" style={{ position: "sticky", top: "0", zIndex: "60", background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E4E8EF" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", gap: "26px" }}>
-          <a href="/" style={{ display: "inline-flex", alignItems: "center" }}>
+      <div className="site-header" data-analytics-location="site_header" style={{ position: "sticky", top: "0", zIndex: "60", background: "rgba(255,255,255,.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E4E8EF" }}>
+        <div className="site-header__bar" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", gap: "26px" }}>
+          <a className="site-header__logo" href="/" style={{ display: "inline-flex", alignItems: "center" }}>
             <img src="/images/axy-logo.png" alt="AXY" style={{ height: "30px", width: "auto" }} />
           </a>
           <div id="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "4px", flex: "1" }}>
@@ -95,7 +104,7 @@ export default function SiteHeader(v) {
           </button>
         </div>
         {menuOpen ? (<>
-          <div id="nav-mobile-menu" style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
+          <div id="nav-mobile-menu" className="site-header__mobile-menu" style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
             <a href="https://app.axy.net/onboarding" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>Create free account
             </a>{' '}
             <a href="/book-a-walkthrough#schedule" style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Get guided setup
@@ -123,6 +132,9 @@ export default function SiteHeader(v) {
             <a href="/pricing" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Pricing
             </a>{' '}
             <a href="/resources" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Resources
+            </a>{' '}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- This static export uses full-document navigation between public routes. */}
+            <a href="/article" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Insights &amp; Guides
             </a>{' '}
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- This static export uses full-document navigation between public routes. */}
             <a href="/help" style={{ padding: "9px 4px", fontSize: "14px", fontWeight: "600" }}>Help &amp; Support

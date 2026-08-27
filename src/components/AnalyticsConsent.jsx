@@ -102,7 +102,7 @@ export default function AnalyticsConsent() {
         <div id="axy-cookie-title" className="axy-cookie-title">Your privacy choices</div>
         <p id="axy-cookie-description">
           We use optional Google Analytics cookies to understand how the AXY website is used. Analytics stays off unless you accept.{' '}
-          <a href="/legal#cookies">Learn more</a>
+          <a href="/legal#cookies-and-similar-technologies">Learn more</a>
         </p>
       </div>
       <div className="axy-cookie-actions">

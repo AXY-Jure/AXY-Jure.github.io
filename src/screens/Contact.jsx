@@ -5,7 +5,7 @@ const CONTACT_FORM_LINK = 'https://2gbur8.share-eu1.hsforms.com/2MKoLytVKQXSZAbp
 
 export default function Contact() {
   return (
-    <main>
+    <main className="axy-utility-page axy-contact-page">
       <section style={{ background: 'linear-gradient(135deg,#F8FAFC 0%,#EFF7F8 56%,#FCF3EE 150%)', padding: '88px 24px 64px' }}>
         <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ fontFamily: "'Roboto Mono',monospace", fontSize: '10px', letterSpacing: '.12em', color: '#2C8C99', fontWeight: '700' }}>CONTACT AXY</div>
@@ -16,7 +16,7 @@ export default function Contact() {
 
       <section style={{ padding: '64px 24px 84px', background: '#fff' }}>
         <div style={{ maxWidth: '820px', margin: '0 auto' }}>
-          <div style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(24px,5vw,48px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)' }}>
+          <div className="axy-embed-card" style={{ border: '1px solid #E4E8EF', borderRadius: '20px', padding: 'clamp(24px,5vw,48px)', background: '#fff', boxShadow: '0 22px 60px rgba(31,43,77,.08)' }}>
             <HubSpotFormEmbed />
             <noscript>
               <p style={{ margin: '20px 0 0', color: '#667085', lineHeight: '1.6' }}>

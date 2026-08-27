@@ -1,0 +1,233 @@
+/* Mobile-only refinements. Desktop declarations remain the source of truth. */
+@media (max-width: 1100px) {
+  .site-header {
+    position: sticky !important;
+  }
+
+  .site-header__mobile-menu {
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: calc(100dvh - 64px);
+    max-height: none !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header__bar {
+    height: 60px !important;
+    gap: 12px !important;
+    padding: 0 16px !important;
+  }
+
+  .site-header__logo img {
+    height: 28px !important;
+  }
+
+  .site-header__logo {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  #nav-mobile-cta,
+  #nav-mobile-btn {
+    min-height: 44px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  #nav-mobile-btn {
+    margin-left: 0 !important;
+    padding: 8px 12px !important;
+  }
+
+  .site-header__mobile-menu {
+    height: calc(100dvh - 60px);
+    padding: 12px 16px 20px !important;
+    scrollbar-gutter: stable;
+  }
+
+  .site-header__mobile-menu > a {
+    display: flex !important;
+    min-height: 44px;
+    align-items: center;
+    padding: 10px 6px !important;
+  }
+
+  .site-header__mobile-menu > a:first-child,
+  .site-header__mobile-menu > a:nth-child(2) {
+    justify-content: center;
+  }
+
+  .site-footer {
+    padding: 44px 16px 28px !important;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px 16px !important;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__grid > div:not(.site-footer__brand) a {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 12.5px !important;
+    line-height: 1.35;
+  }
+
+  .site-footer__bottom {
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .site-footer__bottom > a {
+    min-height: 46px;
+    flex: 1 1 140px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .site-footer__legal {
+    width: 100%;
+    margin-left: 0 !important;
+    gap: 12px 16px !important;
+    padding-top: 6px;
+  }
+
+  .site-footer__legal a,
+  .site-footer__legal button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .home-clean__text-link,
+  .fr-text-link,
+  .fb-text-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .axy-cookie-actions button {
+    min-height: 44px !important;
+  }
+
+  .axy-utility-page > section,
+  main[data-screen-label="Help Centre"] > section,
+  main[data-screen-label="Pricing"] > section {
+    padding: 3.5rem 16px !important;
+  }
+
+  .axy-utility-page > section h1,
+  main[data-screen-label="Help Centre"] > section h1 {
+    font-size: clamp(2.25rem, 10vw, 2.5rem) !important;
+    overflow-wrap: anywhere;
+  }
+
+  main[data-screen-label="Pricing"] button,
+  main[data-screen-label="Pricing"] a {
+    touch-action: manipulation;
+  }
+
+  main[data-screen-label="Pricing"] button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  [data-screen-label] summary {
+    min-height: 52px;
+  }
+
+  .fr-integration__diagram {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+.axy-schedule-mobile-link {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  .site-header #nav-mobile-cta {
+    display: none !important;
+  }
+
+  #nav-mobile-btn {
+    margin-left: auto !important;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .site-footer__brand {
+    grid-column: auto;
+  }
+
+  .axy-contact-page > section,
+  main[data-screen-label="Help Centre"] > section {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+
+  .axy-embed-card {
+    padding: 8px !important;
+    border-radius: 14px !important;
+  }
+
+  .axy-walkthrough-page #schedule {
+    padding: 16px !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+  }
+
+  .axy-walkthrough-page #schedule iframe {
+    display: none !important;
+  }
+
+  .axy-schedule-mobile-link {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #1f2b4d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .collaboration-workflow {
+    height: auto !important;
+    min-height: 330px;
+    padding: 18px 14px !important;
+    overflow: visible !important;
+  }
+
+  .collaboration-workflow__row {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .collaboration-workflow__line {
+    width: 2px !important;
+    height: 20px !important;
+  }
+}
