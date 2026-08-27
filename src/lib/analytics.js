@@ -2,6 +2,7 @@ export const MEASUREMENT_ID = 'G-WTT8L3MJTV';
 export const CONSENT_STORAGE_KEY = 'axy-analytics-consent-v1';
 export const CONSENT_CHANGED_EVENT = 'axy:analytics-consent-changed';
 export const WALKTHROUGH_PENDING_KEY = 'axy-walkthrough-pending-v1';
+import { basePathForComparison, localizedPath, parseLocalizedPath } from '../i18n/paths.js';
 
 const CONSENT_STATE_KEY = '__axyAnalyticsConsentState';
 const SESSION_EVENT_PREFIX = 'axy-analytics-event-v1:';
@@ -88,8 +89,9 @@ function normalizePath(value, target) {
   try {
     const base = target?.location?.origin || 'https://axy.net';
     const pathname = new URL(String(value || '/'), base).pathname;
-    const normalized = pathname.length > 1 ? pathname.replace(/\/+$/, '') : '/';
-    return PUBLIC_PAGE_PATHS.has(normalized) ? normalized : '/not-found';
+    const parsed = parseLocalizedPath(pathname);
+    const normalized = parsed.basePath.length > 1 ? parsed.basePath.replace(/\/+$/, '') : '/';
+    return PUBLIC_PAGE_PATHS.has(normalized) ? localizedPath(normalized, parsed.locale) : '/not-found';
   } catch {
     return '/not-found';
   }
@@ -370,11 +372,13 @@ export function clearWalkthroughPending(target) {
 
 export function trackWalkthroughBookedConfirmation(target) {
   const currentWindow = browserWindow(target);
-  if (!currentWindow || currentPagePath(currentWindow) !== '/meeting-booked' || !hasWalkthroughPending(currentWindow)) return false;
+  if (!currentWindow || basePathForComparison(currentPagePath(currentWindow)) !== '/meeting-booked' || !hasWalkthroughPending(currentWindow)) return false;
+
+  const pagePath = currentPagePath(currentWindow);
 
   const sent = trackAnalyticsEvent(
     'walkthrough_booked',
-    { meeting_type: 'tailored_walkthrough', page_path: '/meeting-booked' },
+    { meeting_type: 'tailored_walkthrough', page_path: pagePath },
     {
       window: currentWindow,
       once: 'session',

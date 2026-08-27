@@ -8,6 +8,7 @@ import {
   trackAnalyticsEvent,
   trackWalkthroughBookedConfirmation,
 } from '../lib/analytics.js';
+import { basePathForComparison } from '../i18n/paths.js';
 
 const ONBOARDING_ORIGIN = 'https://app.axy.net';
 const ONBOARDING_PATH = '/onboarding';
@@ -53,7 +54,7 @@ function analyticsLocation(element) {
 function isWalkthroughIntent(url) {
   if (!url) return false;
   const internalScheduler = url.origin === window.location.origin
-    && normalizedPath(url.pathname) === WALKTHROUGH_PATH
+    && basePathForComparison(url.pathname) === WALKTHROUGH_PATH
     && url.hash === '#schedule';
   const hostedScheduler = url.hostname === MEETING_HOST && normalizedPath(url.pathname) === MEETING_PATH;
   return internalScheduler || hostedScheduler;
@@ -98,7 +99,7 @@ export default function AnalyticsRuntime() {
 
       if (!isOnboardingDestination(url)) return;
 
-      if (pagePath === '/pricing') {
+      if (basePathForComparison(pagePath) === '/pricing') {
         trackAnalyticsEvent('pricing_cta_click', {
           cta_name: element.dataset.analyticsCtaName || 'start_free',
           destination: destinationFor(element),

@@ -25,7 +25,7 @@ assert.equal((await readFile(join(outputRoot, "CNAME"), "utf8")).trim(), "axy.ne
 const home = await readFile(join(outputRoot, "index.html"), "utf8");
 const meetingBooked = await readFile(join(outputRoot, "meeting-booked/index.html"), "utf8");
 const help = await readFile(join(outputRoot, "help/index.html"), "utf8");
-const helpMain = help.match(/<main data-screen-label="Help Centre">[\s\S]*?<\/main>/)?.[0];
+const helpMain = help.match(/<main[^>]*data-screen-label="Help Centre"[^>]*>[\s\S]*?<\/main>/)?.[0];
 assert.match(home, /G-WTT8L3MJTV/);
 for (const consentField of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
   assert.match(home, new RegExp(`${consentField}[^,}]*denied`));

@@ -6,11 +6,14 @@ import privacy4 from './legal-content/privacy-4.js';
 import terms1 from './legal-content/terms-1.js';
 import terms2 from './legal-content/terms-2.js';
 import terms3 from './legal-content/terms-3.js';
+import { useLocalizedCopy } from '../i18n/I18nProvider.jsx';
+import utilityCatalog from '../i18n/locales/pages/utility.js';
 
 const privacyPolicyHtml = [privacy1, privacy2, privacy3, privacy4].join('');
 const termsAndConditionsHtml = [terms1, terms2, terms3].join('');
 
 export default function Legal() {
+  const { legal: copy } = useLocalizedCopy(utilityCatalog);
   React.useEffect(() => {
     const targetId = decodeURIComponent(window.location.hash.slice(1));
     if (!targetId) return undefined;
@@ -152,37 +155,35 @@ export default function Legal() {
 }
 `}</style>
       <div className="axy-legal-shell">
-        <div className="axy-legal-eyebrow">LEGAL INFORMATION</div>
-        <h1>AXY legal documents</h1>
-        <p className="axy-legal-lead">
-          Review the Privacy Policy and Terms &amp; Conditions governing the AXY platform,
-          including the AXY Back Office, AXY Sales App and AXY Customer App.
-        </p>
+        <div className="axy-legal-eyebrow">{copy.eyebrow}</div>
+        <h1>{copy.title}</h1>
+        <p className="axy-legal-lead">{copy.lead}</p>
+        <p className="axy-legal-lead">{copy.authoritative}</p>
 
-        <nav className="axy-legal-jump" aria-label="Legal document navigation">
-          <a href="#privacy-policy">Privacy Policy</a>
-          <a href="#terms-and-conditions">Terms &amp; Conditions</a>
+        <nav className="axy-legal-jump" aria-label={copy.navigation}>
+          <a href="#privacy-policy">{copy.privacy}</a>
+          <a href="#terms-and-conditions">{copy.terms}</a>
           <button type="button" onClick={() => window.dispatchEvent(new Event('axy:open-cookie-settings'))}>
-            Cookie settings
+            {copy.cookies}
           </button>
         </nav>
 
         <article id="privacy-policy" className="axy-legal-doc" aria-labelledby="privacy-policy-title">
           <header className="axy-legal-doc-header">
             <div className="axy-legal-doc-kicker">AXY</div>
-            <h2 id="privacy-policy-title">Privacy Policy</h2>
+            <h2 id="privacy-policy-title">{copy.privacy}</h2>
           </header>
           <div className="axy-legal-body" dangerouslySetInnerHTML={{ __html: privacyPolicyHtml }} />
-          <a className="axy-legal-back" href="#top">Back to top</a>
+          <a className="axy-legal-back" href="#top">{copy.back}</a>
         </article>
 
         <article id="terms-and-conditions" className="axy-legal-doc" aria-labelledby="terms-title">
           <header className="axy-legal-doc-header">
             <div className="axy-legal-doc-kicker">AXY</div>
-            <h2 id="terms-title">Terms &amp; Conditions</h2>
+            <h2 id="terms-title">{copy.terms}</h2>
           </header>
           <div className="axy-legal-body" dangerouslySetInnerHTML={{ __html: termsAndConditionsHtml }} />
-          <a className="axy-legal-back" href="#top">Back to top</a>
+          <a className="axy-legal-back" href="#top">{copy.back}</a>
         </article>
       </div>
     </main>

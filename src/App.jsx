@@ -29,13 +29,14 @@ import Walkthrough from './screens/Walkthrough.jsx';
 import Contact from './screens/Contact.jsx';
 import MeetingBooked from './screens/MeetingBooked.jsx';
 import { AXY_PRICING, calculateMonthlyPricing } from './config/billing.js';
+import AnalyticsConsent from './components/AnalyticsConsent.jsx';
+import { I18nProvider } from './i18n/I18nProvider.jsx';
+import { localeFromPath, parseLocalizedPath } from './i18n/paths.js';
 
 const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/meeting-booked': 'meetingbooked', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
 
-const TITLES = { home: 'Turn every store interaction into sales intelligence', product: 'Product Overview', salesapp: 'Sales App', backoffice: 'Back Office', custexp: 'Customer Experience', integrations: 'Integrations', how: 'How AXY Works', retailers: 'AXY for Retailers', brands: 'AXY for Manufacturers & Brands', clienteling: 'Retail Clienteling', capture: 'In-Store Sales Capture', demand: 'Product Demand Intelligence', collab: 'Retailer–Brand Collaboration', pricing: 'Pricing', resources: 'Resources', about: 'About AXY', walkthrough: 'Book a Walkthrough', meetingbooked: 'Walkthrough Booked', contact: 'Contact AXY', help: 'Help Centre', account: 'Create Free Account', login: 'Log In', article: 'Insights & Guides', legal: 'Legal', p404: 'Page not found' };
-
 function routeForPath(pathname = '/') {
-  const withoutQuery = pathname.split('?')[0].split('#')[0];
+  const withoutQuery = parseLocalizedPath(pathname).basePath.split('?')[0].split('#')[0];
   const normalized = withoutQuery.length > 1 ? withoutQuery.replace(/\/$/, '') : withoutQuery;
   return ROUTES[normalized] !== undefined ? ROUTES[normalized] : 'p404';
 }
@@ -70,7 +71,7 @@ const PAGES = {
   p404: NotFound,
 };
 
-class App extends React.Component {
+class AppShell extends React.Component {
   constructor(props) {
     super(props);
     this.state = { route: routeForPath(props.initialPath), menu: false, dd: '', forms: {},
@@ -78,8 +79,6 @@ class App extends React.Component {
   }
 
   ROUTES = ROUTES;
-
-  TITLES = TITLES;
 
   componentDidMount() {
     this._onRouteChange = () => {
@@ -93,9 +92,8 @@ class App extends React.Component {
           } else {
             window.scrollTo(0, 0);
           }
-        } catch (e) {}
+        } catch {}
       });
-      try { document.title = 'AXY — ' + (this.TITLES[r] || 'Page not found'); } catch (e) {}
     };
     window.addEventListener('popstate', this._onRouteChange);
     this._onRouteChange();
@@ -123,7 +121,7 @@ class App extends React.Component {
       recommendation: this._pricingRecommendation(c)
     };
   }
-  _scrollTo(id) { try { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' }); } catch (e) {} }
+  _scrollTo(id) { try { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' }); } catch {} }
   _resExplore() { this._scrollTo('axy-res-start'); }
   _pStep(key, delta, min) { this.setState(p => { const v = Math.max(min, (p[key] | 0) + delta); const next = { [key]: v }; if (key === 'pricingBusinessUnits' && p.pricingAnnouncementUnits > v) next.pricingAnnouncementUnits = v; return next; }); }
   _pAnnStep(delta) { this.setState(p => ({ pricingAnnouncementUnits: Math.min(Math.max(1, (p.pricingAnnouncementUnits | 0) + delta), Math.max(1, p.pricingBusinessUnits | 0)) })); }
@@ -135,7 +133,7 @@ class App extends React.Component {
       const modules = Object.entries(payload.modules).filter(([, enabled]) => enabled).map(([name]) => name).join(', ') || 'None selected';
       const body = ['AXY plan request', '', `Company: ${value('company')}`, `Contact: ${value('contact')}`, `Work email: ${value('email')}`, `Phone: ${value('phone')}`, `Country: ${value('country')}`, `Company type: ${value('companyType')}`, `Users: ${payload.users}`, `Business units: ${payload.businessUnits}`, `Selected modules: ${modules}`, `Estimated monthly total: €${payload.estimatedMonthlyTotal}`, `Future tool interest: ${payload.futureToolsInterest.join(', ') || 'None selected'}`, `Recommendation: ${payload.recommendation}`, `Notes: ${value('notes')}`].join('\n');
       window.location.href = `mailto:info@axy.net?subject=${encodeURIComponent('AXY plan request')}&body=${encodeURIComponent(body)}`;
-    } catch (e) {}
+    } catch {}
     this.setState(p => ({ forms: { ...p.forms, pricingPlan: true }, pricingLastPayload: payload }));
   }
   renderVals() {
@@ -229,4 +227,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default function App({ initialPath = '/' }) {
+  return (
+    <I18nProvider initialLocale={localeFromPath(initialPath)}>
+      <AppShell initialPath={initialPath} />
+      <AnalyticsConsent />
+    </I18nProvider>
+  );
+}

@@ -5,6 +5,7 @@ import {
   WALKTHROUGH_PENDING_KEY,
   analyticsCollectionAllowedOnHost,
   clearWalkthroughPending,
+  currentPagePath,
   hasWalkthroughPending,
   googleAnalyticsConfigParameters,
   googleConsentUpdateParameters,
@@ -455,4 +456,31 @@ test('booking confirmation requires the route, pending intent, and consent, then
   ]]);
 
   assert.equal(trackWalkthroughBookedConfirmation(target), false, 'a refresh cannot emit again');
+});
+
+test('localized public paths remain valid analytics paths and booking routes', () => {
+  const calls = [];
+  const target = createWindow({ gtag: (...args) => calls.push(args) });
+  target.location.href = 'https://axy.net/de/pricing/';
+  target.location.pathname = '/de/pricing/';
+  assert.equal(currentPagePath(target), '/de/pricing');
+  assert.equal(
+    sanitizeAnalyticsParameters('pricing_cta_click', {
+      cta_name: 'start_free',
+      destination: '/de/pricing',
+      page_path: '/de/pricing',
+    }, target)?.page_path,
+    '/de/pricing',
+  );
+
+  target.location.href = 'https://axy.net/fr/meeting-booked/';
+  target.location.pathname = '/fr/meeting-booked/';
+  setAnalyticsConsentState(true, target);
+  assert.equal(markWalkthroughPending(target), true);
+  assert.equal(trackWalkthroughBookedConfirmation(target), true);
+  assert.deepEqual(calls.at(-1), [
+    'event',
+    'walkthrough_booked',
+    { meeting_type: 'tailored_walkthrough', page_path: '/fr/meeting-booked' },
+  ]);
 });

@@ -14,11 +14,22 @@
   input, select, textarea { font-family:'Inter',system-ui,sans-serif; }
   #nav-mobile-btn, #nav-mobile-cta { display:none; }
   .axy-nav-dropdown-trigger:focus-visible { outline:3px solid rgba(44,140,153,.3); outline-offset:2px; }
+  .axy-language-picker button:focus-visible { outline:3px solid rgba(44,140,153,.3); outline-offset:2px; }
   .help-topic-card:hover, .help-topic-card:focus-visible { border-color:#2C8C99 !important; box-shadow:0 14px 32px rgba(31,43,77,.1); transform:translateY(-2px); color:#1F2B4D; }
   .help-topic-card:focus-visible { outline:3px solid rgba(44,140,153,.25); outline-offset:2px; }
   @media (max-width: 1100px) {
     #nav-desktop, #nav-actions-desktop { display:none !important; }
     #nav-mobile-btn, #nav-mobile-cta { display:inline-flex !important; }
+  }
+  @media (min-width: 1101px) and (max-width: 1440px) {
+    .site-header__bar { gap:10px !important; padding-inline:16px !important; }
+    #nav-desktop { gap:0 !important; }
+    #nav-desktop > a,
+    #nav-desktop > div > span,
+    #nav-desktop > div > button { padding-inline:7px !important; font-size:12.5px !important; }
+    #nav-actions-desktop { gap:6px !important; }
+    #nav-actions-desktop > a { padding-inline:9px !important; font-size:12px !important; }
+    #nav-actions-desktop .axy-language-picker button { min-width:26px !important; padding-inline:4px !important; }
   }
   @media (max-width: 820px) { .help-topic-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; } }
   @media (max-width: 560px) { .help-topic-grid { grid-template-columns:1fr !important; } }

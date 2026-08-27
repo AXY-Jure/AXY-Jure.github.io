@@ -1,56 +1,27 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import LocalizedLink from '../i18n/LocalizedLink.jsx';
+import { useLocalizedCopy } from '../i18n/I18nProvider.jsx';
+import aboutCatalog from '../i18n/locales/pages/about.js';
 import styles from '../styles/about.module.css';
 
-const JOURNEY = [
-  {
-    number: '01',
-    title: 'Capture',
-    copy: 'Sales activity while it happens.',
-    image: '/images/about/sales-app-customer-overview.webp',
-    alt: 'AXY Sales App customer overview displayed on an iPhone',
-  },
-  {
-    number: '02',
-    title: 'Continue',
-    copy: 'Customer context after the visit.',
-    image: '/images/about/customer-app-home.webp',
-    alt: 'AXY Customer App home screen displayed on an iPhone',
-  },
-  {
-    number: '03',
-    title: 'Understand',
-    copy: 'Product and demand context for the next decision.',
-    image: '/images/about/mobile-analytics.webp',
-    alt: 'AXY mobile analytics displayed on an iPhone',
-  },
-];
-
-const PRINCIPLES = [
-  ['Retailer relationship first', 'AXY strengthens the retailer’s customer relationship. It never competes with it.'],
-  ['Permission-based collaboration', 'Sharing between partners is explicit, scoped and reversible.'],
-  ['Practical workflows', 'If a workflow slows the sales floor, it does not ship.'],
-  ['Structured context', 'Activity becomes useful when teams can act on it.'],
-];
-
 export default function About() {
+  const copy = useLocalizedCopy(aboutCatalog);
+
   return (
     <main className={styles.page} data-screen-label="About AXY">
       <section className={styles.hero} aria-labelledby="about-title">
         <div className={`${styles.inner} ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>About AXY</p>
-            <h1 id="about-title">Built on the shop floor, not in a slide deck.</h1>
-            <p className={styles.heroLead}>
-              AXY connects the work happening in stores with the relationships and product decisions that follow.
-            </p>
+            <p className={styles.eyebrow}>{copy.hero.eyebrow}</p>
+            <h1 id="about-title">{copy.hero.title}</h1>
+            <p className={styles.heroLead}>{copy.hero.lead}</p>
             <div className={styles.actions}>
-              <Link className={styles.primaryButton} href="/book-a-walkthrough#schedule">
-                Get guided setup
-              </Link>
-              <Link className={styles.textLinkLight} href="/how-it-works">
-                See how AXY works <span aria-hidden="true">→</span>
-              </Link>
+              <LocalizedLink className={styles.primaryButton} href="/book-a-walkthrough#schedule">
+                {copy.hero.primaryAction}
+              </LocalizedLink>
+              <LocalizedLink className={styles.textLinkLight} href="/how-it-works">
+                {copy.hero.secondaryAction} <span aria-hidden="true">→</span>
+              </LocalizedLink>
             </div>
           </div>
 
@@ -58,36 +29,36 @@ export default function About() {
             <figure className={`${styles.heroFigure} ${styles.heroFigureMain}`}>
               <Image
                 src="/images/about/vip-room.webp"
-                alt="The private VIP room prepared for a customer visit"
+                alt={copy.hero.figures.visit.alt}
                 width={894}
                 height={661}
                 sizes="(max-width: 820px) 100vw, 48vw"
                 loading="eager"
                 fetchPriority="high"
               />
-              <figcaption>The visit</figcaption>
+              <figcaption>{copy.hero.figures.visit.caption}</figcaption>
             </figure>
             <figure className={styles.heroFigure}>
               <Image
                 src="/images/about/customer-consultation.webp"
-                alt="A retail specialist and customer considering jewellery together"
+                alt={copy.hero.figures.relationship.alt}
                 width={720}
                 height={900}
                 sizes="(max-width: 620px) 100vw, 23vw"
                 loading="eager"
               />
-              <figcaption>The relationship</figcaption>
+              <figcaption>{copy.hero.figures.relationship.caption}</figcaption>
             </figure>
             <figure className={styles.heroFigure}>
               <Image
                 src="/images/about/product-craft.webp"
-                alt="A jeweller fitting a handcrafted ring at a workbench"
+                alt={copy.hero.figures.product.alt}
                 width={720}
                 height={900}
                 sizes="(max-width: 620px) 100vw, 23vw"
                 loading="eager"
               />
-              <figcaption>The product</figcaption>
+              <figcaption>{copy.hero.figures.product.caption}</figcaption>
             </figure>
           </div>
         </div>
@@ -97,17 +68,14 @@ export default function About() {
         <div className={styles.inner}>
           <div className={styles.sectionHeading}>
             <div>
-              <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>The missing layer</p>
-              <h2 id="about-journey-title">Retail remembers. Most systems do not.</h2>
+              <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>{copy.journeySection.eyebrow}</p>
+              <h2 id="about-journey-title">{copy.journeySection.title}</h2>
             </div>
-            <p>
-              Store teams learn what customers want, what they compare and what gets in the way. AXY keeps that context
-              connected instead of letting it disappear at closing time.
-            </p>
+            <p>{copy.journeySection.intro}</p>
           </div>
 
           <div className={styles.journeyGrid}>
-            {JOURNEY.map((item) => (
+            {copy.journeySection.journey.map((item) => (
               <figure className={styles.journeyFigure} key={item.title}>
                 <div className={styles.journeyImage}>
                   <div className={styles.iphoneMockup} data-device-mockup="iphone">
@@ -133,7 +101,7 @@ export default function About() {
           </div>
 
           <p className={styles.pullQuote}>
-            CRMs model pipelines. ERPs model stock. AXY connects the retail journey between them.
+            {copy.journeySection.quote}
           </p>
         </div>
       </section>
@@ -141,17 +109,17 @@ export default function About() {
       <section className={styles.principlesSection} aria-labelledby="about-principles-title">
         <div className={`${styles.inner} ${styles.principlesGrid}`}>
           <div className={styles.principlesIntro}>
-            <p className={styles.eyebrow}>How we build</p>
-            <h2 id="about-principles-title">Four practical rules.</h2>
-            <p>Less ceremony. More context that helps the next person do the right thing.</p>
+            <p className={styles.eyebrow}>{copy.principles.eyebrow}</p>
+            <h2 id="about-principles-title">{copy.principles.title}</h2>
+            <p>{copy.principles.intro}</p>
           </div>
           <ol className={styles.principlesList}>
-            {PRINCIPLES.map(([title, copy], index) => (
+            {copy.principles.items.map(([title, itemCopy], index) => (
               <li key={title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <div>
                   <h3>{title}</h3>
-                  <p>{copy}</p>
+                  <p>{itemCopy}</p>
                 </div>
               </li>
             ))}
@@ -164,37 +132,28 @@ export default function About() {
           <figure className={styles.founderPortrait}>
             <Image
               src="/images/about/jure-malalan.webp"
-              alt="Jure Malalan, founder of AXY"
+              alt={copy.founder.imageAlt}
               width={816}
               height={1088}
               sizes="(max-width: 820px) 88vw, 36vw"
               loading="lazy"
             />
             <figcaption>
-              <span>Jure Malalan · Founder, AXY</span>
+              <span>{copy.founder.imageCaption}</span>
             </figcaption>
           </figure>
 
           <div className={styles.founderCopy}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>Founder</p>
-            <h2 id="about-founder-title">First-hand retail experience, translated into software.</h2>
-            <p>
-              AXY is led by Jure Malalan. Years spent inside premium retail, service and brand relationships shaped a
-              product built around the work teams actually do.
-            </p>
+            <p className={`${styles.eyebrow} ${styles.eyebrowDark}`}>{copy.founder.eyebrow}</p>
+            <h2 id="about-founder-title">{copy.founder.title}</h2>
+            <p>{copy.founder.body}</p>
             <dl className={styles.companyFacts}>
-              <div>
-                <dt>Company</dt>
-                <dd>XY Sales d.o.o.</dd>
-              </div>
-              <div>
-                <dt>Based in</dt>
-                <dd>Zagreb, Croatia</dd>
-              </div>
-              <div>
-                <dt>Product status</dt>
-                <dd>Live, Beta and Planned — stated clearly</dd>
-              </div>
+              {copy.founder.facts.map(([term, description]) => (
+                <div key={term}>
+                  <dt>{term}</dt>
+                  <dd>{description}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </div>
@@ -203,16 +162,16 @@ export default function About() {
       <section className={styles.ctaSection} aria-labelledby="about-cta-title">
         <div className={`${styles.inner} ${styles.ctaInner}`}>
           <div>
-            <p className={styles.eyebrow}>Start with one workflow</p>
-            <h2 id="about-cta-title">See how AXY fits your retail network.</h2>
+            <p className={styles.eyebrow}>{copy.cta.eyebrow}</p>
+            <h2 id="about-cta-title">{copy.cta.title}</h2>
           </div>
           <div className={styles.actions}>
-            <Link className={styles.primaryButton} href="/book-a-walkthrough#schedule">
-              Get guided setup
-            </Link>
-            <Link className={styles.secondaryButton} href="/how-it-works">
-              See how AXY works
-            </Link>
+            <LocalizedLink className={styles.primaryButton} href="/book-a-walkthrough#schedule">
+              {copy.cta.primaryAction}
+            </LocalizedLink>
+            <LocalizedLink className={styles.secondaryButton} href="/how-it-works">
+              {copy.cta.secondaryAction}
+            </LocalizedLink>
           </div>
         </div>
       </section>

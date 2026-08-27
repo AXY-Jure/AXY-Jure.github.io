@@ -1,128 +1,926 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
 <loc>https://axy.net/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://axy.net/it/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://axy.net/de/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 <url>
 <loc>https://axy.net/product/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/product/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/product/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/product/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/product/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/product/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/product/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/product/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/product/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/product/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/product/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/product/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/product/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/product/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/product/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/product/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/product/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/product/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/product/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/product/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/product/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/product/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/product/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/product/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/sales-app/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/sales-app/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/sales-app/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/sales-app/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/sales-app/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/sales-app/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/sales-app/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/sales-app/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/sales-app/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/sales-app/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/sales-app/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/sales-app/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/sales-app/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/sales-app/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/sales-app/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/sales-app/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/sales-app/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/sales-app/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/sales-app/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/sales-app/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/sales-app/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/sales-app/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/sales-app/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/sales-app/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/back-office/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/back-office/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/back-office/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/back-office/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/back-office/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/back-office/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/back-office/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/back-office/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/back-office/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/back-office/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/back-office/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/back-office/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/back-office/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/back-office/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/back-office/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/back-office/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/back-office/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/back-office/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/back-office/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/back-office/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/back-office/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/back-office/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/back-office/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/back-office/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/customer-experience/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/customer-experience/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/customer-experience/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/customer-experience/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/customer-experience/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/customer-experience/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/customer-experience/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/customer-experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/customer-experience/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/integrations/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/integrations/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/integrations/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/integrations/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/integrations/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/integrations/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/integrations/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/integrations/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/integrations/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/integrations/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/integrations/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/integrations/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/integrations/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/integrations/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/integrations/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/integrations/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/integrations/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/integrations/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/integrations/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/integrations/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/integrations/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/integrations/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/integrations/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/integrations/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/how-it-works/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/how-it-works/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/how-it-works/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/how-it-works/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/how-it-works/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/how-it-works/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/how-it-works/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/how-it-works/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/how-it-works/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/for-retailers/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-retailers/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/for-retailers/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-retailers/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/for-retailers/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-retailers/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/for-retailers/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-retailers/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-retailers/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/for-brands/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-brands/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-brands/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-brands/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-brands/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-brands/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/for-brands/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-brands/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-brands/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-brands/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-brands/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-brands/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/for-brands/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-brands/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-brands/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-brands/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-brands/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-brands/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/for-brands/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/for-brands/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/for-brands/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/for-brands/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/for-brands/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/for-brands/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/use-cases/retail-clienteling/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retail-clienteling/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/use-cases/retail-clienteling/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retail-clienteling/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/use-cases/retail-clienteling/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retail-clienteling/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/use-cases/retail-clienteling/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retail-clienteling/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retail-clienteling/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/use-cases/in-store-sales-capture/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/use-cases/in-store-sales-capture/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/use-cases/in-store-sales-capture/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/use-cases/in-store-sales-capture/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/in-store-sales-capture/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/in-store-sales-capture/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/use-cases/product-demand-intelligence/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/use-cases/product-demand-intelligence/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/use-cases/product-demand-intelligence/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/use-cases/product-demand-intelligence/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/product-demand-intelligence/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/product-demand-intelligence/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/use-cases/retailer-brand-collaboration/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/use-cases/retailer-brand-collaboration/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/use-cases/retailer-brand-collaboration/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/use-cases/retailer-brand-collaboration/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/use-cases/retailer-brand-collaboration/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/use-cases/retailer-brand-collaboration/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/pricing/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/pricing/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/pricing/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/pricing/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/pricing/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/pricing/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/pricing/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/pricing/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/pricing/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/pricing/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/pricing/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/pricing/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/pricing/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/pricing/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/pricing/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/pricing/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/pricing/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/pricing/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/pricing/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/pricing/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/pricing/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/pricing/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/pricing/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/pricing/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/resources/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/resources/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/resources/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/resources/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/resources/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/resources/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/resources/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/resources/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/resources/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/resources/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/resources/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/resources/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/resources/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/resources/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/resources/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/resources/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/resources/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/resources/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/resources/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/resources/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/resources/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/resources/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/resources/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/resources/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/article/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/article/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/article/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/article/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/article/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/article/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/article/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/article/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/article/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/article/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/article/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/article/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/article/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/article/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/article/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/article/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/article/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/article/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/article/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/article/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/article/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/article/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/article/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/article/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/about/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/about/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/about/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/about/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/about/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/about/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/about/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/about/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/about/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/about/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/about/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/about/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/about/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/about/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/about/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/about/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/about/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/about/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/about/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/about/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/book-a-walkthrough/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/book-a-walkthrough/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/book-a-walkthrough/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/book-a-walkthrough/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/book-a-walkthrough/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/book-a-walkthrough/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/book-a-walkthrough/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/book-a-walkthrough/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/book-a-walkthrough/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/contact/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/contact/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/contact/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/contact/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/contact/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/contact/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/contact/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/contact/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/contact/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/contact/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/contact/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/contact/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/contact/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/contact/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/contact/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/contact/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/contact/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/contact/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/contact/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/contact/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/help/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/help/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/help/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/help/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/help/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/help/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/help/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/help/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/help/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/help/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/help/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/help/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/help/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/help/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/help/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/help/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/help/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/help/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/help/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/help/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/help/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/help/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/help/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/help/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
 <loc>https://axy.net/create-account/</loc>
-<lastmod>2026-08-27T11:42:03.391Z</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/create-account/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/create-account/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/create-account/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/create-account/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/create-account/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/it/create-account/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/create-account/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/create-account/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/create-account/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/create-account/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/create-account/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/de/create-account/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/create-account/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/create-account/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/create-account/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/create-account/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/create-account/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://axy.net/fr/create-account/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://axy.net/create-account/" />
+<xhtml:link rel="alternate" hreflang="it" href="https://axy.net/it/create-account/" />
+<xhtml:link rel="alternate" hreflang="de" href="https://axy.net/de/create-account/" />
+<xhtml:link rel="alternate" hreflang="fr" href="https://axy.net/fr/create-account/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://axy.net/create-account/" />
+<lastmod>2026-08-27T18:55:27.079Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>

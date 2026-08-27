@@ -3,6 +3,7 @@
 import React from 'react';
 import { CONSENT_CHANGED_EVENT, currentPagePath, trackAnalyticsEvent } from '../lib/analytics.js';
 import { createHubSpotFormLifecycleTracker, legacyHubSpotFormEventName } from '../lib/hubspot.js';
+import { useI18n } from '../i18n/I18nProvider.jsx';
 
 const FORM_SCRIPT_ID = 'axy-hubspot-forms-script';
 const FORM_SCRIPT_SRC = 'https://js-eu1.hsforms.net/forms/embed/148359284.js';
@@ -31,6 +32,7 @@ function instanceKey(event) {
 
 export default function HubSpotFormEmbed() {
   const frameRef = React.useRef(null);
+  const { t } = useI18n();
 
   React.useEffect(() => {
     const frame = frameRef.current;
@@ -143,7 +145,7 @@ export default function HubSpotFormEmbed() {
       data-region="eu1"
       data-form-id={FORM_ID}
       data-portal-id="148359284"
-      aria-label="Contact AXY form"
+      aria-label={t('common.embeds.contactFormLabel')}
       style={{ minHeight: '560px' }}
     />
   );

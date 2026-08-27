@@ -1,60 +1,124 @@
 import type { Metadata } from "next";
+import {
+  DEFAULT_LOCALE,
+  ENGLISH_PAGE_META,
+  FALLBACK_PAGE_META,
+  LOCALIZED_PAGE_META,
+  OPEN_GRAPH_LOCALES,
+  SOCIAL_IMAGE_ALT,
+  SUPPORTED_LOCALES,
+  type Locale,
+  type PageMeta,
+  type PagePath,
+} from "./seo-locales";
 
-type PageMeta = { title: string; description: string; index?: boolean };
-
-const DEFAULT_DESCRIPTION = "AXY connects retailers, brands, sales teams, products and customers—turning everyday retail interactions into structured intelligence.";
+const SITE_ORIGIN = "https://axy.net";
 const SOCIAL_IMAGE = "/images/surface-sales-app.jpg";
 
-const PAGE_META: Record<string, PageMeta> = {
-  "/": { title: "Turn Every Store Interaction into Sales Intelligence", description: "AXY connects the retail ecosystem so in-store interactions become useful context for sales teams, customers, retailers and brands." },
-  "/product": { title: "Retail Collaboration Platform", description: "Explore the AXY platform: Sales App, Back Office, Customer Experience and shared retail collaboration workflows." },
-  "/sales-app": { title: "Sales App for Connected Retail", description: "Capture products shown, customer interest, next actions and follow-up in one connected sales workflow." },
-  "/back-office": { title: "Retail Back Office", description: "Manage products, customers, operations, permissions and insights across the AXY retail ecosystem." },
-  "/customer-experience": { title: "Connected Customer Experience", description: "Continue the customer journey after a store visit with products, wishlists, offers, warranty and service context." },
-  "/integrations": { title: "Retail Systems Integration Layer", description: "Connect ERP, CRM, POS, PIM, commerce and partner systems through AXY’s standardised API and shared retail data model." },
-  "/how-it-works": { title: "How AXY Works", description: "See how AXY captures retail activity, connects context, supports action and turns approved signals into useful intelligence." },
-  "/for-retailers": { title: "AXY for Retailers", description: "Help sales teams capture every visit, continue customer conversations and understand demand across stores." },
-  "/for-brands": { title: "AXY for Brands and Manufacturers", description: "Connect approved in-store activity with product, stock and sell-through data to support retailers and make clearer availability decisions." },
-  "/use-cases/retail-clienteling": { title: "Retail Clienteling", description: "Turn remembered customer context into a consistent clienteling workflow before, during and after each store visit." },
-  "/use-cases/in-store-sales-capture": { title: "In-Store Sales Capture", description: "Capture product presentations and customer intent before the transaction so valuable retail signals do not disappear." },
-  "/use-cases/product-demand-intelligence": { title: "Product Demand Intelligence", description: "Use permissioned product interest signals to understand demand ahead of sales and support better stock decisions." },
-  "/use-cases/retailer-brand-collaboration": { title: "Retailer and Brand Collaboration", description: "Connect shared catalogue, ordering, announcement, training, warranty and retail collaboration workflows." },
-  "/pricing": { title: "AXY Pricing", description: "Start with AXY Free or configure a plan around your users, business units and optional modules." },
-  "/resources": { title: "Retail Clienteling Resources", description: "Read AXY's practical clienteling guide and explore sales capture, product demand, collaboration and connected-system workflows." },
-  "/article": { title: "What Is Retail Clienteling? CRM, Store Visits and Follow-Up Explained", description: "A practical guide to retail clienteling, including CRM context, in-store activity, follow-up and the measurements that matter." },
-  "/about": { title: "About AXY", description: "Learn why AXY was created and how it connects retailers, brands, products, sales teams and customers." },
-  "/book-a-walkthrough": { title: "Book an AXY Walkthrough", description: "Request a guided AXY walkthrough focused on your stores, brands, workflows, integrations and first activation step." },
-  "/meeting-booked": { title: "AXY Walkthrough Booked", description: "Your tailored AXY walkthrough has been scheduled successfully.", index: false },
-  "/contact": { title: "Contact AXY", description: "Contact AXY about product questions, pricing, partnerships, integrations or the next step for your retail business." },
-  "/help": { title: "AXY Help Centre", description: "Choose an AXY Product Support topic, send a secure request, or contact the AXY Support Team by email." },
-  "/create-account": { title: "Create an AXY Account", description: "Start setting up AXY for your retail business." },
-  "/login": { title: "Log In to AXY", description: "Access your AXY environment.", index: false },
-  "/legal": { title: "AXY Privacy Policy and Terms & Conditions", description: "AXY Privacy Policy and Terms & Conditions for the AXY platform and applications.", index: false },
+export type ParsedPublicPath = {
+  locale: Locale;
+  pagePath: string;
 };
 
+export function isSupportedLocale(value: string): value is Locale {
+  return SUPPORTED_LOCALES.includes(value as Locale);
+}
+
+function normalizedPath(path: string) {
+  const withoutQuery = path.split(/[?#]/, 1)[0] || "/";
+  const withLeadingSlash = withoutQuery.startsWith("/") ? withoutQuery : `/${withoutQuery}`;
+  return withLeadingSlash.length > 1 ? withLeadingSlash.replace(/\/+$/, "") : "/";
+}
+
+export function parsePublicPath(path: string): ParsedPublicPath {
+  const normalized = normalizedPath(path);
+  const segments = normalized.split("/").filter(Boolean);
+  const possibleLocale = segments[0]?.toLowerCase();
+
+  if (possibleLocale && isSupportedLocale(possibleLocale) && possibleLocale !== DEFAULT_LOCALE) {
+    const pagePath = segments.length === 1 ? "/" : `/${segments.slice(1).join("/")}`;
+    return { locale: possibleLocale, pagePath };
+  }
+
+  return { locale: DEFAULT_LOCALE, pagePath: normalized };
+}
+
+export function isPagePath(path: string): path is PagePath {
+  return Object.prototype.hasOwnProperty.call(ENGLISH_PAGE_META, path);
+}
+
+export function localizedPathForPath(path: string, locale: Locale) {
+  const pagePath = normalizedPath(path);
+  if (locale === DEFAULT_LOCALE) return pagePath;
+  return pagePath === "/" ? `/${locale}` : `/${locale}${pagePath}`;
+}
+
+export function canonicalUrlForPath(path: string, locale?: Locale) {
+  const parsed = locale ? { locale, pagePath: normalizedPath(path) } : parsePublicPath(path);
+  const localizedPath = localizedPathForPath(parsed.pagePath, parsed.locale);
+  return localizedPath === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${localizedPath}/`;
+}
+
+export function alternateUrlsForPath(path: string) {
+  const pagePath = normalizedPath(path);
+  const languages: Record<string, string> = {};
+
+  for (const locale of SUPPORTED_LOCALES) {
+    languages[locale] = canonicalUrlForPath(pagePath, locale);
+  }
+  languages["x-default"] = canonicalUrlForPath(pagePath, DEFAULT_LOCALE);
+
+  return languages;
+}
+
 export function metadataForPath(path: string): Metadata {
-  const page = PAGE_META[path] ?? { title: "Page Not Found", description: DEFAULT_DESCRIPTION, index: false };
-  const canonical = canonicalUrlForPath(path);
+  const { locale, pagePath } = parsePublicPath(path);
+  const exists = isPagePath(pagePath);
+  const englishPage = exists ? ENGLISH_PAGE_META[pagePath] as PageMeta : undefined;
+  const localizedPage = exists ? LOCALIZED_PAGE_META[locale][pagePath] : FALLBACK_PAGE_META[locale];
+  const index = exists && englishPage?.index !== false;
+  const canonical = canonicalUrlForPath(pagePath, locale);
+  const alternateLocale = SUPPORTED_LOCALES
+    .filter((candidate) => candidate !== locale)
+    .map((candidate) => OPEN_GRAPH_LOCALES[candidate]);
+
   return {
-    title: page.title,
-    description: page.description,
-    alternates: { canonical },
-    robots: page.index === false ? { index: false, follow: false } : undefined,
+    title: localizedPage.title,
+    description: localizedPage.description,
+    alternates: index
+      ? { canonical, languages: alternateUrlsForPath(pagePath) }
+      : { canonical },
+    robots: index ? undefined : { index: false, follow: false },
     openGraph: {
       type: "website",
       siteName: "AXY",
-      title: page.title,
-      description: page.description,
+      title: localizedPage.title,
+      description: localizedPage.description,
       url: canonical,
-      images: [{ url: SOCIAL_IMAGE, width: 1600, height: 900, alt: "AXY connected retail platform" }],
+      locale: OPEN_GRAPH_LOCALES[locale],
+      alternateLocale,
+      images: [{
+        url: SOCIAL_IMAGE,
+        width: 1600,
+        height: 900,
+        alt: SOCIAL_IMAGE_ALT[locale],
+      }],
     },
-    twitter: { card: "summary_large_image", title: page.title, description: page.description, images: [SOCIAL_IMAGE] },
+    twitter: {
+      card: "summary_large_image",
+      title: localizedPage.title,
+      description: localizedPage.description,
+      images: [SOCIAL_IMAGE],
+    },
   };
 }
 
-export function canonicalUrlForPath(path: string) {
-  return path === "/" ? "https://axy.net/" : `https://axy.net${path.replace(/\/+$/, "")}/`;
-}
+export const staticPagePaths = Object.keys(ENGLISH_PAGE_META) as PagePath[];
 
-export const staticPagePaths = Object.keys(PAGE_META);
-export const sitemapPaths = Object.entries(PAGE_META).filter(([, value]) => value.index !== false).map(([path]) => path);
+export const staticLocalizedPagePaths = staticPagePaths.flatMap((pagePath) =>
+  SUPPORTED_LOCALES.map((locale) => localizedPathForPath(pagePath, locale)),
+);
+
+export const sitemapPaths = staticPagePaths.filter(
+  (pagePath) => (ENGLISH_PAGE_META[pagePath] as PageMeta).index !== false,
+);

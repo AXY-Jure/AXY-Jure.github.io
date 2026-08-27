@@ -11,7 +11,7 @@
     "build": "next build && node scripts/finalize-static-export.mjs",
     "prepare:pages": "npm run build && node scripts/sync-static-export.mjs",
     "start": "next dev",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/analytics-events.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/analytics-events.test.mjs tests/i18n.test.mjs",
     "validate:artifact": "node scripts/validate-static-export.mjs",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"

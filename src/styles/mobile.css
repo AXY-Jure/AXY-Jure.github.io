@@ -17,6 +17,13 @@
 }
 
 @media (max-width: 600px) {
+  html[lang="de"] [data-screen-label] h1,
+  html[lang="de"] [data-screen-label] h2,
+  html[lang="de"] [data-screen-label] h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+
   .site-header__bar {
     height: 60px !important;
     gap: 12px !important;
@@ -156,6 +163,15 @@
     max-width: 100% !important;
     margin-left: 0 !important;
   }
+
+  .home-clean__stage:not(.home-clean__stage--active) .home-clean__stage-description {
+    display: none;
+  }
+
+  .home-clean__stage:not(.home-clean__stage--active) {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
 }
 
 .axy-schedule-mobile-link {
@@ -212,6 +228,15 @@
     font-size: 14px;
     font-weight: 800;
     text-align: center;
+  }
+
+  .use-case-definition-section {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  .use-case-definition {
+    padding: 16px 14px !important;
   }
 
   .collaboration-workflow {

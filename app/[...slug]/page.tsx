@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import App from "@/src/App.jsx";
-import { metadataForPath, staticPagePaths } from "../site-metadata";
+import { metadataForPath, staticLocalizedPagePaths } from "../site-metadata";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
 
@@ -11,7 +11,7 @@ function pathFromSlug(slug: string[]) {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return staticPagePaths
+  return staticLocalizedPagePaths
     .filter((path) => path !== "/")
     .map((path) => ({ slug: path.slice(1).split("/") }));
 }

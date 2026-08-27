@@ -26,12 +26,34 @@ test("publishes canonical sitemap URLs that match trailing-slash routing", async
   const sitemap = await readOutput("sitemap.xml");
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 
-  assert.equal(urls.length, 21);
+  assert.equal(urls.length, 84);
   assert.ok(urls.includes("https://axy.net/"));
+  assert.ok(urls.includes("https://axy.net/it/"));
+  assert.ok(urls.includes("https://axy.net/de/pricing/"));
+  assert.ok(urls.includes("https://axy.net/fr/for-retailers/"));
   assert.ok(!urls.includes("https://axy.net"));
+  assert.ok(!urls.some((url) => url.includes("/en/")));
   assert.ok(urls.every((url) => url.endsWith("/")));
   assert.ok(!urls.some((url) => url.includes("meeting-booked")));
   assert.ok(!urls.includes("https://axy.net/legal/"));
+});
+
+test("exports localized pages with language metadata and reciprocal hreflang", async () => {
+  const italian = await readOutput("it/index.html");
+  const germanPricing = await readOutput("de/pricing/index.html");
+  const frenchRetailers = await readOutput("fr/for-retailers/index.html");
+
+  assert.match(italian, /<html lang="it"/);
+  assert.match(germanPricing, /<html lang="de"/);
+  assert.match(frenchRetailers, /<html lang="fr"/);
+  assert.match(germanPricing, /rel="canonical" href="https:\/\/axy\.net\/de\/pricing\/"/);
+  assert.match(frenchRetailers, /rel="canonical" href="https:\/\/axy\.net\/fr\/for-retailers\/"/);
+  for (const language of ["en", "it", "de", "fr", "x-default"]) {
+    assert.match(germanPricing, new RegExp('hrefLang="' + language + '"'));
+  }
+  assert.match(germanPricing, /AXY Preise|AXY-Preise/);
+  assert.match(italian, /interazioni|vendita|retail/i);
+  assert.doesNotMatch(germanPricing, /name="robots" content="noindex/);
 });
 
 test("publishes a click-to-play homepage video with sound controls", async () => {
@@ -94,7 +116,7 @@ test("publishes the six supplied product artworks with their existing destinatio
   assert.ok(end > start);
   assert.equal([...section.matchAll(/src="\/images\/product-bubbles\/[^"]+\.webp"/g)].length, 6);
   for (const [hoverClass, image, label, href] of cards) {
-    const card = section.match(new RegExp(`<a class="${hoverClass}" href="${href}/?"[^>]*>[\\s\\S]*?</a>`))?.[0];
+    const card = section.match(new RegExp(`<a href="${href}/?" class="${hoverClass}"[^>]*>[\\s\\S]*?</a>`))?.[0];
     assert.ok(card);
     assert.match(card, new RegExp(`src="/images/product-bubbles/${image}"`));
     assert.match(card, new RegExp(label));
@@ -113,7 +135,7 @@ test("publishes the redesigned Customer App journey with the supplied artwork", 
     "/images/customer-app/taste-profile-phone.webp",
   ];
   assert.ok(page);
-  const assetSources = [...page.matchAll(/<img[^>]*\bsrc="(\/images\/customer-app\/[^"]+\.webp)"[^>]*>/g)]
+  const assetSources = [...page.matchAll(/<img[^>]*\bsrc="(\/images\/(?:customer-app|for-retailers)\/[^"]+\.webp)"[^>]*>/g)]
     .map((match) => match[1]);
 
   assert.match(customerExperience, /rel="canonical" href="https:\/\/axy\.net\/customer-experience\/"/);
@@ -420,7 +442,7 @@ test("publishes the clienteling guide as a semantic editorial long-read", async 
   assert.doesNotMatch(renderedArticle, /name="robots" content="noindex/);
   assert.match(page, /data-analytics-location="article"/);
   assert.equal([...page.matchAll(/<h1\b/g)].length, 1);
-  assert.match(page, /What is retail clienteling—and why CRM records are not enough\?/);
+  assert.match(page, /Retail clienteling: why CRM records are not enough\./);
   assert.match(page, /src="\/images\/article\/clienteling-context\.webp"/);
   assert.match(page, /alt="A retail specialist presenting an unbranded watch while a customer considers it at the counter"/);
   assert.match(page, /<time dateTime="2026-06-18">Published 18 June 2026<\/time>/);
@@ -516,8 +538,8 @@ test("exposes Help & Support through keyboard-accessible desktop and mobile navi
   assert.match(header, /aria-controls="resources-menu"/);
   assert.match(header, /onClick=\{ddResources \? ddOff : ddResourcesOn\}/);
   assert.match(header, /event\.key !== 'Escape'/);
-  assert.equal([...header.matchAll(/href="\/help"/g)].length, 2);
-  assert.equal([...header.matchAll(/Help &amp; Support/g)].length, 2);
+  assert.equal([...header.matchAll(/href=\{hrefForLocale\('\/help'\)\}/g)].length, 2);
+  assert.equal([...header.matchAll(/t\('common\.nav\.helpSupport'\)/g)].length, 2);
   assert.match(header, /id="nav-mobile-btn"[^>]*type="button"[^>]*aria-expanded=\{menuOpen\}/);
 });
 
@@ -551,8 +573,8 @@ test("publishes the approved free plan, calculator and AI image packages", async
   assert.match(pricing, /50 image credits/);
   assert.match(pricing, /100 image credits/);
   assert.match(pricing, /€20/);
-  assert.match(pricing, /€40/);
-  assert.match(pricing, /€70/);
+  assert.match(pricing, /€<!-- -->40/);
+  assert.match(pricing, /€<!-- -->70/);
   assert.match(pricing, /VAT treatment is confirmed during secure Stripe Checkout/);
   assert.doesNotMatch(pricing, /AXY Starter|Request this plan|Send plan request/);
 });
@@ -659,7 +681,7 @@ test("keeps narrow-phone layout fixes scoped and regression-protected", async ()
   assert.match(mobileCss, /\.axy-walkthrough-page #schedule iframe[\s\S]*display: none !important/);
   assert.match(mobileCss, /\[data-screen-label\] summary[\s\S]*min-height: 52px/);
   assert.match(resourcesCss, /\.heroFigure img\s*\{[\s\S]*aspect-ratio: 4 \/ 3;\s*height: auto;/);
-  assert.match(walkthrough, /Open mobile scheduling/);
+  assert.match(walkthrough, /\{copy\.mobileSchedule\}/);
 
   for (const source of [clienteling, salesCapture, demandIntelligence, collaboration]) {
     assert.doesNotMatch(source, /minWidth: "300px"/);
