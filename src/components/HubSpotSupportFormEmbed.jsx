@@ -2,14 +2,12 @@
 
 import React from 'react';
 import { useI18n } from '../i18n/I18nProvider.jsx';
-
-const DEFAULT_PORTAL_ID = '148359284';
-const DEFAULT_FORM_ID = '7108a1d1-9b04-49ed-84fc-b7c7123e0767';
+import { HUBSPOT } from '../config/hubspot.js';
 
 export default function HubSpotSupportFormEmbed({
-  portalId = DEFAULT_PORTAL_ID,
-  formId = DEFAULT_FORM_ID,
-  region = 'eu1',
+  portalId = HUBSPOT.portalId,
+  formId = HUBSPOT.forms.support,
+  region = HUBSPOT.region,
 }) {
   const { t } = useI18n();
 

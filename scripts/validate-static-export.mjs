@@ -8,6 +8,7 @@ const outputRoot = join(projectRoot, "out");
 const requiredFiles = [
   "index.html",
   "pricing/index.html",
+  "request-access/index.html",
   "book-a-walkthrough/index.html",
   "meeting-booked/index.html",
   "help/index.html",

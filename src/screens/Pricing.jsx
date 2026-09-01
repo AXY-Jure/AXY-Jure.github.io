@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '../i18n/LocalizedLink.jsx';
 import { useLocalizedCopy } from '../i18n/I18nProvider.jsx';
 import pricingCatalog from '../i18n/locales/pages/pricing.js';
 import { AXY_APP_ROUTES, BILLING_READY, buildSubscriptionUrl } from '../config/billing.js';
@@ -59,7 +60,7 @@ export default function Pricing({ pUsers, pUsersDec, pUsersInc, pBU, pBUDec, pBU
         <h1 style={{ margin: '14px 0 0', color: '#fff', fontSize: 'clamp(36px,5vw,52px)', lineHeight: 1.08, letterSpacing: '-.035em', fontWeight: 850 }}>{copy.hero.title}</h1>
         <p style={{ maxWidth: '650px', margin: '18px auto 0', color: '#C9D2E4', fontSize: '16px', lineHeight: 1.65 }}>{copy.hero.body}</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: '28px' }}>
-          <a href={AXY_APP_ROUTES.onboarding} data-analytics-cta-name="start_free_hero" style={{ ...primary, background: '#fff', color: C.navy, borderColor: '#fff' }}>{copy.hero.start}</a>
+          <Link href="/request-access" data-analytics-cta-name="request_beta_hero" style={{ ...primary, background: '#fff', color: C.navy, borderColor: '#fff' }}>{copy.hero.start}</Link>
           <button type="button" onClick={pScrollBuild} data-analytics-event="pricing_cta_click" data-analytics-cta-name="calculate_plan" data-analytics-destination="/pricing#axy-pricing-builder" style={{ ...outline, background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,.5)', cursor: 'pointer' }}>{copy.hero.calculate}</button>
           <a href={AXY_APP_ROUTES.authentication} style={{ display: 'inline-flex', alignItems: 'center', padding: '12px', color: '#fff', fontSize: '14px', fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '4px' }}>{copy.hero.login}</a>
         </div>
@@ -73,7 +74,7 @@ export default function Pricing({ pUsers, pUsersDec, pUsersInc, pBU, pBUDec, pBU
             <div style={label}>{copy.plans.freeName}</div><div style={{ marginTop: '10px', color: C.navy, fontSize: '34px', fontWeight: 850 }}>€0</div>
             <p style={{ margin: '8px 0 20px', color: C.muted, fontSize: '13.5px', lineHeight: 1.6 }}>{copy.plans.freeBody}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>{copy.plans.freeItems.map((item) => <Check key={item}>{item}</Check>)}</div>
-            <a href={AXY_APP_ROUTES.onboarding} data-analytics-cta-name="start_free_plan" style={{ ...primary, marginTop: '24px' }}>{copy.plans.start}</a>
+            <Link href="/request-access" data-analytics-cta-name="request_beta_plan" style={{ ...primary, marginTop: '24px' }}>{copy.plans.start}</Link>
           </article>
           <article style={{ display: 'flex', flexDirection: 'column', padding: '28px', border: `1px solid ${C.border}`, borderRadius: '18px', background: C.pale }}>
             <div style={label}>{copy.plans.buildEyebrow}</div><h2 style={{ margin: '11px 0 0', color: C.navy, fontSize: '27px', lineHeight: 1.2, fontWeight: 850 }}>{copy.plans.buildTitle}</h2>
@@ -116,6 +117,6 @@ export default function Pricing({ pUsers, pUsersDec, pUsersInc, pBU, pBUDec, pBU
 
     <section style={{ padding: '62px 24px', background: C.pale }}><div style={{ maxWidth: '760px', margin: '0 auto' }}><div style={{ textAlign: 'center' }}><div style={label}>{copy.faq.eyebrow}</div><h2 style={{ margin: '11px 0 0', color: C.navy, fontSize: '28px', fontWeight: 850 }}>{copy.faq.title}</h2></div><div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '25px' }}>{copy.faq.items.map(([question, answer]) => <details key={question} style={{ padding: '16px 18px', border: `1px solid ${C.border}`, borderRadius: '12px', background: '#fff' }}><summary style={{ color: C.navy, fontSize: '14px', fontWeight: 750, cursor: 'pointer' }}>{question}</summary><p style={{ margin: '10px 0 0', color: C.muted, fontSize: '13.5px', lineHeight: 1.65 }}>{answer}</p></details>)}</div></div></section>
 
-    <section style={{ padding: '76px 24px', background: 'linear-gradient(135deg,#1F2B4D,#32415C 58%,#2C6570)', textAlign: 'center' }}><div style={{ maxWidth: '760px', margin: '0 auto' }}><h2 style={{ margin: 0, color: '#fff', fontSize: '31px', lineHeight: 1.15, fontWeight: 850 }}>{copy.cta.title}</h2><p style={{ margin: '14px auto 0', maxWidth: '590px', color: '#C9D2E4', fontSize: '14.5px', lineHeight: 1.65 }}>{copy.cta.body}</p><div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: '24px' }}><a href={AXY_APP_ROUTES.onboarding} data-analytics-cta-name="start_free_final" style={{ ...primary, background: '#fff', color: C.navy, borderColor: '#fff' }}>{copy.cta.start}</a><a href={AXY_APP_ROUTES.authentication} style={{ ...outline, background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,.5)' }}>{copy.cta.login}</a></div></div></section>
+    <section style={{ padding: '76px 24px', background: 'linear-gradient(135deg,#1F2B4D,#32415C 58%,#2C6570)', textAlign: 'center' }}><div style={{ maxWidth: '760px', margin: '0 auto' }}><h2 style={{ margin: 0, color: '#fff', fontSize: '31px', lineHeight: 1.15, fontWeight: 850 }}>{copy.cta.title}</h2><p style={{ margin: '14px auto 0', maxWidth: '590px', color: '#C9D2E4', fontSize: '14.5px', lineHeight: 1.65 }}>{copy.cta.body}</p><div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: '24px' }}><Link href="/request-access" data-analytics-cta-name="request_beta_final" style={{ ...primary, background: '#fff', color: C.navy, borderColor: '#fff' }}>{copy.cta.start}</Link><a href={AXY_APP_ROUTES.authentication} style={{ ...outline, background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,.5)' }}>{copy.cta.login}</a></div></div></section>
   </main>;
 }

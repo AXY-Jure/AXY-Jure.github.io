@@ -98,19 +98,19 @@ export default function SiteHeader(v) {
             <LanguagePicker />
             <a href="https://app.axy.net/authentication" style={{ fontSize: "13px", fontWeight: "600", color: "#667085", whiteSpace: "nowrap" }}>{t('common.actions.logIn')}
             </a>{' '}
-            <a className="hv207" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 16px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13px", fontWeight: "700", transition: "background .15s" }}>{t('common.actions.createFreeAccount')}
+            <a className="hv207" href={hrefForLocale('/request-access')} style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 16px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "13px", fontWeight: "700", transition: "background .15s" }}>{t('common.actions.requestBetaAccess')}
             </a>{' '}
             <a className="hv208" href={hrefForLocale('/book-a-walkthrough#schedule')} style={{ display: "inline-flex", whiteSpace: "nowrap", padding: "9px 15px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "13px", fontWeight: "600" }}>{t('common.actions.guidedSetup')}
             </a>
           </div>
-          <a id="nav-mobile-cta" href="https://app.axy.net/onboarding" style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>{t('common.actions.createFreeAccount')}
+          <a id="nav-mobile-cta" href={hrefForLocale('/request-access')} style={{ marginLeft: "auto", alignItems: "center", padding: "8px 13px", background: "#32415C", color: "#fff", borderRadius: "8px", fontSize: "12px", fontWeight: "700" }}>{t('common.actions.requestAccessShort')}
           </a>{' '}
           <button id="nav-mobile-btn" type="button" aria-expanded={menuOpen} aria-controls="nav-mobile-menu" onClick={toggleMenu} style={{ appearance: "none", marginLeft: "10px", alignItems: "center", gap: "8px", padding: "9px 14px", background: "#fff", border: "1px solid #E4E8EF", borderRadius: "9px", fontFamily: "inherit", fontSize: "13px", fontWeight: "700", color: "#1F2B4D", cursor: "pointer" }}>{menuLabel}
           </button>
         </div>
         {menuOpen ? (<>
           <div id="nav-mobile-menu" className="site-header__mobile-menu" style={{ background: "#fff", borderBottom: "1px solid #E4E8EF", padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px", maxHeight: "70vh", overflowY: "auto" }}>
-            <a href="https://app.axy.net/onboarding" style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>{t('common.actions.createFreeAccount')}
+            <a href={hrefForLocale('/request-access')} style={{ display: "block", textAlign: "center", padding: "12px", background: "#32415C", color: "#fff", borderRadius: "9px", fontSize: "14px", fontWeight: "700", marginBottom: "4px" }}>{t('common.actions.requestBetaAccess')}
             </a>{' '}
             <a href={hrefForLocale('/book-a-walkthrough#schedule')} style={{ display: "block", textAlign: "center", padding: "11px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "9px", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>{t('common.actions.guidedSetup')}
             </a>

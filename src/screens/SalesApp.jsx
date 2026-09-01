@@ -40,9 +40,9 @@ export default function SalesApp() {
               <LocalizedLink className={styles.buttonPrimary} href="/book-a-walkthrough#schedule">
                 {copy.hero.guidedSetup}
               </LocalizedLink>
-              <a className={styles.buttonSecondary} href="https://app.axy.net/onboarding">
+              <LocalizedLink className={styles.buttonSecondary} href="/request-access">
                 {copy.hero.createAccount}
-              </a>
+              </LocalizedLink>
             </div>
             <LocalizedLink className={styles.textLink} href="/for-retailers">
               {copy.hero.retailers} <span aria-hidden="true">→</span>
@@ -224,7 +224,7 @@ export default function SalesApp() {
           <h2 id="sales-app-final-title">{copy.final.title}</h2>
           <p>{copy.final.body}</p>
           <div className={styles.finalActions}>
-            <a className={styles.buttonLight} href="https://app.axy.net/onboarding">{copy.final.createAccount}</a>
+            <LocalizedLink className={styles.buttonLight} href="/request-access">{copy.final.createAccount}</LocalizedLink>
             <LocalizedLink
               className={styles.buttonOutlineLight}
               href="/pricing"

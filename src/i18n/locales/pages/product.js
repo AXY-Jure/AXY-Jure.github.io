@@ -5,7 +5,7 @@ const en = {
       title: 'One connected platform for modern retail.',
       body: 'AXY connects sales teams, product data, customers, operations and retail partners — so every part of the business works with the same context.',
       explore: 'Explore the platform',
-      createAccount: 'Create free account',
+      createAccount: 'Request beta access',
       artLabel: 'AXY product surfaces',
     },
     operatingModel: {
@@ -74,7 +74,7 @@ const it = {
       title: 'Un’unica piattaforma connessa per il retail moderno.',
       body: 'AXY connette team di vendita, dati di prodotto, clienti, operazioni e partner retail, così ogni area dell’attività lavora con lo stesso contesto.',
       explore: 'Esplora la piattaforma',
-      createAccount: 'Crea un account gratuito',
+      createAccount: 'Richiedi l’accesso alla beta',
       artLabel: 'Le soluzioni AXY',
     },
     operatingModel: {
@@ -143,7 +143,7 @@ const de = {
       title: 'Eine vernetzte Plattform für den modernen Einzelhandel.',
       body: 'AXY verbindet Verkaufsteams, Produktdaten, Kunden, Abläufe und Handelspartner, damit alle Bereiche mit demselben Kontext arbeiten.',
       explore: 'Plattform entdecken',
-      createAccount: 'Kostenloses Konto erstellen',
+      createAccount: 'Beta-Zugang anfragen',
       artLabel: 'AXY Produktlösungen',
     },
     operatingModel: {
@@ -212,7 +212,7 @@ const fr = {
       title: 'Une plateforme connectée pour le retail moderne.',
       body: 'AXY relie les équipes de vente, les données produit, les clients, les opérations et les partenaires retail afin que toute l’entreprise partage le même contexte.',
       explore: 'Découvrir la plateforme',
-      createAccount: 'Créer un compte gratuit',
+      createAccount: 'Demander l’accès à la bêta',
       artLabel: 'Solutions produit AXY',
     },
     operatingModel: {

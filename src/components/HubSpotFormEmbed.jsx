@@ -4,33 +4,18 @@ import React from 'react';
 import { CONSENT_CHANGED_EVENT, currentPagePath, trackAnalyticsEvent } from '../lib/analytics.js';
 import { createHubSpotFormLifecycleTracker, legacyHubSpotFormEventName } from '../lib/hubspot.js';
 import { useI18n } from '../i18n/I18nProvider.jsx';
+import { HUBSPOT } from '../config/hubspot.js';
 
-const FORM_SCRIPT_ID = 'axy-hubspot-forms-script';
-const FORM_SCRIPT_SRC = 'https://js-eu1.hsforms.net/forms/embed/148359284.js';
-const FORM_ID = '30aa0bca-d54a-4174-9901-ba6ee7119191';
-const FORM_NAME = 'general_contact';
-const LEAD_TYPE = 'general_contact';
-
-function formParameters(extra = {}) {
-  return {
-    form_id: FORM_ID,
-    form_name: FORM_NAME,
-    lead_type: LEAD_TYPE,
-    page_path: currentPagePath(),
-    ...extra,
-  };
-}
-
-function isCurrentFormEvent(event) {
-  return event?.detail?.formId === FORM_ID;
-}
-
-function instanceKey(event) {
-  const instanceId = event?.detail?.instanceId;
-  return typeof instanceId === 'string' && instanceId ? instanceId : FORM_ID;
-}
-
-export default function HubSpotFormEmbed() {
+export default function HubSpotFormEmbed({
+  portalId = HUBSPOT.portalId,
+  region = HUBSPOT.region,
+  formId = HUBSPOT.forms.contact,
+  formName = 'general_contact',
+  leadType = 'general_contact',
+  ariaLabel,
+  ariaLabelKey = 'common.embeds.contactFormLabel',
+  minHeight = '560px',
+}) {
   const frameRef = React.useRef(null);
   const { t } = useI18n();
 
@@ -42,6 +27,19 @@ export default function HubSpotFormEmbed() {
       ready: false,
       visible: false,
       viewSent: false,
+    };
+
+    const formParameters = (extra = {}) => ({
+      form_id: formId,
+      form_name: formName,
+      lead_type: leadType,
+      page_path: currentPagePath(),
+      ...extra,
+    });
+    const isCurrentFormEvent = (event) => event?.detail?.formId === formId;
+    const instanceKey = (event) => {
+      const instanceId = event?.detail?.instanceId;
+      return typeof instanceId === 'string' && instanceId ? instanceId : formId;
     };
 
     const lifecycle = createHubSpotFormLifecycleTracker((eventName, extra = {}) => (
@@ -78,7 +76,7 @@ export default function HubSpotFormEmbed() {
     };
 
     const handleLegacyMessage = (event) => {
-      const eventName = legacyHubSpotFormEventName(event, frame, FORM_ID);
+      const eventName = legacyHubSpotFormEventName(event, frame, formId);
       if (!eventName) return;
 
       if (eventName === 'onFormReady') {
@@ -121,10 +119,11 @@ export default function HubSpotFormEmbed() {
     renderObserver.observe(frame, { childList: true, subtree: true });
     if (frame.querySelector('iframe, form')) markReady();
 
-    if (!document.getElementById(FORM_SCRIPT_ID)) {
+    const scriptId = `axy-hubspot-forms-script-${portalId}-${region}`;
+    if (!document.getElementById(scriptId)) {
       const script = document.createElement('script');
-      script.id = FORM_SCRIPT_ID;
-      script.src = FORM_SCRIPT_SRC;
+      script.id = scriptId;
+      script.src = `https://js-${region}.hsforms.net/forms/embed/${portalId}.js`;
       script.defer = true;
       document.body.appendChild(script);
     }
@@ -136,17 +135,17 @@ export default function HubSpotFormEmbed() {
       visibilityObserver?.disconnect();
       renderObserver.disconnect();
     };
-  }, []);
+  }, [formId, formName, leadType, portalId, region]);
 
   return (
     <div
       ref={frameRef}
       className="hs-form-frame"
-      data-region="eu1"
-      data-form-id={FORM_ID}
-      data-portal-id="148359284"
-      aria-label={t('common.embeds.contactFormLabel')}
-      style={{ minHeight: '560px' }}
+      data-region={region}
+      data-form-id={formId}
+      data-portal-id={portalId}
+      aria-label={ariaLabel || t(ariaLabelKey)}
+      style={{ minHeight }}
     />
   );
 }

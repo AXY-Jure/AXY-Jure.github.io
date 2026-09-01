@@ -131,7 +131,7 @@ const en = {
       ],
       note: 'Deeper POS, ERP, CRM, inventory or product-system connections can be added according to the business need.',
       guidedSetup: 'Get guided setup',
-      createAccount: 'Create free account',
+      createAccount: 'Request beta access',
     },
     faq: {
       eyebrow: 'How AXY works in practice',
@@ -291,7 +291,7 @@ const it = {
       ],
       note: 'Connessioni più profonde con POS, ERP, CRM, inventario o sistemi di prodotto possono essere aggiunte in base alle esigenze aziendali.',
       guidedSetup: 'Richiedi la configurazione guidata',
-      createAccount: 'Crea un account gratuito',
+      createAccount: 'Richiedi l’accesso alla beta',
     },
     faq: {
       eyebrow: 'Come funziona AXY nella pratica',
@@ -451,7 +451,7 @@ const de = {
       ],
       note: 'Tiefere Verbindungen zu POS, ERP, CRM, Bestand oder Produktsystemen können je nach Geschäftsbedarf ergänzt werden.',
       guidedSetup: 'Geführte Einrichtung',
-      createAccount: 'Kostenloses Konto erstellen',
+      createAccount: 'Beta-Zugang anfragen',
     },
     faq: {
       eyebrow: 'AXY in der Praxis',
@@ -611,7 +611,7 @@ const fr = {
       ],
       note: 'Des connexions plus poussées aux POS, ERP, CRM, stocks ou systèmes produit peuvent être ajoutées selon les besoins de l’entreprise.',
       guidedSetup: 'Configuration guidée',
-      createAccount: 'Créer un compte gratuit',
+      createAccount: 'Demander l’accès à la bêta',
     },
     faq: {
       eyebrow: 'AXY en pratique',

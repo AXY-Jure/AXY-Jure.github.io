@@ -95,7 +95,7 @@ export default function SiteFooter() {
           <div className="site-footer__bottom" style={{ borderTop: "1px solid #34406A", marginTop: "30px", paddingTop: "22px", display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
             <span style={{ fontSize: "14px", color: "#fff", fontWeight: "700" }}>{t('common.footer.businessFit')}
             </span>{' '}
-            <a className="hv209" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>{t('common.actions.createFreeAccount')}
+            <a className="hv209" href={hrefForLocale('/request-access')} style={{ display: "inline-flex", padding: "10px 18px", background: "#fff", color: "#1F2B4D", borderRadius: "8px", fontSize: "13px", fontWeight: "700" }}>{t('common.actions.requestBetaAccess')}
             </a>{' '}
             <a className="hv210" href={hrefForLocale('/book-a-walkthrough#schedule')} style={{ display: "inline-flex", padding: "10px 17px", border: "1.5px solid rgba(255,255,255,.4)", color: "#fff", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}>{t('common.actions.guidedSetup')}
             </a>

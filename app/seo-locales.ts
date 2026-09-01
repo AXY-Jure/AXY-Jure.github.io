@@ -72,7 +72,7 @@ export const ENGLISH_PAGE_META = {
   },
   "/pricing": {
     title: "AXY Pricing",
-    description: "Start with AXY Free or configure a plan around your users, business units and optional modules.",
+    description: "Review AXY pricing for users, business units and optional modules, then request access for your company’s selected beta setup.",
   },
   "/resources": {
     title: "Retail Clienteling Resources",
@@ -103,9 +103,14 @@ export const ENGLISH_PAGE_META = {
     title: "AXY Help Centre",
     description: "Choose an AXY Product Support topic, send a secure request, or contact the AXY Support Team by email.",
   },
+  "/request-access": {
+    title: "Request Beta Access | AXY",
+    description: "Request AXY beta access for your retail, brand or partner team and hear from us about fit, timing and guided onboarding.",
+  },
   "/create-account": {
-    title: "Create an AXY Account",
-    description: "Start setting up AXY for your retail business.",
+    title: "Request AXY Beta Access",
+    description: "Request access to the AXY closed beta for your company.",
+    index: false,
   },
   "/login": {
     title: "Log In to AXY",
@@ -176,7 +181,7 @@ const ITALIAN_PAGE_META = {
   },
   "/pricing": {
     title: "Prezzi AXY",
-    description: "Inizia con AXY Free oppure configura un piano in base a utenti, unità operative e moduli opzionali.",
+    description: "Consulta i prezzi AXY per utenti, unità operative e moduli opzionali, poi richiedi l’accesso beta per la tua azienda.",
   },
   "/resources": {
     title: "Risorse sul clienteling nel retail",
@@ -206,9 +211,13 @@ const ITALIAN_PAGE_META = {
     title: "Centro assistenza AXY",
     description: "Scegli un argomento di supporto AXY, invia una richiesta sicura oppure contatta via e-mail il team di assistenza AXY.",
   },
+  "/request-access": {
+    title: "Richiedi l’accesso alla beta | AXY",
+    description: "Richiedi l’accesso alla beta AXY per il tuo team retail, brand o partner e scopri compatibilità, tempistiche e onboarding guidato.",
+  },
   "/create-account": {
-    title: "Crea un account AXY",
-    description: "Inizia a configurare AXY per la tua attività retail.",
+    title: "Richiedi l’accesso alla beta AXY",
+    description: "Richiedi l’accesso alla beta chiusa AXY per la tua azienda.",
   },
   "/login": {
     title: "Accedi ad AXY",
@@ -275,7 +284,7 @@ const GERMAN_PAGE_META = {
   },
   "/pricing": {
     title: "AXY Preise",
-    description: "Starten Sie mit AXY Free oder konfigurieren Sie einen Plan passend zu Nutzern, Geschäftseinheiten und optionalen Modulen.",
+    description: "Prüfen Sie AXY Preise für Nutzer, Geschäftseinheiten und optionale Module und fragen Sie Beta-Zugang für Ihr Unternehmen an.",
   },
   "/resources": {
     title: "Ressourcen für Clienteling im Einzelhandel",
@@ -305,9 +314,13 @@ const GERMAN_PAGE_META = {
     title: "AXY Hilfe-Center",
     description: "Wählen Sie ein AXY Supportthema, senden Sie eine sichere Anfrage oder kontaktieren Sie das AXY Support-Team per E-Mail.",
   },
+  "/request-access": {
+    title: "Beta-Zugang anfragen | AXY",
+    description: "Fragen Sie AXY Beta-Zugang für Ihr Handels-, Marken- oder Partnerteam an und erfahren Sie mehr zu Eignung, Zeitplan und Onboarding.",
+  },
   "/create-account": {
-    title: "AXY Konto erstellen",
-    description: "Beginnen Sie mit der Einrichtung von AXY für Ihr Handelsunternehmen.",
+    title: "AXY Beta-Zugang anfragen",
+    description: "Fragen Sie Zugang zur geschlossenen AXY-Beta für Ihr Unternehmen an.",
   },
   "/login": {
     title: "Bei AXY anmelden",
@@ -374,7 +387,7 @@ const FRENCH_PAGE_META = {
   },
   "/pricing": {
     title: "Tarifs AXY",
-    description: "Commencez avec AXY Free ou configurez un plan selon vos utilisateurs, unités opérationnelles et modules optionnels.",
+    description: "Consultez les tarifs AXY pour les utilisateurs, unités opérationnelles et modules, puis demandez l’accès bêta pour votre entreprise.",
   },
   "/resources": {
     title: "Ressources sur le clienteling retail",
@@ -404,9 +417,13 @@ const FRENCH_PAGE_META = {
     title: "Centre d’aide AXY",
     description: "Choisissez un sujet d’assistance AXY, envoyez une demande sécurisée ou contactez l’équipe Support AXY par e-mail.",
   },
+  "/request-access": {
+    title: "Demander l’accès à la bêta | AXY",
+    description: "Demandez l’accès à la bêta AXY pour votre équipe retail, marque ou partenaire et échangez avec nous sur l’adéquation, le calendrier et l’onboarding.",
+  },
   "/create-account": {
-    title: "Créer un compte AXY",
-    description: "Commencez à configurer AXY pour votre activité retail.",
+    title: "Demander l’accès à la bêta AXY",
+    description: "Demandez l’accès à la bêta fermée AXY pour votre entreprise.",
   },
   "/login": {
     title: "Se connecter à AXY",

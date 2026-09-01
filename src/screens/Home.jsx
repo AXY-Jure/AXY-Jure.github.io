@@ -55,7 +55,7 @@ const proofImages = [
   '/images/home-clean/salesperson-view.webp',
 ];
 
-const startHrefs = ['https://app.axy.net/onboarding', '/book-a-walkthrough#schedule', '/book-a-walkthrough#schedule'];
+const startHrefs = ['/request-access', '/book-a-walkthrough#schedule', '/book-a-walkthrough#schedule'];
 
 function SmartLink({ href, className, children, ...props }) {
   if (href.startsWith('http')) {
@@ -92,7 +92,7 @@ export default function Home() {
           <h1>{copy.hero.title[0]}<br />{copy.hero.title[1]}</h1>
           <p className="home-clean__lead">{copy.hero.lead}</p>
           <div className="home-clean__actions">
-            <a className="home-clean__button home-clean__button--primary" href="https://app.axy.net/onboarding">{copy.hero.createAccount}</a>
+            <Link className="home-clean__button home-clean__button--primary" href="/request-access">{copy.hero.createAccount}</Link>
             <Link className="home-clean__button home-clean__button--secondary" href="/book-a-walkthrough#schedule">{copy.hero.guidedSetup}</Link>
           </div>
           <p className="home-clean__login">{copy.hero.accountPrompt} <a href="https://app.axy.net/authentication">{copy.hero.logIn}</a></p>
@@ -337,7 +337,7 @@ export default function Home() {
           <h2>{copy.final.title}</h2>
           <p>{copy.final.body}</p>
           <div className="home-clean__actions">
-            <a className="home-clean__button home-clean__button--light" href="https://app.axy.net/onboarding">{copy.final.createAccount}</a>
+            <Link className="home-clean__button home-clean__button--light" href="/request-access">{copy.final.createAccount}</Link>
             <Link className="home-clean__button home-clean__button--outline-light" href="/book-a-walkthrough#schedule">{copy.final.guidedSetup}</Link>
             <Link className="home-clean__button home-clean__button--outline-light" href="/product">{copy.final.exploreProduct}</Link>
           </div>

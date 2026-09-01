@@ -44,7 +44,7 @@ export default function ForRetailers() {
             <p>{copy.hero.body}</p>
             <div className="fr-actions">
               <Link className="fr-button fr-button--primary" href="/book-a-walkthrough#schedule">{copy.hero.guidedSetup}</Link>
-              <a className="fr-button fr-button--secondary" href="https://app.axy.net/onboarding">{copy.hero.createAccount}</a>
+              <Link className="fr-button fr-button--secondary" href="/request-access">{copy.hero.createAccount}</Link>
             </div>
             <TextLink href="/sales-app">{copy.hero.salesApp}</TextLink>
           </div>
@@ -269,7 +269,7 @@ export default function ForRetailers() {
           <p>{copy.final.body}</p>
           <div className="fr-actions fr-actions--center">
             <Link className="fr-button fr-button--light" href="/book-a-walkthrough#schedule">{copy.final.guidedSetup}</Link>
-            <a className="fr-button fr-button--outline-light" href="https://app.axy.net/onboarding">{copy.final.createAccount}</a>
+            <Link className="fr-button fr-button--outline-light" href="/request-access">{copy.final.createAccount}</Link>
           </div>
           <Link className="fr-final-cta__pricing" href="/pricing" data-analytics-event="pricing_cta_click" data-analytics-cta-name="view_pricing_final">{copy.final.pricing} →</Link>
         </div>

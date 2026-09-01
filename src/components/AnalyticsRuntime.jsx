@@ -12,6 +12,7 @@ import { basePathForComparison } from '../i18n/paths.js';
 
 const ONBOARDING_ORIGIN = 'https://app.axy.net';
 const ONBOARDING_PATH = '/onboarding';
+const REQUEST_ACCESS_PATH = '/request-access';
 const WALKTHROUGH_PATH = '/book-a-walkthrough';
 const MEETING_HOST = 'meetings-eu1.hubspot.com';
 const MEETING_PATH = '/jure-malalan/axy-tailored-walkthrough-30-minutes';
@@ -60,8 +61,12 @@ function isWalkthroughIntent(url) {
   return internalScheduler || hostedScheduler;
 }
 
-function isOnboardingDestination(url) {
-  return url?.origin === ONBOARDING_ORIGIN && normalizedPath(url.pathname) === ONBOARDING_PATH;
+function isAccessRequestDestination(url) {
+  if (!url) return false;
+  const legacyOnboarding = url.origin === ONBOARDING_ORIGIN && normalizedPath(url.pathname) === ONBOARDING_PATH;
+  const websiteRequest = url.origin === window.location.origin
+    && basePathForComparison(url.pathname) === REQUEST_ACCESS_PATH;
+  return legacyOnboarding || websiteRequest;
 }
 
 export default function AnalyticsRuntime() {
@@ -97,11 +102,11 @@ export default function AnalyticsRuntime() {
         return;
       }
 
-      if (!isOnboardingDestination(url)) return;
+      if (!isAccessRequestDestination(url)) return;
 
       if (basePathForComparison(pagePath) === '/pricing') {
         trackAnalyticsEvent('pricing_cta_click', {
-          cta_name: element.dataset.analyticsCtaName || 'start_free',
+          cta_name: element.dataset.analyticsCtaName || 'request_beta_access',
           destination: destinationFor(element),
           page_path: pagePath,
         });

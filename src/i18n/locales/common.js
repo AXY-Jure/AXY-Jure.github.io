@@ -16,7 +16,9 @@ export const commonCatalog = {
       },
       actions: {
         logIn: 'Log in',
-        createFreeAccount: 'Create free account',
+        createFreeAccount: 'Request beta access',
+        requestBetaAccess: 'Request beta access',
+        requestAccessShort: 'Request access',
         guidedSetup: 'Get guided setup',
       },
       status: {
@@ -76,6 +78,7 @@ export const commonCatalog = {
       },
       embeds: {
         contactFormLabel: 'Contact AXY form',
+        betaAccessFormLabel: 'Request AXY beta access form',
         supportFormLabel: 'AXY Product Support request form',
         meetingsTitle: 'Book an AXY walkthrough',
       },
@@ -98,7 +101,9 @@ export const commonCatalog = {
       },
       actions: {
         logIn: 'Accedi',
-        createFreeAccount: 'Inizia gratis',
+        createFreeAccount: 'Richiedi l’accesso alla beta',
+        requestBetaAccess: 'Richiedi l’accesso alla beta',
+        requestAccessShort: 'Richiedi accesso',
         guidedSetup: 'Configurazione guidata',
       },
       status: {
@@ -158,6 +163,7 @@ export const commonCatalog = {
       },
       embeds: {
         contactFormLabel: 'Modulo di contatto AXY',
+        betaAccessFormLabel: 'Modulo per richiedere l’accesso alla beta AXY',
         supportFormLabel: 'Modulo di richiesta all’assistenza prodotti AXY',
         meetingsTitle: 'Prenota una demo guidata di AXY',
       },
@@ -180,7 +186,9 @@ export const commonCatalog = {
       },
       actions: {
         logIn: 'Anmelden',
-        createFreeAccount: 'Kostenlos starten',
+        createFreeAccount: 'Beta-Zugang anfragen',
+        requestBetaAccess: 'Beta-Zugang anfragen',
+        requestAccessShort: 'Zugang anfragen',
         guidedSetup: 'Geführte Einrichtung',
       },
       status: {
@@ -240,6 +248,7 @@ export const commonCatalog = {
       },
       embeds: {
         contactFormLabel: 'AXY-Kontaktformular',
+        betaAccessFormLabel: 'Formular zur Anfrage eines AXY Beta-Zugangs',
         supportFormLabel: 'AXY-Formular für Produkt-Supportanfragen',
         meetingsTitle: 'Eine geführte AXY-Demo buchen',
       },
@@ -262,7 +271,9 @@ export const commonCatalog = {
       },
       actions: {
         logIn: 'Se connecter',
-        createFreeAccount: 'Créer un compte',
+        createFreeAccount: 'Demander l’accès à la bêta',
+        requestBetaAccess: 'Demander l’accès à la bêta',
+        requestAccessShort: 'Demander l’accès',
         guidedSetup: 'Démo guidée',
       },
       status: {
@@ -322,6 +333,7 @@ export const commonCatalog = {
       },
       embeds: {
         contactFormLabel: 'Formulaire de contact AXY',
+        betaAccessFormLabel: 'Formulaire de demande d’accès à la bêta AXY',
         supportFormLabel: 'Formulaire de demande d’assistance produit AXY',
         meetingsTitle: 'Réserver une démonstration guidée d’AXY',
       },

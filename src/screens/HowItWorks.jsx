@@ -191,7 +191,7 @@ export default function HowItWorks() {
           <p className={styles.beginNote}>{copy.begin.note}</p>
           <div className={styles.beginActions}>
             <Link className={styles.buttonDark} href="/book-a-walkthrough#schedule">{copy.begin.guidedSetup}</Link>
-            <a className={styles.buttonOutline} href="https://app.axy.net/onboarding">{copy.begin.createAccount}</a>
+            <Link className={styles.buttonOutline} href="/request-access">{copy.begin.createAccount}</Link>
           </div>
         </div>
       </section>

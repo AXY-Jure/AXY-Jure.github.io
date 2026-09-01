@@ -19,8 +19,8 @@ export default function Clienteling() {
               <p style={{ fontSize: "15px", color: "#667085", lineHeight: "1.6", margin: "16px 0 0", maxWidth: "540px" }}>{copy.hero.body}
               </p>
               <div style={{ display: "flex", gap: "12px", marginTop: "22px", flexWrap: "wrap" }}>
-                <a className="hv104" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>{copy.hero.createAccount}
-                </a>
+                <Link className="hv104" href="/request-access" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>{copy.hero.createAccount}
+                </Link>
               </div>
             </div>
           </div>
@@ -113,8 +113,8 @@ export default function Clienteling() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: "30px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a className="hv105" href="https://app.axy.net/onboarding" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>{copy.final.createAccount}
-              </a>
+              <Link className="hv105" href="/request-access" style={{ display: "inline-flex", padding: "13px 22px", background: "#32415C", color: "#fff", borderRadius: "10px", fontSize: "14px", fontWeight: "700" }}>{copy.final.createAccount}
+              </Link>
               <Link className="hv106" href="/sales-app" style={{ display: "inline-flex", padding: "13px 22px", border: "1.5px solid #32415C", color: "#32415C", borderRadius: "10px", fontSize: "14px", fontWeight: "600" }}>{copy.final.salesApp}
               </Link>
             </div>

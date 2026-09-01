@@ -28,6 +28,7 @@ const PUBLIC_PAGE_PATHS = new Set([
   '/meeting-booked',
   '/pricing',
   '/product',
+  '/request-access',
   '/resources',
   '/sales-app',
   '/use-cases/in-store-sales-capture',

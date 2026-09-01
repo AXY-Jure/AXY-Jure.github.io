@@ -11,11 +11,18 @@ test("exports direct clean routes with page-specific metadata", async () => {
   const pricing = await readOutput("pricing/index.html");
   const walkthrough = await readOutput("book-a-walkthrough/index.html");
   const contact = await readOutput("contact/index.html");
+  const requestAccess = await readOutput("request-access/index.html");
+  const legacyCreateAccount = await readOutput("create-account/index.html");
   const meetingBooked = await readOutput("meeting-booked/index.html");
 
   assert.match(pricing, /AXY Pricing/);
   assert.match(walkthrough, /Book an AXY Walkthrough/);
   assert.match(contact, /Contact AXY/);
+  assert.match(requestAccess, /Request Beta Access \| AXY/);
+  assert.match(requestAccess, /Request access for your company/);
+  assert.match(requestAccess, /4f886154-36e1-4044-bf3d-6e74a88bb643/);
+  assert.match(legacyCreateAccount, /Request access for your company/);
+  assert.match(legacyCreateAccount, /name="robots" content="noindex, nofollow"/);
   assert.match(meetingBooked, /AXY Walkthrough Booked/);
   assert.match(meetingBooked, /Your AXY walkthrough is booked/);
   assert.match(meetingBooked, /rel="canonical" href="https:\/\/axy\.net\/meeting-booked\/"/);
@@ -31,10 +38,12 @@ test("publishes canonical sitemap URLs that match trailing-slash routing", async
   assert.ok(urls.includes("https://axy.net/it/"));
   assert.ok(urls.includes("https://axy.net/de/pricing/"));
   assert.ok(urls.includes("https://axy.net/fr/for-retailers/"));
+  assert.ok(urls.includes("https://axy.net/fr/request-access/"));
   assert.ok(!urls.includes("https://axy.net"));
   assert.ok(!urls.some((url) => url.includes("/en/")));
   assert.ok(urls.every((url) => url.endsWith("/")));
   assert.ok(!urls.some((url) => url.includes("meeting-booked")));
+  assert.ok(!urls.some((url) => url.includes("create-account")));
   assert.ok(!urls.includes("https://axy.net/legal/"));
 });
 
@@ -54,6 +63,23 @@ test("exports localized pages with language metadata and reciprocal hreflang", a
   assert.match(germanPricing, /AXY Preise|AXY-Preise/);
   assert.match(italian, /interazioni|vendita|retail/i);
   assert.doesNotMatch(germanPricing, /name="robots" content="noindex/);
+});
+
+test("publishes the localized beta-access form in every supported language", async () => {
+  const pages = [
+    ["request-access/index.html", "en", "Request access for your company", "4f886154-36e1-4044-bf3d-6e74a88bb643"],
+    ["it/request-access/index.html", "it", "Richiedi l’accesso per la tua azienda", "477e375c-d55c-4347-aca1-b7ec796673d2"],
+    ["de/request-access/index.html", "de", "Zugang für Ihr Unternehmen anfragen", "aa5c8708-feaa-490d-a428-4d8f61bbd8cd"],
+    ["fr/request-access/index.html", "fr", "Demandez l’accès pour votre entreprise", "2de3e45b-ab88-4d37-8c07-b0497a8eac4d"],
+  ];
+
+  for (const [path, locale, heading, formId] of pages) {
+    const page = await readOutput(path);
+    assert.match(page, new RegExp(`<html lang="${locale}"`));
+    assert.match(page, new RegExp(heading));
+    assert.match(page, new RegExp(formId));
+    assert.match(page, /href="\/(?:it\/|de\/|fr\/)?legal#privacy-policy"/);
+  }
 });
 
 test("publishes a click-to-play homepage video with sound controls", async () => {
@@ -212,7 +238,7 @@ test("publishes the visual How It Works journey with five connected stages", asy
 
   assert.equal([...page.matchAll(/<details/g)].length, 7);
   assert.equal([...page.matchAll(/href="\/book-a-walkthrough\/?#schedule"/g)].length, 3);
-  assert.match(page, /href="https:\/\/app\.axy\.net\/onboarding"/);
+  assert.match(page, /href="\/request-access\/?"/);
   assert.doesNotMatch(page, /Select a stage to jump to it|End-to-end walkthrough:|<video/);
   assert.doesNotMatch(page, /same-model-title|Same model, different work|The connected pattern continues across the product lifecycle/);
 });
@@ -244,7 +270,7 @@ test("publishes a focused Sales App journey from customer context to next action
     assert.match(page, new RegExp(`src="${source.replaceAll("/", "\\/")}"`));
   }
 
-  assert.equal([...page.matchAll(/href="https:\/\/app\.axy\.net\/onboarding"/g)].length, 2);
+  assert.equal([...page.matchAll(/href="\/request-access\/?"/g)].length, 2);
   assert.equal([...page.matchAll(/href="\/for-retailers\/?"/g)].length, 2);
   assert.match(page, /href="\/book-a-walkthrough\/?#schedule"/);
   assert.match(page, /data-analytics-event="pricing_cta_click"/);
@@ -279,7 +305,7 @@ test("publishes Back Office as the connected management and data hub", async () 
     assert.match(page, new RegExp(`src="${source.replaceAll("/", "\\/")}"`));
   }
 
-  assert.equal([...page.matchAll(/href="https:\/\/app\.axy\.net\/onboarding"/g)].length, 2);
+  assert.equal([...page.matchAll(/href="\/request-access\/?"/g)].length, 2);
   assert.equal([...page.matchAll(/href="\/book-a-walkthrough\/?#schedule"/g)].length, 2);
   assert.equal([...page.matchAll(/href="\/integrations\/?"/g)].length, 2);
   assert.match(page, /href="\/for-retailers\/?"/);
@@ -594,10 +620,10 @@ test("includes two free users and charges additions only from the third user", (
   assert.equal(manyUnits.announcementsCost, 20);
 });
 
-test("uses the live AXY app for registration and login", async () => {
+test("uses the beta-access request for registration CTAs and the live AXY app for login", async () => {
   const pages = [await readOutput("index.html"), await readOutput("pricing/index.html")];
   for (const page of pages) {
-    assert.match(page, /https:\/\/app\.axy\.net\/onboarding/);
+    assert.match(page, /href="\/request-access\/?"/);
     assert.match(page, /https:\/\/app\.axy\.net\/authentication/);
     assert.doesNotMatch(page, /href="\/(create-account|login)"/);
   }

@@ -52,7 +52,7 @@ export default function Product() {
             <p>{copy.hero.body}</p>
             <div className="product-clean__actions">
               <Link className="product-clean__button product-clean__button--light" href="/how-it-works">{copy.hero.explore}</Link>
-              <a className="product-clean__button product-clean__button--outline" href="https://app.axy.net/onboarding">{copy.hero.createAccount}</a>
+              <Link className="product-clean__button product-clean__button--outline" href="/request-access">{copy.hero.createAccount}</Link>
             </div>
           </div>
           <div className="product-clean__hero-art" aria-label={copy.hero.artLabel}>

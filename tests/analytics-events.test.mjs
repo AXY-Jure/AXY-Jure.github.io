@@ -54,8 +54,8 @@ function createWindow({ gtag, sessionStorage = createStorage() } = {}) {
 }
 
 const validPricingEvent = {
-  cta_name: 'start_free',
-  destination: 'https://app.axy.net/onboarding',
+  cta_name: 'request_beta_access',
+  destination: '/request-access',
   page_path: '/pricing',
 };
 
@@ -117,7 +117,7 @@ test('the event allowlist drops PII and unknown fields and strips URL query stri
   assert.equal(
     trackAnalyticsEvent('create_account_click', {
       cta_location: 'pricing_hero',
-      destination: 'https://app.axy.net/onboarding?email=jane%40example.com#invite-secret',
+      destination: '/request-access?email=jane%40example.com#invite-secret',
       page_path: '/pricing?email=jane%40example.com',
       email: 'jane@example.com',
       name: 'Jane Doe',
@@ -132,7 +132,7 @@ test('the event allowlist drops PII and unknown fields and strips URL query stri
     'create_account_click',
     {
       cta_location: 'pricing_hero',
-      destination: 'https://app.axy.net/onboarding',
+      destination: '/request-access',
       page_path: '/pricing',
     },
   ]]);

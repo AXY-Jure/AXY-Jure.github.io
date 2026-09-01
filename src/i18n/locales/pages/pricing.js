@@ -2,14 +2,14 @@ const pricingCatalog = {
   en: {
     controls: { decrease: 'Decrease {name}', increase: 'Increase {name}', included: 'Included ✓', add: 'Add', perMonth: '/month' },
     hero: {
-      eyebrow: 'AXY pricing', title: 'Start free. Add only what your business needs.',
-      body: 'One clear free plan, transparent monthly additions, and optional AI image credits.',
-      start: 'Start free', calculate: 'Calculate your plan', login: 'Log in',
+      eyebrow: 'AXY pricing', title: 'Clear pricing that scales with your business.',
+      body: 'AXY is currently onboarding selected beta partners. Review the pricing structure, then request access so we can confirm the right setup.',
+      start: 'Request beta access', calculate: 'Calculate your plan', login: 'Log in',
     },
     plans: {
-      freeName: 'AXY Free', freeBody: 'A complete starting point for one business unit. No credit card required.',
+      freeName: 'AXY Free · beta access', freeBody: 'The planned starting point for one business unit, currently available to selected beta teams.',
       freeItems: ['One company workspace', 'Two users', 'One business unit', 'Core AXY platform access', 'Five one-time trial image generations'],
-      start: 'Start free',
+      start: 'Request beta access',
       buildEyebrow: 'Build your plan', buildTitle: 'Your monthly price, calculated clearly',
       buildBody: 'The first two users and first business unit are always included.',
       buildItems: ['Each additional user — €15/month', 'Each additional business unit — €49/month', 'Announcements — €20/month per organization', 'Messaging — €19/month per organization', '20 monthly AI images with every paid additional business unit'],
@@ -38,25 +38,25 @@ const pricingCatalog = {
     faq: {
       eyebrow: 'Billing, briefly answered', title: 'Simple rules, no hidden platform fees.',
       items: [
-        ['Can I use AXY for free?', 'Yes. AXY Free includes one company workspace, two users, one business unit, core platform access and five one-time trial images. No credit card is required.'],
+        ['Can I use AXY for free?', 'AXY Free is planned to include one company workspace, two users, one business unit, core platform access and five one-time trial images. Access is currently limited to selected beta teams.'],
         ['Are Announcements and Messaging charged per business unit?', 'No. Each module is charged once per organization, regardless of the number of business units.'],
         ['Are WhatsApp or Infobip delivery charges included?', 'No. WhatsApp, Infobip and other external delivery charges are billed separately by the relevant provider.'],
         ['How does secure payment work?', 'You sign in to AXY, confirm the configuration and continue to Stripe-hosted Checkout. AXY never stores card details.'],
       ],
     },
-    cta: { title: 'Start free today. Expand when AXY proves its value.', body: 'Create your free workspace or log in to manage an existing AXY organization.', start: 'Start free', login: 'Log in' },
+    cta: { title: 'Request beta access for your company.', body: 'Tell us about your organization and we’ll contact you about fit, timing and the next onboarding step.', start: 'Request beta access', login: 'Log in' },
   },
   it: {
     controls: { decrease: 'Diminuisci {name}', increase: 'Aumenta {name}', included: 'Incluso ✓', add: 'Aggiungi', perMonth: '/mese' },
     hero: {
-      eyebrow: 'Prezzi AXY', title: 'Inizia gratis. Aggiungi solo ciò che serve alla tua attività.',
-      body: 'Un piano gratuito chiaro, aggiunte mensili trasparenti e crediti facoltativi per immagini AI.',
-      start: 'Inizia gratis', calculate: 'Calcola il tuo piano', login: 'Accedi',
+      eyebrow: 'Prezzi AXY', title: 'Prezzi chiari che crescono con la tua attività.',
+      body: 'AXY sta accogliendo partner beta selezionati. Consulta la struttura dei prezzi e richiedi l’accesso per definire insieme la configurazione più adatta.',
+      start: 'Richiedi l’accesso alla beta', calculate: 'Calcola il tuo piano', login: 'Accedi',
     },
     plans: {
-      freeName: 'AXY Free', freeBody: 'Un punto di partenza completo per un’unità operativa. Nessuna carta di credito richiesta.',
+      freeName: 'AXY Free · accesso beta', freeBody: 'Il punto di partenza previsto per un’unità operativa, attualmente disponibile per team beta selezionati.',
       freeItems: ['Uno spazio di lavoro aziendale', 'Due utenti', 'Un’unità operativa', 'Accesso alla piattaforma AXY di base', 'Cinque generazioni di immagini di prova una tantum'],
-      start: 'Inizia gratis',
+      start: 'Richiedi l’accesso alla beta',
       buildEyebrow: 'Crea il tuo piano', buildTitle: 'Il tuo prezzo mensile, calcolato con chiarezza',
       buildBody: 'I primi due utenti e la prima unità operativa sono sempre inclusi.',
       buildItems: ['Ogni utente aggiuntivo — 15 €/mese', 'Ogni unità operativa aggiuntiva — 49 €/mese', 'Announcements — 20 €/mese per organizzazione', 'Messaging — 19 €/mese per organizzazione', '20 immagini AI mensili con ogni unità operativa aggiuntiva a pagamento'],
@@ -85,25 +85,25 @@ const pricingCatalog = {
     faq: {
       eyebrow: 'Fatturazione in breve', title: 'Regole semplici, nessun costo di piattaforma nascosto.',
       items: [
-        ['Posso usare AXY gratuitamente?', 'Sì. AXY Free include uno spazio di lavoro aziendale, due utenti, un’unità operativa, l’accesso alla piattaforma di base e cinque immagini di prova una tantum. Non è richiesta una carta di credito.'],
+        ['Posso usare AXY gratuitamente?', 'AXY Free prevede uno spazio di lavoro aziendale, due utenti, un’unità operativa, l’accesso alla piattaforma di base e cinque immagini di prova una tantum. L’accesso è attualmente riservato a team beta selezionati.'],
         ['Announcements e Messaging vengono addebitati per unità operativa?', 'No. Ogni modulo viene addebitato una sola volta per organizzazione, indipendentemente dal numero di unità operative.'],
         ['I costi di consegna di WhatsApp o Infobip sono inclusi?', 'No. WhatsApp, Infobip e gli altri costi di consegna esterni vengono fatturati separatamente dal relativo fornitore.'],
         ['Come funziona il pagamento sicuro?', 'Accedi ad AXY, confermi la configurazione e prosegui nel Checkout ospitato da Stripe. AXY non memorizza mai i dati delle carte.'],
       ],
     },
-    cta: { title: 'Inizia gratis oggi. Espandi AXY quando dimostra il suo valore.', body: 'Crea il tuo spazio di lavoro gratuito o accedi per gestire un’organizzazione AXY esistente.', start: 'Inizia gratis', login: 'Accedi' },
+    cta: { title: 'Richiedi l’accesso beta per la tua azienda.', body: 'Parlaci della tua organizzazione e ti contatteremo per definire compatibilità, tempistiche e il prossimo passo di onboarding.', start: 'Richiedi l’accesso alla beta', login: 'Accedi' },
   },
   de: {
     controls: { decrease: '{name} verringern', increase: '{name} erhöhen', included: 'Enthalten ✓', add: 'Hinzufügen', perMonth: '/Monat' },
     hero: {
-      eyebrow: 'AXY Preise', title: 'Kostenlos starten. Nur ergänzen, was Ihr Unternehmen braucht.',
-      body: 'Ein klarer Gratisplan, transparente monatliche Erweiterungen und optionale KI-Bildguthaben.',
-      start: 'Kostenlos starten', calculate: 'Plan berechnen', login: 'Anmelden',
+      eyebrow: 'AXY Preise', title: 'Klare Preise, die mit Ihrem Unternehmen wachsen.',
+      body: 'AXY nimmt derzeit ausgewählte Beta-Partner auf. Prüfen Sie die Preisstruktur und fragen Sie Zugang an, damit wir das passende Setup bestätigen können.',
+      start: 'Beta-Zugang anfragen', calculate: 'Plan berechnen', login: 'Anmelden',
     },
     plans: {
-      freeName: 'AXY Free', freeBody: 'Der vollständige Einstieg für eine Geschäftseinheit. Keine Kreditkarte erforderlich.',
+      freeName: 'AXY Free · Beta-Zugang', freeBody: 'Der geplante Einstieg für eine Geschäftseinheit, derzeit verfügbar für ausgewählte Beta-Teams.',
       freeItems: ['Ein Unternehmensarbeitsbereich', 'Zwei Nutzer', 'Eine Geschäftseinheit', 'Zugang zur AXY-Kernplattform', 'Fünf einmalige Test-Bildgenerierungen'],
-      start: 'Kostenlos starten',
+      start: 'Beta-Zugang anfragen',
       buildEyebrow: 'Plan zusammenstellen', buildTitle: 'Ihr Monatspreis, klar berechnet',
       buildBody: 'Die ersten zwei Nutzer und die erste Geschäftseinheit sind immer enthalten.',
       buildItems: ['Jeder zusätzliche Nutzer — 15 €/Monat', 'Jede zusätzliche Geschäftseinheit — 49 €/Monat', 'Announcements — 20 €/Monat pro Organisation', 'Messaging — 19 €/Monat pro Organisation', '20 monatliche KI-Bilder mit jeder kostenpflichtigen zusätzlichen Geschäftseinheit'],
@@ -132,25 +132,25 @@ const pricingCatalog = {
     faq: {
       eyebrow: 'Abrechnung kurz erklärt', title: 'Einfache Regeln, keine versteckten Plattformgebühren.',
       items: [
-        ['Kann ich AXY kostenlos nutzen?', 'Ja. AXY Free enthält einen Unternehmensarbeitsbereich, zwei Nutzer, eine Geschäftseinheit, den Zugang zur Kernplattform und fünf einmalige Testbilder. Eine Kreditkarte ist nicht erforderlich.'],
+        ['Kann ich AXY kostenlos nutzen?', 'AXY Free soll einen Unternehmensarbeitsbereich, zwei Nutzer, eine Geschäftseinheit, den Zugang zur Kernplattform und fünf einmalige Testbilder enthalten. Der Zugang ist derzeit auf ausgewählte Beta-Teams begrenzt.'],
         ['Werden Announcements und Messaging pro Geschäftseinheit berechnet?', 'Nein. Jedes Modul wird unabhängig von der Zahl der Geschäftseinheiten einmal pro Organisation berechnet.'],
         ['Sind Zustellgebühren für WhatsApp oder Infobip enthalten?', 'Nein. WhatsApp, Infobip und andere externe Zustellgebühren werden vom jeweiligen Anbieter separat berechnet.'],
         ['Wie funktioniert die sichere Zahlung?', 'Sie melden sich bei AXY an, bestätigen die Konfiguration und wechseln zum von Stripe gehosteten Checkout. AXY speichert niemals Kartendaten.'],
       ],
     },
-    cta: { title: 'Heute kostenlos starten. Erweitern, wenn AXY seinen Wert beweist.', body: 'Erstellen Sie Ihren kostenlosen Arbeitsbereich oder melden Sie sich an, um eine bestehende AXY-Organisation zu verwalten.', start: 'Kostenlos starten', login: 'Anmelden' },
+    cta: { title: 'Beta-Zugang für Ihr Unternehmen anfragen.', body: 'Erzählen Sie uns von Ihrer Organisation. Wir melden uns zu Eignung, Zeitplan und dem nächsten Onboarding-Schritt.', start: 'Beta-Zugang anfragen', login: 'Anmelden' },
   },
   fr: {
     controls: { decrease: 'Réduire {name}', increase: 'Augmenter {name}', included: 'Inclus ✓', add: 'Ajouter', perMonth: '/mois' },
     hero: {
-      eyebrow: 'Tarifs AXY', title: 'Commencez gratuitement. Ajoutez uniquement ce dont votre entreprise a besoin.',
-      body: 'Une offre gratuite claire, des options mensuelles transparentes et des crédits d’images IA facultatifs.',
-      start: 'Commencer gratuitement', calculate: 'Calculer votre offre', login: 'Se connecter',
+      eyebrow: 'Tarifs AXY', title: 'Des tarifs clairs qui évoluent avec votre entreprise.',
+      body: 'AXY accueille actuellement des partenaires bêta sélectionnés. Consultez la structure tarifaire, puis demandez l’accès afin de confirmer la configuration adaptée.',
+      start: 'Demander l’accès à la bêta', calculate: 'Calculer votre offre', login: 'Se connecter',
     },
     plans: {
-      freeName: 'AXY Free', freeBody: 'Un point de départ complet pour une unité opérationnelle. Aucune carte bancaire requise.',
+      freeName: 'AXY Free · accès bêta', freeBody: 'Le point de départ prévu pour une unité opérationnelle, actuellement disponible pour des équipes bêta sélectionnées.',
       freeItems: ['Un espace de travail d’entreprise', 'Deux utilisateurs', 'Une unité opérationnelle', 'Accès à la plateforme AXY principale', 'Cinq générations d’images d’essai, utilisables une seule fois'],
-      start: 'Commencer gratuitement',
+      start: 'Demander l’accès à la bêta',
       buildEyebrow: 'Composer votre offre', buildTitle: 'Votre tarif mensuel, calculé clairement',
       buildBody: 'Les deux premiers utilisateurs et la première unité opérationnelle sont toujours inclus.',
       buildItems: ['Chaque utilisateur supplémentaire — 15 €/mois', 'Chaque unité opérationnelle supplémentaire — 49 €/mois', 'Announcements — 20 €/mois par organisation', 'Messaging — 19 €/mois par organisation', '20 images IA mensuelles avec chaque unité opérationnelle supplémentaire payante'],
@@ -179,13 +179,13 @@ const pricingCatalog = {
     faq: {
       eyebrow: 'La facturation en bref', title: 'Des règles simples, sans frais de plateforme cachés.',
       items: [
-        ['Puis-je utiliser AXY gratuitement ?', 'Oui. AXY Free comprend un espace de travail d’entreprise, deux utilisateurs, une unité opérationnelle, l’accès à la plateforme principale et cinq images d’essai utilisables une seule fois. Aucune carte bancaire n’est requise.'],
+        ['Puis-je utiliser AXY gratuitement ?', 'AXY Free doit comprendre un espace de travail d’entreprise, deux utilisateurs, une unité opérationnelle, l’accès à la plateforme principale et cinq images d’essai. L’accès est actuellement limité à des équipes bêta sélectionnées.'],
         ['Announcements et Messaging sont-ils facturés par unité opérationnelle ?', 'Non. Chaque module est facturé une seule fois par organisation, quel que soit le nombre d’unités opérationnelles.'],
         ['Les frais de distribution WhatsApp ou Infobip sont-ils inclus ?', 'Non. WhatsApp, Infobip et les autres frais de distribution externes sont facturés séparément par le fournisseur concerné.'],
         ['Comment fonctionne le paiement sécurisé ?', 'Vous vous connectez à AXY, confirmez la configuration, puis poursuivez vers le Checkout hébergé par Stripe. AXY ne conserve jamais les données de carte.'],
       ],
     },
-    cta: { title: 'Commencez gratuitement dès aujourd’hui. Évoluez lorsque AXY démontre sa valeur.', body: 'Créez votre espace de travail gratuit ou connectez-vous pour gérer une organisation AXY existante.', start: 'Commencer gratuitement', login: 'Se connecter' },
+    cta: { title: 'Demandez l’accès bêta pour votre entreprise.', body: 'Présentez-nous votre organisation et nous vous contacterons au sujet de l’adéquation, du calendrier et de la prochaine étape d’onboarding.', start: 'Demander l’accès à la bêta', login: 'Se connecter' },
   },
 };
 

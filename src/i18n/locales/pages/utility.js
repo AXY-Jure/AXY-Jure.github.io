@@ -1,9 +1,21 @@
 const en = {
+  requestAccess: {
+    eyebrow: 'AXY CLOSED BETA',
+    title: 'Request access for your company.',
+    lead: 'AXY is currently onboarding a limited number of retailers, brands and partners. Share a few details and we’ll contact you about the next step.',
+    nextTitle: 'What happens next',
+    nextItems: ['We review your company and intended AXY use.', 'We contact you to confirm fit and timing.', 'Selected beta teams receive guided onboarding.'],
+    formHeading: 'Tell us about your company',
+    formHint: 'It takes about one minute.',
+    privacyBefore: 'By submitting this form, you agree that AXY may contact you about this request.',
+    privacyLink: 'Read our Privacy Policy.',
+    fallback: 'If the form does not load, email',
+  },
   createAccount: {
-    eyebrow: 'START FREE',
-    title: 'Opening AXY registration…',
-    body: 'Create your secure AXY Free workspace in the AXY application.',
-    action: 'Continue to registration',
+    eyebrow: 'AXY CLOSED BETA',
+    title: 'Request access to AXY.',
+    body: 'AXY is currently available to selected beta teams.',
+    action: 'Request beta access',
   },
   login: {
     eyebrow: 'AXY WORKSPACE',
@@ -40,11 +52,23 @@ const en = {
 };
 
 const it = {
+  requestAccess: {
+    eyebrow: 'BETA CHIUSA AXY',
+    title: 'Richiedi l’accesso per la tua azienda.',
+    lead: 'AXY sta accogliendo un numero limitato di retailer, brand e partner. Condividi alcuni dettagli e ti contatteremo per definire il prossimo passo.',
+    nextTitle: 'Cosa succede dopo',
+    nextItems: ['Esaminiamo la tua azienda e come intende utilizzare AXY.', 'Ti contattiamo per confermare compatibilità e tempistiche.', 'I team selezionati ricevono un onboarding guidato.'],
+    formHeading: 'Parlaci della tua azienda',
+    formHint: 'Basta circa un minuto.',
+    privacyBefore: 'Inviando il modulo, accetti che AXY possa contattarti in merito alla richiesta.',
+    privacyLink: 'Leggi l’Informativa sulla privacy.',
+    fallback: 'Se il modulo non si carica, scrivi a',
+  },
   createAccount: {
-    eyebrow: 'INIZIA GRATIS',
-    title: 'Apertura della registrazione AXY…',
-    body: 'Crea il tuo spazio di lavoro sicuro AXY Free nell’applicazione AXY.',
-    action: 'Continua alla registrazione',
+    eyebrow: 'BETA CHIUSA AXY',
+    title: 'Richiedi l’accesso ad AXY.',
+    body: 'AXY è attualmente disponibile per team beta selezionati.',
+    action: 'Richiedi l’accesso alla beta',
   },
   login: {
     eyebrow: 'SPAZIO DI LAVORO AXY',
@@ -81,11 +105,23 @@ const it = {
 };
 
 const de = {
+  requestAccess: {
+    eyebrow: 'GESCHLOSSENE AXY-BETA',
+    title: 'Zugang für Ihr Unternehmen anfragen.',
+    lead: 'AXY nimmt derzeit eine begrenzte Anzahl von Händlern, Marken und Partnern auf. Senden Sie uns einige Angaben – wir melden uns bei Ihnen mit den nächsten Schritten.',
+    nextTitle: 'Wie es weitergeht',
+    nextItems: ['Wir prüfen Ihr Unternehmen und den geplanten Einsatz von AXY.', 'Wir melden uns, um Eignung und Zeitplan abzustimmen.', 'Ausgewählte Beta-Teams erhalten ein geführtes Onboarding.'],
+    formHeading: 'Erzählen Sie uns von Ihrem Unternehmen',
+    formHint: 'Das dauert etwa eine Minute.',
+    privacyBefore: 'Mit dem Absenden erklären Sie sich damit einverstanden, dass AXY Sie zu Ihrer Anfrage kontaktiert.',
+    privacyLink: 'Lesen Sie unsere Datenschutzerklärung.',
+    fallback: 'Falls das Formular nicht geladen wird, schreiben Sie an',
+  },
   createAccount: {
-    eyebrow: 'KOSTENLOS STARTEN',
-    title: 'AXY-Registrierung wird geöffnet…',
-    body: 'Erstellen Sie Ihren sicheren AXY Free-Arbeitsbereich in der AXY-Anwendung.',
-    action: 'Weiter zur Registrierung',
+    eyebrow: 'GESCHLOSSENE AXY-BETA',
+    title: 'Zugang zu AXY anfragen.',
+    body: 'AXY ist derzeit für ausgewählte Beta-Teams verfügbar.',
+    action: 'Beta-Zugang anfragen',
   },
   login: {
     eyebrow: 'AXY-ARBEITSBEREICH',
@@ -122,11 +158,23 @@ const de = {
 };
 
 const fr = {
+  requestAccess: {
+    eyebrow: 'BÊTA FERMÉE AXY',
+    title: 'Demandez l’accès pour votre entreprise.',
+    lead: 'AXY accueille actuellement un nombre limité de détaillants, de marques et de partenaires. Communiquez-nous quelques informations et nous vous contacterons pour la suite.',
+    nextTitle: 'Et ensuite ?',
+    nextItems: ['Nous étudions votre entreprise et l’usage prévu d’AXY.', 'Nous vous contactons pour confirmer l’adéquation et le calendrier.', 'Les équipes bêta sélectionnées bénéficient d’un onboarding guidé.'],
+    formHeading: 'Présentez-nous votre entreprise',
+    formHint: 'Cela prend environ une minute.',
+    privacyBefore: 'En envoyant ce formulaire, vous acceptez qu’AXY vous contacte au sujet de cette demande.',
+    privacyLink: 'Consultez notre Politique de confidentialité.',
+    fallback: 'Si le formulaire ne se charge pas, écrivez à',
+  },
   createAccount: {
-    eyebrow: 'COMMENCER GRATUITEMENT',
-    title: 'Ouverture de l’inscription AXY…',
-    body: 'Créez votre espace de travail sécurisé AXY Free dans l’application AXY.',
-    action: 'Continuer vers l’inscription',
+    eyebrow: 'BÊTA FERMÉE AXY',
+    title: 'Demandez l’accès à AXY.',
+    body: 'AXY est actuellement disponible pour des équipes bêta sélectionnées.',
+    action: 'Demander l’accès à la bêta',
   },
   login: {
     eyebrow: 'ESPACE DE TRAVAIL AXY',

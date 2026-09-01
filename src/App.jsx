@@ -27,13 +27,14 @@ import Legal from './screens/Legal.jsx';
 import NotFound from './screens/NotFound.jsx';
 import Walkthrough from './screens/Walkthrough.jsx';
 import Contact from './screens/Contact.jsx';
+import RequestAccess from './screens/RequestAccess.jsx';
 import MeetingBooked from './screens/MeetingBooked.jsx';
 import { AXY_PRICING, calculateMonthlyPricing } from './config/billing.js';
 import AnalyticsConsent from './components/AnalyticsConsent.jsx';
 import { I18nProvider } from './i18n/I18nProvider.jsx';
 import { localeFromPath, parseLocalizedPath } from './i18n/paths.js';
 
-const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/meeting-booked': 'meetingbooked', '/contact': 'contact', '/help': 'help', '/create-account': 'account', '/login': 'login', '/article': 'article', '/legal': 'legal' };
+const ROUTES = { '': 'home', '/': 'home', '/product': 'product', '/sales-app': 'salesapp', '/back-office': 'backoffice', '/customer-experience': 'custexp', '/integrations': 'integrations', '/how-it-works': 'how', '/for-retailers': 'retailers', '/for-brands': 'brands', '/use-cases/retail-clienteling': 'clienteling', '/use-cases/in-store-sales-capture': 'capture', '/use-cases/product-demand-intelligence': 'demand', '/use-cases/retailer-brand-collaboration': 'collab', '/pricing': 'pricing', '/resources': 'resources', '/about': 'about', '/book-a-walkthrough': 'walkthrough', '/meeting-booked': 'meetingbooked', '/contact': 'contact', '/help': 'help', '/request-access': 'requestaccess', '/create-account': 'requestaccess', '/login': 'login', '/article': 'article', '/legal': 'legal' };
 
 function routeForPath(pathname = '/') {
   const withoutQuery = parseLocalizedPath(pathname).basePath.split('?')[0].split('#')[0];
@@ -62,6 +63,7 @@ const PAGES = {
   about: About,
   help: Help,
   account: CreateAccount,
+  requestaccess: RequestAccess,
   login: Login,
   article: Article,
   legal: Legal,
@@ -138,7 +140,7 @@ class AppShell extends React.Component {
   }
   renderVals() {
     const s = this.state;
-    const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','meetingbooked','contact','help','account','login','article','legal','p404'];
+    const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','meetingbooked','contact','help','account','requestaccess','login','article','legal','p404'];
     const vals = {};
     keys.forEach(k => { vals['is_' + k] = s.route === k; });
     // ---- Pricing calculator wiring ----

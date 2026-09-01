@@ -20,9 +20,9 @@ export default function BackOffice() {
             <h1 id="back-office-title">{copy.hero.title}</h1>
             <p className={styles.heroLead}>{copy.hero.lead}</p>
             <div className={styles.heroActions}>
-              <a className={styles.buttonPrimary} href="https://app.axy.net/onboarding">
+              <LocalizedLink className={styles.buttonPrimary} href="/request-access">
                 {copy.hero.createAccount}
-              </a>
+              </LocalizedLink>
               <LocalizedLink className={styles.buttonSecondary} href="/book-a-walkthrough#schedule">
                 {copy.hero.guidedSetup}
               </LocalizedLink>
@@ -280,9 +280,9 @@ export default function BackOffice() {
           <h2 id="back-office-final-title">{copy.final.title}</h2>
           <p>{copy.final.body}</p>
           <div className={styles.finalActions}>
-            <a className={styles.buttonLight} href="https://app.axy.net/onboarding">
+            <LocalizedLink className={styles.buttonLight} href="/request-access">
               {copy.final.createAccount}
-            </a>
+            </LocalizedLink>
             <LocalizedLink className={styles.buttonOutlineLight} href="/book-a-walkthrough#schedule">
               {copy.final.guidedSetup}
             </LocalizedLink>
