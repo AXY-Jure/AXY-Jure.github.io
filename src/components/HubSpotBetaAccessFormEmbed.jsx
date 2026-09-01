@@ -5,7 +5,13 @@ import HubSpotFormEmbed from './HubSpotFormEmbed.jsx';
 import { HUBSPOT } from '../config/hubspot.js';
 import { useI18n } from '../i18n/I18nProvider.jsx';
 
-export default function HubSpotBetaAccessFormEmbed() {
+export default function HubSpotBetaAccessFormEmbed({
+  ariaLabel,
+  formName = 'beta_access_request',
+  initialFieldValues,
+  leadType = 'free_access',
+  minHeight = '820px',
+}) {
   const { locale, t } = useI18n();
   const formId = HUBSPOT.forms.betaAccess[locale] || HUBSPOT.forms.betaAccess.en;
 
@@ -13,10 +19,11 @@ export default function HubSpotBetaAccessFormEmbed() {
     <HubSpotFormEmbed
       key={formId}
       formId={formId}
-      formName="beta_access_request"
-      leadType="free_access"
-      ariaLabel={t('common.embeds.betaAccessFormLabel')}
-      minHeight="820px"
+      formName={formName}
+      leadType={leadType}
+      ariaLabel={ariaLabel || t('common.embeds.betaAccessFormLabel')}
+      initialFieldValues={initialFieldValues}
+      minHeight={minHeight}
     />
   );
 }

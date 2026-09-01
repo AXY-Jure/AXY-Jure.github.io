@@ -72,7 +72,7 @@ export const ENGLISH_PAGE_META = {
   },
   "/pricing": {
     title: "AXY Pricing",
-    description: "Review AXY pricing for users, business units and optional modules, then request access for your company’s selected beta setup.",
+    description: "Configure AXY pricing by users, business units, locations and optional modules, then send an inquiry for the exact selected beta setup.",
   },
   "/resources": {
     title: "Retail Clienteling Resources",
@@ -181,7 +181,7 @@ const ITALIAN_PAGE_META = {
   },
   "/pricing": {
     title: "Prezzi AXY",
-    description: "Consulta i prezzi AXY per utenti, unità operative e moduli opzionali, poi richiedi l’accesso beta per la tua azienda.",
+    description: "Configura i prezzi AXY per utenti, unità operative, sedi e moduli opzionali, poi invia una richiesta per l’esatto assetto beta selezionato.",
   },
   "/resources": {
     title: "Risorse sul clienteling nel retail",
@@ -284,7 +284,7 @@ const GERMAN_PAGE_META = {
   },
   "/pricing": {
     title: "AXY Preise",
-    description: "Prüfen Sie AXY Preise für Nutzer, Geschäftseinheiten und optionale Module und fragen Sie Beta-Zugang für Ihr Unternehmen an.",
+    description: "Konfigurieren Sie AXY nach Nutzern, Geschäftseinheiten, Standorten und Modulen und senden Sie eine Anfrage für das ausgewählte Beta-Setup.",
   },
   "/resources": {
     title: "Ressourcen für Clienteling im Einzelhandel",
@@ -387,7 +387,7 @@ const FRENCH_PAGE_META = {
   },
   "/pricing": {
     title: "Tarifs AXY",
-    description: "Consultez les tarifs AXY pour les utilisateurs, unités opérationnelles et modules, puis demandez l’accès bêta pour votre entreprise.",
+    description: "Configurez AXY selon les utilisateurs, unités opérationnelles, sites et modules, puis envoyez une demande pour l’offre bêta sélectionnée.",
   },
   "/resources": {
     title: "Ressources sur le clienteling retail",

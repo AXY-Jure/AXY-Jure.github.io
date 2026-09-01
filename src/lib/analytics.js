@@ -61,11 +61,11 @@ const REQUIRED_PARAMETERS = Object.freeze({
   walkthrough_booked: ['meeting_type', 'page_path'],
 });
 
-const LEAD_TYPES = new Set(['free_access', 'general_contact', 'walkthrough', 'partnership', 'integration_inquiry']);
+const LEAD_TYPES = new Set(['free_access', 'general_contact', 'walkthrough', 'partnership', 'integration_inquiry', 'pricing_inquiry']);
 const MEETING_TYPES = new Set(['tailored_walkthrough']);
 const STEP_DIRECTIONS = new Set(['next', 'previous']);
 const ERROR_TYPES = new Set(['submission_failed', 'validation_failed']);
-const SAFE_DESTINATION_HASHES = new Set(['#schedule', '#axy-pricing-builder']);
+const SAFE_DESTINATION_HASHES = new Set(['#schedule', '#axy-pricing-builder', '#axy-pricing-request']);
 const ANALYTICS_HOSTS = new Set(['axy.net', 'www.axy.net']);
 const CANONICAL_ANALYTICS_ORIGIN = 'https://axy.net';
 const ATTRIBUTION_PARAMETERS = Object.freeze([

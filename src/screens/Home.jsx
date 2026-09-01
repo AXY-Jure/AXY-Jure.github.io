@@ -101,8 +101,8 @@ export default function Home() {
 
       <section className="home-clean__video" aria-label={copy.video.sectionLabel}>
         <div className="home-clean__video-frame">
-          <video aria-label={copy.video.videoLabel} controls playsInline preload="metadata" poster="/videos/axy-main-promo-poster.webp">
-            <source src="/videos/axy-main-promo.mp4" type="video/mp4" />
+          <video aria-label={copy.video.videoLabel} controls playsInline preload="metadata" poster="/videos/axy-platform-overview-2026-poster.webp">
+            <source src="/videos/axy-platform-overview-2026.mp4" type="video/mp4" />
             {copy.video.fallback}
           </video>
         </div>

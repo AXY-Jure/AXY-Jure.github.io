@@ -330,6 +330,25 @@ test('CTA destinations retain only known non-personal fragments', () => {
     }, target).destination,
     '/pricing#axy-pricing-builder',
   );
+
+  assert.equal(
+    sanitizeAnalyticsParameters('pricing_cta_click', {
+      cta_name: 'send_plan_inquiry',
+      destination: '/pricing#axy-pricing-request',
+      page_path: '/pricing',
+    }, target).destination,
+    '/pricing#axy-pricing-request',
+  );
+
+  assert.equal(
+    sanitizeAnalyticsParameters('form_view', {
+      form_id: '4f886154-36e1-4044-bf3d-6e74a88bb643',
+      form_name: 'pricing_plan_inquiry',
+      lead_type: 'pricing_inquiry',
+      page_path: '/pricing',
+    }, target).lead_type,
+    'pricing_inquiry',
+  );
 });
 
 test('unknown events, missing required parameters, and invalid controlled values are rejected', () => {

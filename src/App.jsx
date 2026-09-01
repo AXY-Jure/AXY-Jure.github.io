@@ -77,7 +77,7 @@ class AppShell extends React.Component {
   constructor(props) {
     super(props);
     this.state = { route: routeForPath(props.initialPath), menu: false, dd: '', forms: {},
-      pricingUsers: AXY_PRICING.includedUsers, pricingBusinessUnits: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false };
+      pricingUsers: AXY_PRICING.includedUsers, pricingBusinessUnits: 1, pricingLocations: 1, pricingAnnouncementsEnabled: false, pricingAnnouncementUnits: 1, pricingMessagingEnabled: false, pricingAiImageInterested: false, pricingFreeDetail: 0, pricingFuture: [false, false, false, false, false], pricingFormOpen: false, pricingLastPayload: null };
   }
 
   ROUTES = ROUTES;
@@ -104,19 +104,19 @@ class AppShell extends React.Component {
   // ---- Pricing calculator (pure) ----
   _pricingCalc() {
     const s = this.state;
-    return calculateMonthlyPricing({ totalUsers: s.pricingUsers, totalBusinessUnits: s.pricingBusinessUnits, announcements: s.pricingAnnouncementsEnabled, messaging: s.pricingMessagingEnabled });
+    return calculateMonthlyPricing({ totalUsers: s.pricingUsers, totalBusinessUnits: s.pricingBusinessUnits, totalLocations: s.pricingLocations, announcements: s.pricingAnnouncementsEnabled, messaging: s.pricingMessagingEnabled });
   }
   _pricingRecommendation(c) {
     const s = this.state;
     const ann = s.pricingAnnouncementsEnabled, msg = s.pricingMessagingEnabled, ai = s.pricingAiImageInterested;
-    if (c.users === AXY_PRICING.includedUsers && c.businessUnits === 1 && !ann && !msg && !ai) return 'AXY Free is the right starting point for this setup.';
+    if (c.users === AXY_PRICING.includedUsers && c.businessUnits === 1 && c.locations === 1 && !ann && !msg && !ai) return 'AXY Free is the right starting point for this setup.';
     return 'This is a custom AXY setup.';
   }
   _pricingPayload() {
     const s = this.state, c = this._pricingCalc();
     const toolNames = ['AI Product Suggestions', 'Pricing & Offer Builder', 'Targets', 'Budgets', 'Dashboards'];
     return {
-      users: c.users, businessUnits: c.businessUnits,
+      users: c.users, businessUnits: c.businessUnits, locations: c.locations,
       modules: { announcements: s.pricingAnnouncementsEnabled, messaging: s.pricingMessagingEnabled },
       estimatedMonthlyTotal: c.customMonthlyTotal,
       futureToolsInterest: toolNames.filter((_, i) => s.pricingFuture[i]),
@@ -127,17 +127,6 @@ class AppShell extends React.Component {
   _resExplore() { this._scrollTo('axy-res-start'); }
   _pStep(key, delta, min) { this.setState(p => { const v = Math.max(min, (p[key] | 0) + delta); const next = { [key]: v }; if (key === 'pricingBusinessUnits' && p.pricingAnnouncementUnits > v) next.pricingAnnouncementUnits = v; return next; }); }
   _pAnnStep(delta) { this.setState(p => ({ pricingAnnouncementUnits: Math.min(Math.max(1, (p.pricingAnnouncementUnits | 0) + delta), Math.max(1, p.pricingBusinessUnits | 0)) })); }
-  _pSubmit() {
-    const payload = this._pricingPayload();
-    try {
-      const container = document.getElementById('axy-pricing-request');
-      const value = (name) => container?.querySelector(`[name="${name}"]`)?.value?.trim() || 'Not provided';
-      const modules = Object.entries(payload.modules).filter(([, enabled]) => enabled).map(([name]) => name).join(', ') || 'None selected';
-      const body = ['AXY plan request', '', `Company: ${value('company')}`, `Contact: ${value('contact')}`, `Work email: ${value('email')}`, `Phone: ${value('phone')}`, `Country: ${value('country')}`, `Company type: ${value('companyType')}`, `Users: ${payload.users}`, `Business units: ${payload.businessUnits}`, `Selected modules: ${modules}`, `Estimated monthly total: €${payload.estimatedMonthlyTotal}`, `Future tool interest: ${payload.futureToolsInterest.join(', ') || 'None selected'}`, `Recommendation: ${payload.recommendation}`, `Notes: ${value('notes')}`].join('\n');
-      window.location.href = `mailto:info@axy.net?subject=${encodeURIComponent('AXY plan request')}&body=${encodeURIComponent(body)}`;
-    } catch {}
-    this.setState(p => ({ forms: { ...p.forms, pricingPlan: true }, pricingLastPayload: payload }));
-  }
   renderVals() {
     const s = this.state;
     const keys = ['home','product','how','retailers','brands','salesapp','backoffice','custexp','clienteling','capture','demand','collab','integrations','pricing','resources','about','walkthrough','meetingbooked','contact','help','account','requestaccess','login','article','legal','p404'];
@@ -157,9 +146,10 @@ class AppShell extends React.Component {
       ? 'flex-shrink:0; padding:9px 16px; background:#2C8C99; color:#fff; border:1.5px solid #2C8C99; border-radius:9px; font-size:12.5px; font-weight:700; cursor:pointer;'
       : 'flex-shrink:0; padding:9px 16px; background:#fff; color:#32415C; border:1.5px solid #D8DEE8; border-radius:9px; font-size:12.5px; font-weight:700; cursor:pointer;';
     const pc = this._pricingCalc();
-    vals.pUsers = pc.users; vals.pBU = pc.businessUnits;
+    vals.pUsers = pc.users; vals.pBU = pc.businessUnits; vals.pLocations = pc.locations;
     vals.pAddUsers = pc.additionalUsers; vals.pAddUserCost = pc.additionalUserCost;
     vals.pAddBU = pc.additionalBusinessUnits; vals.pAddBUCost = pc.additionalBusinessUnitCost;
+    vals.pAddLocations = pc.additionalLocations; vals.pAddLocationCost = pc.additionalLocationCost;
     vals.pAnnCost = pc.announcementsCost; vals.pMsgCost = pc.messagingCost;
     vals.pTotal = pc.customMonthlyTotal; vals.pTotalLabel = '\u20AC' + pc.customMonthlyTotal + '/month';
     vals.pRec = this._pricingRecommendation(pc);
@@ -175,15 +165,18 @@ class AppShell extends React.Component {
     vals.pUsersDec = () => this._pStep('pricingUsers', -1, AXY_PRICING.includedUsers);
     vals.pBUInc = () => this._pStep('pricingBusinessUnits', 1, 1);
     vals.pBUDec = () => this._pStep('pricingBusinessUnits', -1, 1);
+    vals.pLocationsInc = () => this._pStep('pricingLocations', 1, 1);
+    vals.pLocationsDec = () => this._pStep('pricingLocations', -1, 1);
     vals.pAnnToggle = () => this.setState(p => ({ pricingAnnouncementsEnabled: !p.pricingAnnouncementsEnabled }));
     vals.pMsgToggle = () => this.setState(p => ({ pricingMessagingEnabled: !p.pricingMessagingEnabled }));
     vals.pAiToggle = () => this.setState(p => ({ pricingAiImageInterested: !p.pricingAiImageInterested }));
     vals.pScrollBuild = () => this._scrollTo('axy-pricing-builder');
-    vals.pFormOpen = () => this.setState({ pricingFormOpen: true }, () => this._scrollTo('axy-pricing-builder'));
+    vals.pFormOpen = () => {
+      const pricingLastPayload = this._pricingPayload();
+      this.setState({ pricingFormOpen: true, pricingLastPayload }, () => this._scrollTo('axy-pricing-request'));
+    };
     vals.pFormShown = s.pricingFormOpen;
-    vals.pSubmitted = !!s.forms.pricingPlan;
-    vals.pFormEditable = s.pricingFormOpen && !s.forms.pricingPlan;
-    vals.pSubmit = () => this._pSubmit();
+    vals.pInquirySnapshot = s.pricingLastPayload;
     for (let i = 0; i < 9; i++) {
       vals['pf_' + i] = s.pricingFreeDetail === i;
       vals['pFree' + i + 'Style'] = freeBub(s.pricingFreeDetail === i);

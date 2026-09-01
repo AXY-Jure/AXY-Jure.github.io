@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { calculateMonthlyPricing } from "../src/config/billing.js";
+import { buildSubscriptionUrl, calculateMonthlyPricing } from "../src/config/billing.js";
+import { buildPricingInquirySummary } from "../src/lib/pricingInquiry.js";
 
 const readOutput = (path) => readFile(new URL(`../out/${path}`, import.meta.url), "utf8");
 const readSource = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
@@ -95,9 +96,9 @@ test("publishes a click-to-play homepage video with sound controls", async () =>
   assert.match(video, /controls=""/);
   assert.match(video, /playsInline=""/);
   assert.match(video, /preload="metadata"/);
-  assert.match(video, /poster="\/videos\/axy-main-promo-poster\.webp"/);
+  assert.match(video, /poster="\/videos\/axy-platform-overview-2026-poster\.webp"/);
   assert.doesNotMatch(video, /autoPlay|autoplay|muted/);
-  assert.match(home, /<source src="\/videos\/axy-main-promo\.mp4" type="video\/mp4"\/>/);
+  assert.match(home, /<source src="\/videos\/axy-platform-overview-2026\.mp4" type="video\/mp4"\/>/);
 });
 
 test("publishes three selectable homepage operating stages with matching AXY visuals", async () => {
@@ -585,12 +586,17 @@ test("meeting CTAs open directly on the scheduling calendar", async () => {
   }
 });
 
-test("publishes the approved free plan, calculator and AI image packages", async () => {
+test("publishes the approved free plan, scoped calculator and AI image examples", async () => {
   const pricing = await readOutput("pricing/index.html");
 
   assert.match(pricing, /AXY Free/);
-  assert.match(pricing, /The first two users and first business unit are always included/);
+  assert.match(pricing, /The first two users, first business unit and first location are always included/);
   assert.match(pricing, /Two users included; then €15\/month for each additional user/);
+  assert.match(pricing, /Total locations/);
+  assert.match(pricing, /First location included; then €29\/month for each additional location/);
+  assert.match(pricing, /Each additional location — €29\/month/);
+  assert.match(pricing, />One location</);
+  assert.match(pricing, /Send an inquiry for this plan/);
   assert.doesNotMatch(pricing, /First administrator|One administrator/);
   assert.match(pricing, /Five one-time trial image generations/);
   assert.match(pricing, /Announcements — €20\/month per organization/);
@@ -601,23 +607,60 @@ test("publishes the approved free plan, calculator and AI image packages", async
   assert.match(pricing, /€20/);
   assert.match(pricing, /€<!-- -->40/);
   assert.match(pricing, /€<!-- -->70/);
-  assert.match(pricing, /VAT treatment is confirmed during secure Stripe Checkout/);
-  assert.doesNotMatch(pricing, /AXY Starter|Request this plan|Send plan request/);
+  assert.match(pricing, /VAT and final commercial terms are confirmed with your inquiry/);
+  assert.match(pricing, /See the product images our model generated/);
+  for (const image of ["braided-bracelet", "earrings", "engagement-ring", "pearl-necklace", "tennis-bracelet", "wedding-ring", "yellow-gold-necklace"]) {
+    assert.match(pricing, new RegExp(`/images/pricing/ai-generated/${image}\\.jpg`));
+  }
+  assert.doesNotMatch(pricing, /AXY Starter/);
 });
 
-test("includes two free users and charges additions only from the third user", () => {
+test("includes the first location and charges each additional location at €29 per month", () => {
   const free = calculateMonthlyPricing();
   const belowMinimum = calculateMonthlyPricing({ totalUsers: 1 });
-  const example = calculateMonthlyPricing({ totalUsers: 3, totalBusinessUnits: 2, announcements: true, messaging: true });
+  const example = calculateMonthlyPricing({ totalUsers: 3, totalBusinessUnits: 2, totalLocations: 12, announcements: true, messaging: true });
+  const twoLocations = calculateMonthlyPricing({ totalLocations: 2 });
   const manyUnits = calculateMonthlyPricing({ totalUsers: 1, totalBusinessUnits: 5, announcements: true });
   assert.equal(free.users, 2);
   assert.equal(free.additionalUsers, 0);
   assert.equal(free.additionalUserCost, 0);
   assert.equal(belowMinimum.users, 2);
   assert.equal(example.additionalUsers, 1);
-  assert.equal(example.customMonthlyTotal, 103);
+  assert.equal(example.locations, 12);
+  assert.equal(example.additionalLocations, 11);
+  assert.equal(example.additionalLocationCost, 319);
+  assert.equal(example.customMonthlyTotal, 422);
   assert.equal(example.announcementsCost, 20);
   assert.equal(manyUnits.announcementsCost, 20);
+  assert.equal(calculateMonthlyPricing({ totalLocations: 0 }).locations, 1);
+  assert.equal(free.additionalLocationCost, 0);
+  assert.equal(twoLocations.additionalLocationCost, 29);
+  assert.match(buildSubscriptionUrl({ users: 3, businessUnits: 2, locations: 12, announcements: true, messaging: false }), /locations=12/);
+
+  const summary = buildPricingInquirySummary({ ...example, modules: { announcements: true, messaging: true }, estimatedMonthlyTotal: example.customMonthlyTotal }, {
+    messageTitle: "AXY pricing-plan inquiry", users: "Users", businessUnits: "Business units", locations: "Locations",
+    announcements: "Announcements", messaging: "Messaging", selected: "Selected", notSelected: "Not selected",
+    estimatedTotal: "Estimated monthly total", monthSuffix: "/month",
+  });
+  assert.match(summary, /Locations: 12/);
+  assert.match(summary, /Announcements: Selected/);
+  assert.match(summary, /Messaging: Selected/);
+  assert.match(summary, /Estimated monthly total: €422\/month/);
+});
+
+test("sends the frozen pricing selection through the localized HubSpot access form", async () => {
+  const [app, pricing, hubspotEmbed] = await Promise.all([
+    readSource("src/App.jsx"),
+    readSource("src/screens/Pricing.jsx"),
+    readSource("src/components/HubSpotFormEmbed.jsx"),
+  ]);
+
+  assert.match(app, /pricingLastPayload = this\._pricingPayload\(\)/);
+  assert.match(app, /_scrollTo\('axy-pricing-request'\)/);
+  assert.match(pricing, /formName="pricing_plan_inquiry"/);
+  assert.match(pricing, /initialFieldValues=\{\{ '0-1\/message': inquiryMessage \}\}/);
+  assert.match(hubspotEmbed, /getFormFromEvent/);
+  assert.match(hubspotEmbed, /setFieldValue\(fieldName, fieldValue\)/);
 });
 
 test("uses the beta-access request for registration CTAs and the live AXY app for login", async () => {

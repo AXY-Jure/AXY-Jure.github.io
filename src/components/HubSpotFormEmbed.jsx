@@ -15,9 +15,12 @@ export default function HubSpotFormEmbed({
   ariaLabel,
   ariaLabelKey = 'common.embeds.contactFormLabel',
   minHeight = '560px',
+  initialFieldValues,
 }) {
   const frameRef = React.useRef(null);
+  const appliedInitialValuesRef = React.useRef('');
   const { t } = useI18n();
+  const initialFieldValuesKey = JSON.stringify(initialFieldValues || {});
 
   React.useEffect(() => {
     const frame = frameRef.current;
@@ -46,6 +49,31 @@ export default function HubSpotFormEmbed({
       trackAnalyticsEvent(eventName, formParameters(extra))
     ));
 
+    const initialEntries = Object.entries(JSON.parse(initialFieldValuesKey));
+    const currentFormInstance = () => {
+      try {
+        const forms = window.HubSpotFormsV4?.getForms?.();
+        return Array.isArray(forms) ? forms.find((form) => form?.getFormId?.() === formId) : undefined;
+      } catch {
+        return undefined;
+      }
+    };
+    const applyInitialFieldValues = (form) => {
+      if (!form || initialEntries.length === 0 || appliedInitialValuesRef.current === initialFieldValuesKey) return;
+
+      let valueApplied = false;
+      for (const [fieldName, fieldValue] of initialEntries) {
+        if (typeof fieldValue !== 'string') continue;
+        try {
+          form.setFieldValue(fieldName, fieldValue);
+          valueApplied = true;
+        } catch {
+          // The form remains usable if a HubSpot field is renamed or unavailable.
+        }
+      }
+      if (valueApplied) appliedInitialValuesRef.current = initialFieldValuesKey;
+    };
+
     const sendFormView = () => {
       if (!state.ready || !state.visible || state.viewSent) return;
       state.viewSent = trackAnalyticsEvent('form_view', formParameters());
@@ -57,7 +85,13 @@ export default function HubSpotFormEmbed({
     };
 
     const handleReady = (event) => {
-      if (isCurrentFormEvent(event)) markReady();
+      if (!isCurrentFormEvent(event)) return;
+      try {
+        applyInitialFieldValues(window.HubSpotFormsV4?.getFormFromEvent?.(event));
+      } catch {
+        // Rendering and submission must not depend on optional prefilling.
+      }
+      markReady();
     };
 
     const handleNavigation = (direction) => (event) => {
@@ -80,6 +114,7 @@ export default function HubSpotFormEmbed({
       if (!eventName) return;
 
       if (eventName === 'onFormReady') {
+        applyInitialFieldValues(currentFormInstance());
         markReady();
       } else if (eventName === 'onFormSubmit') {
         lifecycle.start();
@@ -114,10 +149,16 @@ export default function HubSpotFormEmbed({
     }
 
     const renderObserver = new MutationObserver(() => {
-      if (frame.querySelector('iframe, form')) markReady();
+      if (frame.querySelector('iframe, form')) {
+        applyInitialFieldValues(currentFormInstance());
+        markReady();
+      }
     });
     renderObserver.observe(frame, { childList: true, subtree: true });
-    if (frame.querySelector('iframe, form')) markReady();
+    if (frame.querySelector('iframe, form')) {
+      applyInitialFieldValues(currentFormInstance());
+      markReady();
+    }
 
     const scriptId = `axy-hubspot-forms-script-${portalId}-${region}`;
     if (!document.getElementById(scriptId)) {
@@ -135,7 +176,7 @@ export default function HubSpotFormEmbed({
       visibilityObserver?.disconnect();
       renderObserver.disconnect();
     };
-  }, [formId, formName, leadType, portalId, region]);
+  }, [formId, formName, initialFieldValuesKey, leadType, portalId, region]);
 
   return (
     <div

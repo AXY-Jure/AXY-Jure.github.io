@@ -61,8 +61,8 @@
   @media (max-width: 520px) { .cx-four { grid-template-columns:1fr !important; } }
   @media (max-width: 880px) { .pr-cards { grid-template-columns:1fr !important; } }
   @media (max-width: 900px) { .pr-builder { grid-template-columns:1fr !important; } .pr-builder aside { position:static !important; } }
-  @media (max-width: 820px) { .pr-packs { grid-template-columns:1fr !important; } }
-  @media (max-width: 560px) { .pr-option { align-items:flex-start !important; flex-direction:column !important; } }
+  @media (max-width: 820px) { .pr-packs, .pr-inquiry-grid { grid-template-columns:1fr !important; } }
+  @media (max-width: 560px) { .pr-option { align-items:flex-start !important; flex-direction:column !important; } .pr-ai-gallery { grid-auto-columns:minmax(76vw,1fr) !important; } }
   @media (max-width: 860px) { .pr-free { grid-template-columns:1fr !important; } }
   @media (max-width: 900px) { .pr-build { grid-template-columns:1fr !important; } .pr-summary { position:static !important; } }
   @media (max-width: 480px) { .pr-detail { grid-template-columns:1fr !important; } }
