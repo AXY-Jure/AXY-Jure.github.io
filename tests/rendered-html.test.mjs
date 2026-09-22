@@ -710,12 +710,27 @@ test("publishes the live Privacy Policy, Terms and cookie disclosure", async () 
   assert.doesNotMatch(legal, /href="\/legal#cookies"/);
 });
 
-test("keeps analytics denied until consent", async () => {
-  const home = await readOutput("index.html");
+test("keeps Google Analytics and Meta Pixel denied until explicit optional consent", async () => {
+  const [home, analytics, consent, common] = await Promise.all([
+    readOutput("index.html"),
+    readSource("src/lib/analytics.js"),
+    readSource("src/components/AnalyticsConsent.jsx"),
+    readSource("src/i18n/locales/common.js"),
+  ]);
 
   assert.match(home, /G-WTT8L3MJTV/);
+  assert.match(home, /1804409627403907/);
+  assert.match(home, /id="axy-meta-pixel-bootstrap"/);
   assert.match(home, /analytics_storage[^]*denied/);
   assert.doesNotMatch(home, /googletagmanager\.com\/gtag\/js/);
+  assert.doesNotMatch(home, /<script[^>]+src=["']https:\/\/connect\.facebook\.net/i);
+  assert.doesNotMatch(home, /<noscript>[^]*facebook\.com\/tr/i);
+  assert.match(analytics, /axy-optional-consent-v2/);
+  assert.doesNotMatch(analytics, /axy-analytics-consent-v1/);
+  assert.match(analytics, /generate_lead: 'Lead'/);
+  assert.match(analytics, /walkthrough_booked: 'Schedule'/);
+  assert.match(consent, /name === '_fbp' \|\| name === '_fbc'/);
+  assert.equal((common.match(/Meta Pixel/g) || []).length, 4);
 });
 
 test("keeps narrow-phone layout fixes scoped and regression-protected", async () => {

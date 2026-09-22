@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AnalyticsRuntime from "@/src/components/AnalyticsRuntime.jsx";
 import { languageBootstrapScript } from "@/src/i18n/bootstrap.js";
+import { metaPixelBootstrapScript } from "@/src/lib/analytics.js";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           dangerouslySetInnerHTML={{
             __html: languageBootstrapScript(),
+          }}
+        />
+        <script
+          id="axy-meta-pixel-bootstrap"
+          dangerouslySetInnerHTML={{
+            __html: metaPixelBootstrapScript(),
           }}
         />
         <script

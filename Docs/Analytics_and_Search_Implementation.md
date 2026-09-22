@@ -1,6 +1,6 @@
 # AXY Analytics and Search Implementation
 
-This guide describes the privacy-safe analytics implementation prepared for the public AXY website, the verified Google configuration, and the remaining deferred HubSpot release step. It contains no credentials, verification tokens, form responses, or customer data.
+This guide describes the privacy-safe analytics and advertising-measurement implementation for the public AXY website, the verified Google configuration, the consent-gated Meta Pixel, and the remaining deferred HubSpot release step. It contains no credentials, verification tokens, form responses, or customer data.
 
 ## Scope and identifiers
 
@@ -8,6 +8,7 @@ This guide describes the privacy-safe analytics implementation prepared for the 
 - Canonical host: `https://axy.net/`
 - GA4 measurement ID: `G-WTT8L3MJTV`
 - GA4 web stream ID: `15362577604`
+- Meta Pixel ID: `1804409627403907`
 - HubSpot portal ID: `148359284`
 - HubSpot General Contact form ID: `30aa0bca-d54a-4174-9901-ba6ee7119191`
 - Tailored walkthrough scheduler: `https://meetings-eu1.hubspot.com/jure-malalan/axy-tailored-walkthrough-30-minutes`
@@ -15,7 +16,7 @@ This guide describes the privacy-safe analytics implementation prepared for the 
 - Sitemap: `https://axy.net/sitemap.xml`
 - Robots file: `https://axy.net/robots.txt`
 
-Advertising trackers are out of scope. Do not add Google Ads remarketing, Meta Pixel, LinkedIn Insight Tag, or another advertising pixel as part of this implementation.
+The Meta Pixel is the only approved advertising-measurement tracker in this implementation. Google Ads remarketing, LinkedIn Insight Tag, and all other advertising pixels remain out of scope.
 
 Current external configuration:
 
@@ -25,18 +26,19 @@ Current external configuration:
 
 ## Consent and privacy behavior
 
-Analytics remains consent-first:
+Optional measurement remains consent-first:
 
-1. Before a visitor makes a choice, `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization` are denied. GA4 is disabled and its network script is not loaded.
-2. Accepting analytics grants only `analytics_storage`. All advertising consent fields remain denied, and `ads_data_redaction` remains enabled.
-3. Rejecting or withdrawing analytics consent keeps GA4 disabled, removes accessible `_ga` and `_ga_*` cookies for the current host and `.axy.net`, and clears the non-personal walkthrough analytics marker.
-4. The central event layer checks the current consent state before every event. Unknown, rejected, or withdrawn consent results in no event being sent.
-5. The event layer is safe when storage is unavailable or the GA4 script is blocked. It does not make website behavior depend on an analytics request succeeding.
-6. Event names and parameters are allowlisted. Unknown properties are discarded, and duplicate event emissions are suppressed where practical.
-7. GA4's automatic page context is also sanitized. `page_location` uses the canonical `https://axy.net` origin and the allowlisted pathname. It retains only the exact campaign parameters `utm_source`, `utm_medium`, `utm_campaign`, `utm_id`, `utm_content`, and `utm_term` when each value is 1–64 ASCII characters, starts and ends with a letter or digit, and otherwise uses only letters, digits, periods, underscores, or hyphens; every other query parameter and every fragment is discarded. A valid external HTTP or HTTPS `page_referrer` is reduced to its scheme, hostname, and trailing slash, while `axy.net` and all of its subdomains are suppressed as internal referrers. Referrer credentials, ports, paths, queries, and fragments are never sent.
-8. The GA4 network loader is restricted to `axy.net` and `www.axy.net`; accepting consent on localhost does not send development traffic to the production property.
+1. Before a visitor makes a choice, `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization` are denied. GA4 and Meta Pixel are disabled and neither network script is loaded.
+2. Accepting the disclosed optional technologies grants `analytics_storage`, loads GA4, and grants and initializes Meta Pixel. Google's advertising consent fields remain denied, and `ads_data_redaction` remains enabled.
+3. Rejecting or withdrawing optional consent keeps both services disabled, revokes Meta Pixel consent, removes accessible `_ga`, `_ga_*`, `_fbp`, and `_fbc` cookies for the current host and `.axy.net`, and clears the non-personal walkthrough analytics marker.
+4. The combined optional-consent choice uses the versioned `axy-optional-consent-v2` key. The former GA-only `axy-analytics-consent-v1` acceptance is intentionally not reused, so existing visitors must make a fresh choice before Meta can load.
+5. The central event layer checks the current consent state before every event. Unknown, rejected, or withdrawn consent results in no event being sent.
+6. The event layer is safe when storage is unavailable or either network script is blocked. It does not make website behavior depend on a measurement request succeeding.
+7. Event names and parameters are allowlisted. Unknown properties are discarded, and duplicate event emissions are suppressed where practical.
+8. GA4's automatic page context is also sanitized. `page_location` uses the canonical `https://axy.net` origin and the allowlisted pathname. It retains only the exact campaign parameters `utm_source`, `utm_medium`, `utm_campaign`, `utm_id`, `utm_content`, and `utm_term` when each value is 1–64 ASCII characters, starts and ends with a letter or digit, and otherwise uses only letters, digits, periods, underscores, or hyphens; every other query parameter and every fragment is discarded. A valid external HTTP or HTTPS `page_referrer` is reduced to its scheme, hostname, and trailing slash, while `axy.net` and all of its subdomains are suppressed as internal referrers. Referrer credentials, ports, paths, queries, and fragments are never sent.
+9. Both network loaders are restricted to `axy.net` and `www.axy.net`; accepting consent on localhost does not send development traffic to either production property.
 
-Never send names, email addresses, telephone numbers, company names, field values, free-text responses, HubSpot submission payloads, booking details, arbitrary URL query strings, or other personal data to GA4. `page_path` remains an allowlisted pathname only. The six validated UTM campaign parameters are the sole query-string exception in `page_location`; campaign creators must never place personal, customer, form, or free-text data in those values. CTA destinations are normalized to stable destinations without query strings or fragments that could contain data.
+Never send names, email addresses, telephone numbers, company names, field values, free-text responses, HubSpot submission payloads, booking details, arbitrary URL query strings, or other personal data to GA4 or Meta. `page_path` remains an allowlisted pathname only. The six validated UTM campaign parameters are the sole query-string exception in GA4 `page_location`; campaign creators must never place personal, customer, form, or free-text data in URLs or those values. CTA destinations are normalized to stable destinations without query strings or fragments that could contain data. Meta advanced matching is not enabled.
 
 ## Event specification
 
@@ -55,6 +57,18 @@ All custom events below are sent only after analytics consent has been accepted.
 | `walkthrough_booked` | The visitor reaches the booking-confirmation page through the guarded confirmation flow | `meeting_type`, `page_path` |
 
 `generate_lead` must never be emitted for a failed or merely attempted submission. `form_error` uses a stable category such as `submission_failed`; it does not include validation text or field names. Commercial click tracking is intentionally limited and does not record ordinary navigation.
+
+### Meta Pixel event mapping
+
+Meta receives only the minimum approved standard events after optional consent:
+
+| Website outcome | Meta standard event |
+| --- | --- |
+| Meta Pixel initializes on a consented document | `PageView` |
+| A commercial HubSpot form emits confirmed `generate_lead` | `Lead` |
+| The guarded booking-confirmation flow emits `walkthrough_booked` | `Schedule` |
+
+No Meta event is emitted for form views, starts, steps, failures, CTA clicks, scheduler starts, ordinary support activity, or any other website event. The integration sends no form parameters, submitted values, customer identifiers, advanced-matching data, or custom event payloads to Meta. The supplied unconditional `<noscript>` tracking image is deliberately omitted because it cannot respect the website's prior-consent requirement.
 
 ### HubSpot event handling
 
@@ -79,7 +93,7 @@ Only forms confirmed in the public-site source are listed. Do not invent a form 
 | `/contact` | `30aa0bca-d54a-4174-9901-ba6ee7119191` | `general_contact` | `general_contact` | Confirmed public-site embed |
 | `/help` | `7108a1d1-9b04-49ed-84fc-b7c7123e0767` | Not applicable | Not applicable | Product Support embed; excluded from GA4 form lifecycle and `generate_lead` |
 
-The Product Support form is an operational support channel, not a marketing lead form. It uses a dedicated embed component that loads the verified HubSpot form but does not register HubSpot lifecycle listeners, inspect submission values, call `gtag`, or forward any form event or field to GA4. HubSpot remains the support-intake source of truth. Names, email addresses, company and VAT details, country, support category, affected application, subject, description, business impact, attachments, and all other submitted values remain outside the website analytics layer.
+The Product Support form is an operational support channel, not a marketing lead form. It uses a dedicated embed component that loads the verified HubSpot form but does not register HubSpot lifecycle listeners, inspect submission values, call `gtag` or `fbq`, or forward any form event or field to GA4 or Meta. HubSpot remains the support-intake source of truth. Names, email addresses, company and VAT details, country, support category, affected application, subject, description, business impact, attachments, and all other submitted values remain outside the website analytics layer.
 
 The public `/create-account` route currently sends visitors to `https://app.axy.net/onboarding`; it does not embed a confirmed HubSpot Free Access form. Therefore no `free_access` form mapping is active on the marketing website. `free_access`, `walkthrough`, `partnership`, and `integration_inquiry` are reserved stable `lead_type` values and should be used only after a matching form and its exact ID and purpose have been verified.
 
@@ -216,12 +230,12 @@ npm.cmd run start
 
 Validate these cases:
 
-1. **Consent unknown:** the GA4 network script does not load, and user actions do not add custom analytics events.
-2. **Consent rejected:** GA4 stays disabled, no custom event is sent, advertising consent remains denied, and accessible GA cookies are removed or disabled.
-3. **Consent accepted:** GA4 loads with measurement ID `G-WTT8L3MJTV`, approved events enter the data layer once, and every advertising consent field remains denied.
-4. **Consent withdrawn:** subsequent events stop and accessible GA cookies are cleared.
-5. **HubSpot forms:** the approved General Contact form maps supported lifecycle signals correctly, a failure never produces `generate_lead`, and no submitted value appears in the data layer, console, URL, or analytics request. The Product Support form renders and submits independently without any GA4 lifecycle or `generate_lead` integration.
-6. **Walkthrough:** the scheduler still renders, the host-page CTA creates a start signal, `/meeting-booked` renders with `noindex`, and confirmation respects consent, the pending marker, and refresh deduplication.
+1. **Consent unknown:** neither network script loads, and user actions do not add measurement or advertising events.
+2. **Consent rejected:** GA4 and Meta stay disabled, no event is sent, Google's advertising consent remains denied, and accessible GA and Meta cookies are removed or disabled.
+3. **Consent accepted:** GA4 loads with measurement ID `G-WTT8L3MJTV`; Meta loads with Pixel ID `1804409627403907`; one `PageView` is queued; approved GA4 events enter the data layer once; and every Google advertising consent field remains denied.
+4. **Consent withdrawn:** subsequent events stop, Meta consent is revoked, and accessible GA and Meta cookies are cleared.
+5. **HubSpot forms:** approved commercial forms map supported lifecycle signals correctly, a failure never produces `generate_lead` or Meta `Lead`, and no submitted value appears in the data layer, Pixel queue, console, URL, or measurement request. The Product Support form renders and submits independently without GA4 or Meta lifecycle integration.
+6. **Walkthrough:** the scheduler still renders, the host-page CTA creates a start signal, `/meeting-booked` renders with `noindex`, and confirmation respects consent, the pending marker, refresh deduplication, and the single Meta `Schedule` mapping.
 7. **Commercial CTAs:** only intended onboarding and pricing actions emit events, with normalized non-personal destinations.
 8. **Regression:** verify the homepage, Product, Retailers, Brands, Pricing, Contact, Create Account, Book a Walkthrough, mobile navigation, images, static assets, canonicals, robots, sitemap, and browser console.
 
@@ -234,7 +248,7 @@ Use mocks or HubSpot test facilities for submissions. Do not create a real HubSp
 - Cross-origin scheduler internals cannot be treated as a reliable booking API. A future, separately approved HubSpot success redirect will be the browser signal after `/meeting-booked/` is deployed and verified; production currently uses HubSpot's default confirmation.
 - Browser storage restrictions can reduce deduplication or cause an otherwise valid confirmation not to be counted.
 - Consent intentionally reduces measured traffic and conversions because unknown and rejected visitors are not tracked.
-- Ad blockers and network filtering can block GA4 even after consent; this must not affect the website or HubSpot submission.
+- Ad blockers and network filtering can block GA4 or Meta even after consent; this must not affect the website or HubSpot submission.
 - Search Console ownership, the successful sitemap, the Cloudflare verification records/rule, the GA4 dimensions, and the Search Console link are verified external state and must be preserved. Any later external change still requires authentication, exact-setting review, and the applicable approval.
 - Search Console indexing requests do not guarantee indexing.
 

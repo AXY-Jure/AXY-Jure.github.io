@@ -71,10 +71,10 @@ export const commonCatalog = {
       },
       consent: {
         title: 'Your privacy choices',
-        description: 'We use optional Google Analytics cookies to understand how the AXY website is used. Analytics stays off unless you accept.',
+        description: 'We use optional Google Analytics and Meta Pixel technologies to understand website use and measure advertising. They stay off unless you accept.',
         learnMore: 'Learn more',
         reject: 'Reject optional',
-        accept: 'Accept analytics',
+        accept: 'Accept optional',
       },
       embeds: {
         contactFormLabel: 'Contact AXY form',
@@ -156,10 +156,10 @@ export const commonCatalog = {
       },
       consent: {
         title: 'Le tue scelte sulla privacy',
-        description: 'Utilizziamo cookie facoltativi di Google Analytics per capire come viene utilizzato il sito web di AXY. Analytics rimane disattivato finché non accetti.',
+        description: 'Utilizziamo tecnologie facoltative di Google Analytics e Meta Pixel per capire l’uso del sito e misurare la pubblicità. Restano disattivate finché non accetti.',
         learnMore: 'Scopri di più',
         reject: 'Rifiuta i cookie facoltativi',
-        accept: 'Accetta Analytics',
+        accept: 'Accetta i cookie facoltativi',
       },
       embeds: {
         contactFormLabel: 'Modulo di contatto AXY',
@@ -241,10 +241,10 @@ export const commonCatalog = {
       },
       consent: {
         title: 'Ihre Datenschutzauswahl',
-        description: 'Wir verwenden optionale Google-Analytics-Cookies, um zu verstehen, wie die AXY-Website genutzt wird. Analytics bleibt deaktiviert, bis Sie zustimmen.',
+        description: 'Wir verwenden optionale Technologien von Google Analytics und Meta Pixel, um die Nutzung der Website zu verstehen und Werbung zu messen. Sie bleiben deaktiviert, bis Sie zustimmen.',
         learnMore: 'Mehr erfahren',
         reject: 'Optionale Cookies ablehnen',
-        accept: 'Analytics akzeptieren',
+        accept: 'Optionale Cookies akzeptieren',
       },
       embeds: {
         contactFormLabel: 'AXY-Kontaktformular',
@@ -326,10 +326,10 @@ export const commonCatalog = {
       },
       consent: {
         title: 'Vos choix en matière de confidentialité',
-        description: 'Nous utilisons des cookies Google Analytics facultatifs pour comprendre comment le site AXY est utilisé. Analytics reste désactivé tant que vous n’avez pas accepté.',
+        description: 'Nous utilisons les technologies facultatives Google Analytics et Meta Pixel pour comprendre l’utilisation du site et mesurer la publicité. Elles restent désactivées tant que vous n’avez pas accepté.',
         learnMore: 'En savoir plus',
         reject: 'Refuser les cookies facultatifs',
-        accept: 'Accepter Analytics',
+        accept: 'Accepter les cookies facultatifs',
       },
       embeds: {
         contactFormLabel: 'Formulaire de contact AXY',

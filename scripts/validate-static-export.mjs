@@ -89,16 +89,21 @@ const scripts = (
   )
 ).join("\n");
 assert.match(scripts, /Reject optional/);
-assert.match(scripts, /Accept analytics/);
+assert.match(scripts, /Accept optional/);
 assert.match(scripts, /☰ Menu/);
 assert.match(scripts, /✕ Close/);
-assert.match(scripts, /axy-analytics-consent-v1/);
+assert.match(scripts, /axy-optional-consent-v2/);
 assert.match(scripts, /googletagmanager\.com\/gtag\/js/);
 assert.match(scripts, /allow_google_signals/);
 assert.match(scripts, /allow_ad_personalization_signals/);
+assert.match(`${home}\n${scripts}`, /1804409627403907/);
+assert.match(`${home}\n${scripts}`, /connect\.facebook\.net\/en_US\/fbevents\.js/);
+assert.match(scripts, /Meta Pixel/);
+assert.doesNotMatch(home, /<script[^>]+src=["']https:\/\/connect\.facebook\.net/i);
+assert.doesNotMatch(home, /<noscript>[^]*facebook\.com\/tr/i);
 assert.doesNotMatch(
   `${home}\n${scripts}`,
-  /connect\.facebook\.net|fbevents|\bfbq\b|snap\.licdn\.com|linkedin insight|googleadservices|doubleclick\.net|googlesyndication|GTM-[A-Z0-9]+|AW-[0-9]+/i,
+  /snap\.licdn\.com|linkedin insight|googleadservices|doubleclick\.net|googlesyndication|GTM-[A-Z0-9]+|AW-[0-9]+/i,
 );
 for (const eventName of [
   "form_view",

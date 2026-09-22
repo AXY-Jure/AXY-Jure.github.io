@@ -5,6 +5,8 @@ import {
   CONSENT_STORAGE_KEY,
   MEASUREMENT_ID,
   analyticsCollectionAllowedOnHost,
+  disableMetaPixel,
+  enableMetaPixel,
   googleAnalyticsConfigParameters,
   googleConsentUpdateParameters,
   setAnalyticsConsentState,
@@ -16,11 +18,11 @@ function gtag() {
   window.dataLayer.push(arguments);
 }
 
-function clearAnalyticsCookies() {
+function clearOptionalCookies() {
   const cookieNames = document.cookie
     .split(';')
     .map((cookie) => cookie.split('=')[0].trim())
-    .filter((name) => name === '_ga' || name.startsWith('_ga_'));
+    .filter((name) => name === '_ga' || name.startsWith('_ga_') || name === '_fbp' || name === '_fbc');
 
   for (const name of cookieNames) {
     document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
@@ -52,8 +54,10 @@ function updateConsent(accepted) {
 
   if (accepted) {
     loadGoogleAnalytics();
+    enableMetaPixel(window);
   } else {
-    clearAnalyticsCookies();
+    disableMetaPixel(window);
+    clearOptionalCookies();
   }
 
   setAnalyticsConsentState(accepted);

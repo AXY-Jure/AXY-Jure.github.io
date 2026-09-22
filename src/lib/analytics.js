@@ -1,5 +1,7 @@
 export const MEASUREMENT_ID = 'G-WTT8L3MJTV';
-export const CONSENT_STORAGE_KEY = 'axy-analytics-consent-v1';
+export const META_PIXEL_ID = '1804409627403907';
+export const META_PIXEL_SCRIPT_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
+export const CONSENT_STORAGE_KEY = 'axy-optional-consent-v2';
 export const CONSENT_CHANGED_EVENT = 'axy:analytics-consent-changed';
 export const WALKTHROUGH_PENDING_KEY = 'axy-walkthrough-pending-v1';
 import { basePathForComparison, localizedPath, parseLocalizedPath } from '../i18n/paths.js';
@@ -8,6 +10,12 @@ const CONSENT_STATE_KEY = '__axyAnalyticsConsentState';
 const SESSION_EVENT_PREFIX = 'axy-analytics-event-v1:';
 const DEFAULT_DEDUPE_WINDOW_MS = 1500;
 const WALKTHROUGH_PENDING_MAX_AGE_MS = 4 * 60 * 60 * 1000;
+const META_PIXEL_INITIALIZED_KEY = '__axyMetaPixelInitialized';
+const META_PIXEL_PAGE_VIEW_KEY = '__axyMetaPixelPageViewSent';
+const META_STANDARD_EVENTS = Object.freeze({
+  generate_lead: 'Lead',
+  walkthrough_booked: 'Schedule',
+});
 
 const PUBLIC_PAGE_PATHS = new Set([
   '/',
@@ -259,6 +267,81 @@ export function analyticsCollectionAllowedOnHost(hostname) {
   return ANALYTICS_HOSTS.has(String(hostname || '').toLowerCase());
 }
 
+export function metaPixelBootstrapScript() {
+  return `!function(f,b,e,v,p,n,t){if(!f.fbq){n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}f.__axyLoadMetaPixel=f.__axyLoadMetaPixel||function(){if(b.querySelector('script[data-axy-meta-pixel="'+p+'"]'))return;t=b.createElement(e);t.async=!0;t.src=v;t.setAttribute('data-axy-meta-pixel',p);b.head.appendChild(t)}}(window,document,'script',${JSON.stringify(META_PIXEL_SCRIPT_SRC)},${JSON.stringify(META_PIXEL_ID)});`;
+}
+
+export function enableMetaPixel(target) {
+  const currentWindow = browserWindow(target);
+  if (
+    !currentWindow
+    || !analyticsCollectionAllowedOnHost(currentWindow.location?.hostname)
+    || typeof currentWindow.fbq !== 'function'
+  ) return false;
+
+  try {
+    currentWindow.__axyLoadMetaPixel?.();
+    currentWindow.fbq('consent', 'grant');
+    if (!currentWindow[META_PIXEL_INITIALIZED_KEY]) {
+      currentWindow.fbq('init', META_PIXEL_ID);
+      currentWindow[META_PIXEL_INITIALIZED_KEY] = true;
+    }
+    if (!currentWindow[META_PIXEL_PAGE_VIEW_KEY]) {
+      currentWindow.fbq('track', 'PageView');
+      currentWindow[META_PIXEL_PAGE_VIEW_KEY] = true;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function disableMetaPixel(target) {
+  const currentWindow = browserWindow(target);
+  if (!currentWindow || typeof currentWindow.fbq !== 'function') return false;
+
+  try {
+    currentWindow.fbq('consent', 'revoke');
+    currentWindow[META_PIXEL_PAGE_VIEW_KEY] = false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function trackMetaPageView(target) {
+  const currentWindow = browserWindow(target);
+  if (
+    !currentWindow
+    || !analyticsConsentGranted(currentWindow)
+    || !analyticsCollectionAllowedOnHost(currentWindow.location?.hostname)
+    || typeof currentWindow.fbq !== 'function'
+  ) return false;
+
+  try {
+    currentWindow.fbq('track', 'PageView');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function trackMetaStandardEvent(target, eventName) {
+  const metaEventName = META_STANDARD_EVENTS[eventName];
+  if (
+    !metaEventName
+    || !analyticsCollectionAllowedOnHost(target?.location?.hostname)
+    || typeof target?.fbq !== 'function'
+  ) return false;
+
+  try {
+    target.fbq('track', metaEventName);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function memoryEventsFor(target) {
   let events = memorySessionEvents.get(target);
   if (!events) {
@@ -322,16 +405,22 @@ export function trackAnalyticsEvent(eventName, parameters, options = {}) {
   const fingerprint = `${eventName}:${JSON.stringify(safeParameters)}`;
   const dedupeWindowMs = Number.isFinite(options.dedupeWindowMs) ? Math.max(0, options.dedupeWindowMs) : DEFAULT_DEDUPE_WINDOW_MS;
   if (dedupeWindowMs > 0 && recentlySent(target, fingerprint, dedupeWindowMs)) return false;
-  if (typeof target.gtag !== 'function') return false;
-
-  try {
-    target.gtag('event', eventName, safeParameters);
+  let sent = false;
+  if (typeof target.gtag === 'function') {
+    try {
+      target.gtag('event', eventName, safeParameters);
+      sent = true;
+    } catch {
+      // Meta can still receive an approved standard event when GA4 is blocked.
+    }
+  }
+  if (trackMetaStandardEvent(target, eventName)) sent = true;
+  if (sent) {
     markRecentlySent(target, fingerprint);
     if (options.once === 'session') markSentInSession(target, dedupeKey);
     return true;
-  } catch {
-    return false;
   }
+  return false;
 }
 
 export function markWalkthroughPending(target) {

@@ -6,6 +6,7 @@ import {
   currentPagePath,
   markWalkthroughPending,
   trackAnalyticsEvent,
+  trackMetaPageView,
   trackWalkthroughBookedConfirmation,
 } from '../lib/analytics.js';
 import { basePathForComparison } from '../i18n/paths.js';
@@ -74,6 +75,9 @@ export default function AnalyticsRuntime() {
     const trackBookedConfirmation = () => {
       trackWalkthroughBookedConfirmation();
     };
+    const trackRoutePageView = () => {
+      trackMetaPageView();
+    };
 
     const handleClick = (event) => {
       if (event.defaultPrevented || (typeof event.button === 'number' && event.button > 0)) return;
@@ -121,11 +125,13 @@ export default function AnalyticsRuntime() {
     };
 
     document.addEventListener('click', handleClick);
+    window.addEventListener('popstate', trackRoutePageView);
     window.addEventListener(CONSENT_CHANGED_EVENT, trackBookedConfirmation);
     trackBookedConfirmation();
 
     return () => {
       document.removeEventListener('click', handleClick);
+      window.removeEventListener('popstate', trackRoutePageView);
       window.removeEventListener(CONSENT_CHANGED_EVENT, trackBookedConfirmation);
     };
   }, []);

@@ -2,10 +2,13 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  META_PIXEL_ID,
   WALKTHROUGH_PENDING_KEY,
   analyticsCollectionAllowedOnHost,
   clearWalkthroughPending,
   currentPagePath,
+  disableMetaPixel,
+  enableMetaPixel,
   hasWalkthroughPending,
   googleAnalyticsConfigParameters,
   googleConsentUpdateParameters,
@@ -14,6 +17,7 @@ import {
   sanitizeAnalyticsParameters,
   setAnalyticsConsentState,
   trackAnalyticsEvent,
+  trackMetaPageView,
   trackWalkthroughBookedConfirmation,
 } from '../src/lib/analytics.js';
 import { createHubSpotFormLifecycleTracker, legacyHubSpotFormEventName } from '../src/lib/hubspot.js';
@@ -33,16 +37,19 @@ function createStorage(initialEntries = []) {
   };
 }
 
-function createWindow({ gtag, sessionStorage = createStorage() } = {}) {
+function createWindow({ fbq, gtag, hostname = 'axy.net', loadMetaPixel, sessionStorage = createStorage() } = {}) {
   return {
     location: {
       href: 'https://axy.net/pricing',
+      hostname,
       origin: 'https://axy.net',
       pathname: '/pricing',
     },
     document: { referrer: '' },
     sessionStorage,
+    fbq,
     gtag,
+    __axyLoadMetaPixel: loadMetaPixel,
     CustomEvent: class CustomEvent {
       constructor(type, options) {
         this.type = type;
@@ -239,6 +246,86 @@ test('GA config keeps advertising features disabled and uses only sanitized page
   assert.equal(analyticsCollectionAllowedOnHost('www.axy.net'), true);
   assert.equal(analyticsCollectionAllowedOnHost('127.0.0.1'), false);
   assert.equal(analyticsCollectionAllowedOnHost('localhost'), false);
+});
+
+test('Meta Pixel initializes only on production and sends one PageView per consented document', () => {
+  const calls = [];
+  let loads = 0;
+  const target = createWindow({
+    fbq: (...args) => calls.push(args),
+    loadMetaPixel: () => { loads += 1; },
+  });
+
+  assert.equal(enableMetaPixel(target), true);
+  assert.equal(enableMetaPixel(target), true);
+  assert.equal(loads, 2, 'the loader is idempotent in the browser bootstrap');
+  assert.equal(calls.filter(([command]) => command === 'init').length, 1);
+  assert.equal(calls.filter(([command, eventName]) => command === 'track' && eventName === 'PageView').length, 1);
+  assert.deepEqual(calls.find(([command]) => command === 'init'), ['init', META_PIXEL_ID]);
+
+  assert.equal(disableMetaPixel(target), true);
+  assert.deepEqual(calls.at(-1), ['consent', 'revoke']);
+  assert.equal(enableMetaPixel(target), true);
+  assert.equal(calls.filter(([command]) => command === 'init').length, 1);
+  assert.equal(calls.filter(([command, eventName]) => command === 'track' && eventName === 'PageView').length, 2);
+
+  const localCalls = [];
+  const local = createWindow({ fbq: (...args) => localCalls.push(args), hostname: 'localhost' });
+  assert.equal(enableMetaPixel(local), false);
+  assert.equal(localCalls.length, 0);
+});
+
+test('Meta PageView, Lead and Schedule remain consent-gated and receive no form values', () => {
+  const googleCalls = [];
+  const metaCalls = [];
+  const target = createWindow({
+    fbq: (...args) => metaCalls.push(args),
+    gtag: (...args) => googleCalls.push(args),
+  });
+
+  assert.equal(trackMetaPageView(target), false);
+  assert.equal(trackAnalyticsEvent('generate_lead', {
+    form_id: '30aa0bca-d54a-4174-9901-ba6ee7119191',
+    form_name: 'general_contact',
+    lead_type: 'general_contact',
+    page_path: '/contact',
+    email: 'jane@example.com',
+    message: 'Please call me',
+  }, { window: target }), false);
+
+  setAnalyticsConsentState(true, target);
+  assert.equal(trackMetaPageView(target), true);
+  assert.equal(trackAnalyticsEvent('generate_lead', {
+    form_id: '30aa0bca-d54a-4174-9901-ba6ee7119191',
+    form_name: 'general_contact',
+    lead_type: 'general_contact',
+    page_path: '/contact',
+    email: 'jane@example.com',
+    message: 'Please call me',
+  }, { window: target }), true);
+  assert.equal(trackAnalyticsEvent('walkthrough_booked', {
+    meeting_type: 'tailored_walkthrough',
+    page_path: '/meeting-booked',
+  }, { window: target }), true);
+  assert.equal(trackAnalyticsEvent('pricing_cta_click', validPricingEvent, { window: target }), true);
+
+  assert.deepEqual(metaCalls, [
+    ['track', 'PageView'],
+    ['track', 'Lead'],
+    ['track', 'Schedule'],
+  ]);
+  assert.doesNotMatch(JSON.stringify(metaCalls), /jane@example\.com|Please call me|general_contact|30aa0bca/);
+  assert.equal(googleCalls.length, 3);
+
+  setAnalyticsConsentState(false, target);
+  assert.equal(trackMetaPageView(target), false);
+  assert.equal(trackAnalyticsEvent('generate_lead', {
+    form_id: '30aa0bca-d54a-4174-9901-ba6ee7119191',
+    form_name: 'general_contact',
+    lead_type: 'general_contact',
+    page_path: '/contact',
+  }, { window: target }), false);
+  assert.equal(metaCalls.length, 3);
 });
 
 test('legacy HubSpot callbacks require the embedded form window and a trusted HubSpot origin', () => {
